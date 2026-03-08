@@ -298,16 +298,7 @@ class ConnworkServer
 
 }
 
-$context = [
-    'ssl' => [
-        'local_cert'  => __DIR__.'/cert.pem',
-        'local_pk'    => __DIR__.'/key.pem',
-        'verify_peer' => false
-    ]
-];
-
-$worker = new Worker("websocket://0.0.0.0:2345", $context);
-$worker->transport = 'ssl';
+$worker = new Worker("websocket://0.0.0.0:2345");
 
 $server = new ConnworkServer();
 
