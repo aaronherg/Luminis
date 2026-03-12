@@ -9,9 +9,23 @@ class ConnworkServer
 {
 
 	protected $clients = [];
-	protected $mensajes = [];
 	protected $colasPorUsuario = [];
+	protected $usuariosDesconectados = [];
+	protected $usuariosConocidos = [];
 	protected $tiempoMensajeLimiteSegundos = 10;
+
+	protected $logFile;
+
+	public function __construct()
+	{
+		$this->logFile = __DIR__ . "/eventos.log";
+	}
+
+	private function logEvento($texto)
+	{
+		$linea = "[".date("Y-m-d H:i:s")."] ".$texto.PHP_EOL;
+		file_put_contents($this->logFile, $linea, FILE_APPEND | LOCK_EX);
+	}
 
 	public function iniciarTimerGlobal()
 	{
@@ -45,6 +59,13 @@ class ConnworkServer
 			$this->clients[$origen][] = $connection;
 			$connection->userId = $origen;
 
+			$this->usuariosConocidos[$origen] = true;
+
+			if (isset($this->usuariosDesconectados[$origen]))
+				unset($this->usuariosDesconectados[$origen]);
+
+			$this->logEvento("$origen CONECTADO");
+
 			$this->entregarMensajesOffline($connection, $origen);
 		}
 
@@ -56,8 +77,33 @@ class ConnworkServer
 
 			$mensajeId = $data['mensajeId'] ?? null;
 
-			if ($mensajeId)
-				$this->marcarMensajeVisto($mensajeId);
+			if ($mensajeId && $destino) {
+
+				$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: VISTO");
+
+				if (isset($this->clients[$destino])) {
+
+					foreach ($this->clients[$destino] as $conn) {
+
+						$conn->send(json_encode([
+							'type'      => 'seen',
+							'mensajeId' => $mensajeId,
+							'origen'    => $origen
+						]));
+
+					}
+
+				} else {
+
+					$this->agregarEventoOffline($destino, [
+						'type'      => 'seen',
+						'mensajeId' => $mensajeId,
+						'origen'    => $origen
+					]);
+
+				}
+
+			}
 
 			return;
 		}
@@ -68,109 +114,145 @@ class ConnworkServer
 
 		if (!$destino || !$mensaje) return;
 
-		/*
-		VERIFICAR SI DESTINO ESTA CONECTADO
-		*/
-
 		$mensajeId = bin2hex(random_bytes(8));
 
-		if (!isset($this->clients[$destino]) || empty($this->clients[$destino])) {
+		/*
+		DESTINO NUNCA EXISTIO
+		*/
+
+		if (!isset($this->usuariosConocidos[$destino])) {
+
+			$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: DESAPARECIDO (DESTINO INEXISTENTE)");
 
 			$connection->send(json_encode([
 				'type' => 'desconocido',
-				'mensajeId' => $mensajeId
+				'mensajeId' => $mensajeId,
+				'destino' => $destino
 			]));
 
 			return;
 		}
 
-		$this->mensajes[$mensajeId] = [
-			'mensajeId' => $mensajeId,
-			'origen'    => $origen,
-			'destino'   => $destino,
-			'mensaje'   => $mensaje,
-			'expira'    => time() + $this->tiempoMensajeLimiteSegundos,
-			'entregado' => false
-		];
+		/*
+		DESTINO DESCONECTADO MAS DE 10 SEGUNDOS
+		*/
 
-		$this->notificarEnviado($origen, $mensajeId);
+		if (isset($this->usuariosDesconectados[$destino])) {
+
+			$tiempo = time() - $this->usuariosDesconectados[$destino];
+
+			if ($tiempo > $this->tiempoMensajeLimiteSegundos) {
+
+				$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: DESAPARECIDO");
+
+				$this->notificarDesaparecido($origen, $mensajeId, $destino);
+
+				return;
+			}
+
+		}
+
+		$this->notificarEnviado($origen, $mensajeId, $destino);
+
+		$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: ENVIADO");
 
 		/*
 		DESTINO CONECTADO
 		*/
 
-		$this->enviarMensaje($destino, $mensajeId, $origen, $mensaje);
-		$this->marcarEntregado($mensajeId);
+		if (isset($this->clients[$destino]) && !empty($this->clients[$destino])) {
+
+			$this->enviarMensaje($destino, $mensajeId, $origen, $mensaje);
+			$this->marcarEntregadoDirecto($origen, $mensajeId, $destino);
+
+			$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: ENTREGADO");
+
+			return;
+
+		}
+
+		/*
+		DESTINO DESCONECTADO TEMPORALMENTE
+		*/
+
+		if (!isset($this->colasPorUsuario[$destino]))
+			$this->colasPorUsuario[$destino] = [];
+
+		$this->colasPorUsuario[$destino][$mensajeId] = [
+			'type' => 'message',
+			'mensajeId' => $mensajeId,
+			'origen' => $origen,
+			'destino' => $destino,
+			'mensaje' => $mensaje,
+			'expira' => time() + $this->tiempoMensajeLimiteSegundos
+		];
+
+		$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: EN COLA");
 
 	}
-
-	/*
-	LIMPIAR MENSAJES EXPIRADOS
-	*/
 
 	private function limpiarMensajesExpirados()
 	{
 
 		$now = time();
 
-		foreach ($this->mensajes as $mensajeId => $msgData) {
+		foreach ($this->colasPorUsuario as $destino => $lista) {
 
-			if ($msgData['expira'] > $now)
-				continue;
+			foreach ($lista as $mensajeId => $msgData) {
 
-			if ($msgData['entregado'])
-				continue;
+				if ($msgData['expira'] > $now)
+					continue;
 
-			$destino = $msgData['destino'];
-			$origen  = $msgData['origen'];
+				$origen = $msgData['origen'];
 
-			if (isset($this->clients[$destino]))
-				continue;
+				$this->logEvento("ORIGEN: $origen, DESTINO: $destino, MENSAJE: $mensajeId, ESTADO: DESAPARECIDO");
 
-			if (isset($this->clients[$origen])) {
+				$this->notificarDesaparecido($origen, $mensajeId, $destino);
 
-				foreach ($this->clients[$origen] as $conn) {
-
-					$conn->send(json_encode([
-						'type' => 'desaparecido',
-						'mensajeId' => $mensajeId
-					]));
-
-				}
+				unset($this->colasPorUsuario[$destino][$mensajeId]);
 
 			}
 
-			unset($this->mensajes[$mensajeId]);
+			if (empty($this->colasPorUsuario[$destino]))
+				unset($this->colasPorUsuario[$destino]);
 
-			if (isset($this->colasPorUsuario[$destino][$mensajeId]))
-				unset($this->colasPorUsuario[$destino][$mensajeId]);
+		}
+
+		foreach ($this->usuariosDesconectados as $user => $time) {
+
+			if ($now - $time > $this->tiempoMensajeLimiteSegundos) {
+
+				$this->logEvento("$user DESCONECTADO PERMANENTEMENTE");
+
+				unset($this->usuariosConocidos[$user]);
+				unset($this->usuariosDesconectados[$user]);
+
+			}
 
 		}
 
 	}
-
-	/*
-	ENTREGAR MENSAJES OFFLINE
-	*/
 
 	private function entregarMensajesOffline($connection, $userId)
 	{
 
 		if (!isset($this->colasPorUsuario[$userId])) return;
 
-		foreach ($this->colasPorUsuario[$userId] as $mensajeId => $v) {
+		foreach ($this->colasPorUsuario[$userId] as $key => $msgData) {
 
-			$msgData = $this->mensajes[$mensajeId] ?? null;
-			if (!$msgData) continue;
+			$connection->send(json_encode($msgData));
 
-			$connection->send(json_encode([
-				'type'      => 'message',
-				'mensajeId' => $msgData['mensajeId'],
-				'origen'    => $msgData['origen'],
-				'mensaje'   => $msgData['mensaje']
-			]));
+			if (($msgData['type'] ?? "message") === "message") {
 
-			$this->marcarEntregado($mensajeId);
+				$this->marcarEntregadoDirecto(
+					$msgData['origen'],
+					$msgData['mensajeId'],
+					$msgData['destino']
+				);
+
+				$this->logEvento("ORIGEN: {$msgData['origen']}, DESTINO: {$msgData['destino']}, MENSAJE: {$msgData['mensajeId']}, ESTADO: ENTREGADO");
+
+			}
 
 		}
 
@@ -178,26 +260,29 @@ class ConnworkServer
 
 	}
 
-	/*
-	MARCAR COMO ENTREGADO
-	*/
-
-	private function marcarEntregado($mensajeId)
+	private function agregarEventoOffline($userId, $evento)
 	{
 
-		if (!isset($this->mensajes[$mensajeId])) return;
+		if (!isset($this->colasPorUsuario[$userId]))
+			$this->colasPorUsuario[$userId] = [];
 
-		$this->mensajes[$mensajeId]['entregado'] = true;
+		$key = ($evento['mensajeId'] ?? uniqid())."_event";
 
-		$origen = $this->mensajes[$mensajeId]['origen'];
+		$this->colasPorUsuario[$userId][$key] = $evento;
+
+	}
+
+	private function notificarDesaparecido($origen, $mensajeId, $destino)
+	{
 
 		if (isset($this->clients[$origen])) {
 
 			foreach ($this->clients[$origen] as $conn) {
 
 				$conn->send(json_encode([
-					'type'      => 'delivered',
-					'mensajeId' => $mensajeId
+					'type'      => 'desaparecido',
+					'mensajeId' => $mensajeId,
+					'destino'   => $destino
 				]));
 
 			}
@@ -206,9 +291,24 @@ class ConnworkServer
 
 	}
 
-	/*
-	ENVIAR MENSAJE
-	*/
+	private function marcarEntregadoDirecto($origen, $mensajeId, $destino)
+	{
+
+		if (isset($this->clients[$origen])) {
+
+			foreach ($this->clients[$origen] as $conn) {
+
+				$conn->send(json_encode([
+					'type'      => 'delivered',
+					'mensajeId' => $mensajeId,
+					'destino'   => $destino
+				]));
+
+			}
+
+		}
+
+	}
 
 	private function enviarMensaje($destino, $mensajeId, $origen, $mensaje)
 	{
@@ -219,6 +319,7 @@ class ConnworkServer
 				'type'      => 'message',
 				'mensajeId' => $mensajeId,
 				'origen'    => $origen,
+				'destino'   => $destino,
 				'mensaje'   => $mensaje
 			]));
 
@@ -226,11 +327,7 @@ class ConnworkServer
 
 	}
 
-	/*
-	NOTIFICAR SENT
-	*/
-
-	private function notificarEnviado($origen, $mensajeId)
+	private function notificarEnviado($origen, $mensajeId, $destino)
 	{
 
 		if (!isset($this->clients[$origen])) return;
@@ -239,39 +336,11 @@ class ConnworkServer
 
 			$conn->send(json_encode([
 				'type'      => 'sent',
-				'mensajeId' => $mensajeId
+				'mensajeId' => $mensajeId,
+				'destino'   => $destino
 			]));
 
 		}
-
-	}
-
-	/*
-	MARCAR MENSAJE COMO VISTO
-	*/
-
-	private function marcarMensajeVisto($mensajeId)
-	{
-
-		$msgData = $this->mensajes[$mensajeId] ?? null;
-		if (!$msgData) return;
-
-		$origen  = $msgData['origen'];
-
-		if (isset($this->clients[$origen])) {
-
-			foreach ($this->clients[$origen] as $conn) {
-
-				$conn->send(json_encode([
-					'type'      => 'seen',
-					'mensajeId' => $mensajeId
-				]));
-
-			}
-
-		}
-
-		unset($this->mensajes[$mensajeId]);
 
 	}
 
@@ -282,6 +351,8 @@ class ConnworkServer
 
 		$userId = $connection->userId;
 
+		$this->logEvento("$userId PRE-DESCONECTADO");
+
 		if (isset($this->clients[$userId])) {
 
 			$this->clients[$userId] = array_filter(
@@ -289,8 +360,12 @@ class ConnworkServer
 				fn($conn) => $conn !== $connection
 			);
 
-			if (empty($this->clients[$userId]))
+			if (empty($this->clients[$userId])) {
+
 				unset($this->clients[$userId]);
+				$this->usuariosDesconectados[$userId] = time();
+
+			}
 
 		}
 

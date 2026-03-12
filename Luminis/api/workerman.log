@@ -2369,3 +2369,43 @@ Stack trace:
 2026-03-08 15:08:16 pid:17987 Workerman[luminis.php] received signal SIGQUIT
 2026-03-08 15:08:16 pid:17987 Workerman[luminis.php] stopping
 2026-03-08 15:08:16 pid:17987 Workerman[luminis.php] has been stopped
+2026-03-12 02:49:56 pid:10351 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:04:57 pid:10351 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:04:57 pid:10351 Workerman[luminis.php] stopping
+2026-03-12 03:04:57 pid:10351 Workerman[luminis.php] has been stopped
+2026-03-12 03:05:03 pid:10563 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:13:18 pid:10563 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:13:18 pid:10563 Workerman[luminis.php] stopping
+2026-03-12 03:13:18 pid:10563 Workerman[luminis.php] has been stopped
+2026-03-12 03:13:19 pid:10757 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:18:15 pid:10757 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:18:15 pid:10757 Workerman[luminis.php] stopping
+2026-03-12 03:18:16 pid:10757 Workerman[luminis.php] has been stopped
+2026-03-12 03:18:17 pid:10896 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:22:50 pid:10896 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:22:50 pid:10896 Workerman[luminis.php] stopping
+2026-03-12 03:22:50 pid:10896 Workerman[luminis.php] has been stopped
+2026-03-12 03:22:51 pid:11058 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:30:43 pid:11058 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:30:43 pid:11058 Workerman[luminis.php] stopping
+2026-03-12 03:30:43 pid:11058 Workerman[luminis.php] has been stopped
+2026-03-12 03:30:44 pid:11220 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:41:29 pid:11220 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:41:29 pid:11220 Workerman[luminis.php] stopping
+2026-03-12 03:41:29 pid:11220 Workerman[luminis.php] has been stopped
+2026-03-12 03:41:38 pid:11410 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:41:53 pid:11410 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:41:53 pid:11410 Workerman[luminis.php] stopping
+2026-03-12 03:41:53 pid:11410 Workerman[luminis.php] has been stopped
+2026-03-12 03:41:57 pid:11506 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:49:35 pid:11506 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:49:35 pid:11506 Workerman[luminis.php] stopping
+2026-03-12 03:49:35 pid:11506 Workerman[luminis.php] has been stopped
+2026-03-12 03:49:44 pid:11717 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:53:29 pid:11717 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:53:29 pid:11717 Workerman[luminis.php] stopping
+2026-03-12 03:53:29 pid:11717 Workerman[luminis.php] has been stopped
+2026-03-12 03:53:32 pid:11874 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] received signal SIGINT
+2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] stopping
+2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] has been stopped
