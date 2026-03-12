@@ -1,279 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat Privado</title>
 
-<style>
-*{box-sizing:border-box;}
-body{margin:0;font-family:system-ui,Arial;background:#e5ddd5;display:flex;justify-content:center;align-items:center;height:100vh;}
-.chat-app{width:100%;max-width:900px;height:95vh;background:white;display:flex;flex-direction:column;border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.2);}
-.header{background:#075E54;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center;}
-.status{font-size:13px;opacity:.9;}
-.login{padding:15px;border-bottom:1px solid #ddd;display:flex;gap:10px;flex-wrap:wrap;}
-.login input{padding:10px;border:1px solid #ccc;border-radius:5px;}
-.login button{padding:10px 20px;border:none;background:#25D366;color:white;border-radius:5px;cursor:pointer;}
-.messages{flex:1;padding:20px;overflow-y:auto;background:#e5ddd5;display:flex;flex-direction:column;gap:10px;}
-.message{max-width:70%;padding:10px 14px;border-radius:10px;position:relative;font-size:14px;}
-.me{align-self:flex-end;background:#dcf8c6;}
-.other{align-self:flex-start;background:white;}
-.meta{font-size:11px;opacity:.7;margin-top:4px;display:flex;align-items:center;gap:6px;}
-.btn-seen{font-size:10px;padding:3px 8px;border:none;background:#1976d2;color:white;border-radius:12px;cursor:pointer;}
-.input-area{display:flex;padding:10px;background:#f0f0f0;gap:10px;}
-.input-area input{flex:1;padding:12px;border:1px solid #ccc;border-radius:20px;outline:none;}
-.input-area button{background:#25D366;border:none;color:white;padding:0 20px;border-radius:20px;cursor:pointer;}
-</style>
+<title>LUMINIS</title>
+
+<link rel="icon" href="resources/imagen/ico_logo.png" type="image/png">
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-<div class="chat-app">
+<div class="terminal-container">
 
-<div class="header">
-<div>Chat Privado</div>
-<div id="status" class="status">Desconectado</div>
+<div class="terminal-header">
+
+<div class="mac-buttons">
+<span class="mac-btn red"></span>
+<span class="mac-btn yellow"></span>
+<span class="mac-btn green"></span>
 </div>
 
-<div class="login">
-<input id="origen" placeholder="Mi ID">
-<input id="destino" placeholder="Destino">
-<button onclick="connect()">Conectar</button>
-</div>
-
-<div id="messages" class="messages"></div>
-
-<div class="input-area">
-<input id="mensaje" placeholder="Escribe un mensaje..." onkeypress="if(event.key==='Enter')sendMessage()">
-<button onclick="sendMessage()">Enviar</button>
+<div class="header-right">
+<span>LUMINIS</span>
+<img src="resources/imagen/ico_logo.png">
 </div>
 
 </div>
 
-<script>
+<div class="terminal-body">
 
-let socket
-let origen
+<div id="terminal"></div>
 
-const messages=document.getElementById("messages")
+</div>
 
-let tempMap={}
+</div>
 
-function addMessage(text,type,state="",id="",showSeenButton=false,origenMsg=null){
-
-	const div=document.createElement("div")
-	div.className="message "+type
-	div.id=id
-
-	if(origenMsg){
-		div.dataset.origen=origenMsg
-	}
-
-	let btn=""
-
-	if(showSeenButton){
-		btn=`<button class="btn-seen" onclick="marcarVisto('${id}')">✔ visto</button>`
-	}
-
-	div.innerHTML=`
-	<div>${text}</div>
-	<div class="meta">${state} ${btn}</div>
-	`
-
-	messages.appendChild(div)
-	messages.scrollTop=messages.scrollHeight
-
-}
-
-function updateState(id,state){
-
-	const el=document.getElementById(id)
-
-	if(!el) return
-
-	el.querySelector(".meta").innerHTML=state
-
-}
-
-function markDisappeared(id){
-
-	const el=document.getElementById(id)
-
-	if(el){
-		el.querySelector(".meta").innerHTML="❌ Desaparecido"
-		el.style.opacity="0.6"
-	}
-
-}
-
-function markDesconocido(id){
-
-	const el=document.getElementById(id)
-
-	if(el){
-		el.querySelector(".meta").innerHTML="❌ Desconocido"
-		el.style.opacity="0.6"
-	}
-
-}
-
-function connect(){
-
-	origen=document.getElementById("origen").value.trim()
-
-	if(!origen) return alert("Ingresa tu ID")
-
-	socket=new WebSocket("ws://localhost:2345")
-
-	socket.onopen=function(){
-
-		document.getElementById("status").innerText="Conectado"
-
-		socket.send(JSON.stringify({origen:origen}))
-
-	}
-
-	socket.onclose=function(){
-
-		document.getElementById("status").innerText="Desconectado"
-
-	}
-
-	socket.onmessage=function(event){
-
-		const data=JSON.parse(event.data)
-
-		switch(data.type){
-
-			case "sent":
-
-				for(const tempId in tempMap){
-
-					if(tempMap[tempId] !== data.destino) continue
-
-					const el=document.getElementById(tempId)
-
-					if(el){
-
-						const realId="msg-"+data.mensajeId
-
-						el.id=realId
-
-						updateState(realId,"✔ Enviado")
-
-						delete tempMap[tempId]
-
-						break
-
-					}
-
-				}
-
-			break
-
-
-			case "delivered":
-
-				updateState("msg-"+data.mensajeId,"✔ Entregado")
-
-			break
-
-
-			case "seen":
-
-				const seenId="msg-"+data.mensajeId
-
-				updateState(seenId,"✔✔ Visto")
-
-			break
-
-
-			case "message":
-
-				addMessage(
-					data.origen+": "+data.mensaje,
-					"other",
-					"",
-					"msg-"+data.mensajeId,
-					true,
-					data.origen
-				)
-
-			break
-
-
-			case "desaparecido":
-
-				markDisappeared("msg-"+data.mensajeId)
-
-			break
-
-
-			case "desconocido":
-
-				for(const tempId in tempMap){
-					markDesconocido(tempId)
-					delete tempMap[tempId]
-				}
-
-			break
-
-		}
-
-	}
-
-}
-
-function sendMessage(){
-
-	if(!socket || socket.readyState!==1){
-		alert("No conectado")
-		return
-	}
-
-	const destino=document.getElementById("destino").value.trim()
-	const mensaje=document.getElementById("mensaje").value.trim()
-
-	if(!mensaje) return
-
-	const tempId="tmp-"+Date.now()
-
-	tempMap[tempId]=destino
-
-	socket.send(JSON.stringify({
-		origen:origen,
-		destino:destino,
-		mensaje:mensaje
-	}))
-
-	addMessage(mensaje,"me","⏳ Enviando...",tempId)
-
-	document.getElementById("mensaje").value=""
-
-}
-
-function marcarVisto(id){
-
-	const el=document.getElementById(id)
-
-	if(!el) return
-
-	const mensajeId=id.replace("msg-","")
-	const destino=el.dataset.origen
-
-	socket.send(JSON.stringify({
-		type:"seen",
-		origen:origen,
-		destino:destino,
-		mensajeId:mensajeId
-	}))
-
-	el.querySelector(".meta").innerHTML="✔ visto"
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

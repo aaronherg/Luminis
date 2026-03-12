@@ -2409,3 +2409,7 @@ Stack trace:
 2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] received signal SIGINT
 2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] stopping
 2026-03-12 03:54:46 pid:11874 Workerman[luminis.php] has been stopped
+2026-03-12 04:06:48 pid:12726 Workerman[luminis.php] start in DEBUG mode
+2026-03-12 04:12:19 pid:12726 Workerman[luminis.php] received signal SIGINT
+2026-03-12 04:12:19 pid:12726 Workerman[luminis.php] stopping
+2026-03-12 04:12:19 pid:12726 Workerman[luminis.php] has been stopped
