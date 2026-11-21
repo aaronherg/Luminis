@@ -8,7 +8,7 @@
         estilo.rel = 'stylesheet';
         estilo.type = 'text/css';
         var cssPath = scriptPath.substring(0, scriptPath.lastIndexOf('/')) + '/toastr.min.css';
-        estilo.href = cssPath + "?v=20261122-3";
+        estilo.href = cssPath + "?v=20261122-4";
         document.head.appendChild(estilo);
     });
 })();

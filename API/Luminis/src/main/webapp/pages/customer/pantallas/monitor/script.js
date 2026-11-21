@@ -1,4 +1,4 @@
-import { crearMonitor } from "../../../comunes/monitor.js?v=20261122-3";
+import { crearMonitor } from "../../../comunes/monitor.js?v=20261122-4";
 
 const monitor = crearMonitor({ administracion: false });
 
