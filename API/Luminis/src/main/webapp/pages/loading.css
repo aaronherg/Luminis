@@ -1,0 +1,169 @@
+.fr-loading-screen {
+    inset: 0;
+    z-index: 100000;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--surface, #0b0b0d) 92%, transparent);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease;
+    backdrop-filter: blur(3px);
+}
+.fr-loading-screen.is-global {
+    position: fixed;
+}
+.fr-loading-screen.is-local {
+    position: absolute;
+}
+.fr-loading-screen.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.fr-loading-screen[hidden] {
+    display: none;
+}
+.fr-loading-screen canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.fr-loading-visual {
+    position: relative;
+    width: min(74vw, 430px);
+    height: min(58vh, 310px);
+    display: grid;
+    place-items: center;
+}
+.fr-loading-visual svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+.fr-loading-orbit {
+    fill: none;
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 12%, transparent);
+    stroke-width: 1;
+}
+.fr-loading-orbit.is-dashed {
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 22%, transparent);
+    stroke-dasharray: 3 10;
+    transform-origin: 210px 155px;
+    animation: fr-loading-spin 26s linear infinite;
+}
+.fr-loading-links {
+    fill: none;
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 18%, transparent);
+    stroke-width: 1.2;
+    stroke-dasharray: 5 9;
+    stroke-linecap: round;
+    animation: fr-loading-flow 3s linear infinite;
+}
+.fr-loading-energy {
+    fill: none;
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 65%, #ff5a67);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-dasharray: 1 270;
+    filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent, #e3132b) 35%, transparent));
+    animation: fr-loading-travel 2.6s linear infinite;
+}
+.fr-loading-energy.delay-a {
+    animation-delay: -0.86s;
+}
+.fr-loading-energy.delay-b {
+    animation-delay: -1.72s;
+}
+.fr-loading-node {
+    fill: var(--surface, #0b0b0d);
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 72%, #ff5a67);
+    stroke-width: 1.6;
+    filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--accent, #e3132b) 13%, transparent));
+}
+.fr-loading-node-core {
+    fill: color-mix(in srgb, var(--accent, #e3132b) 82%, #ff5a67);
+}
+.fr-loading-center {
+    fill: color-mix(in srgb, var(--surface-alt, #141418) 72%, var(--surface, #fff));
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 42%, transparent);
+    stroke-width: 1.2;
+}
+.fr-loading-center-core {
+    fill: var(--accent, #e3132b);
+    filter: drop-shadow(0 7px 12px color-mix(in srgb, var(--accent, #e3132b) 23%, transparent));
+}
+.fr-loading-center-mark {
+    fill: none;
+    stroke: var(--surface, #fff);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.fr-loading-pulse {
+    fill: none;
+    stroke: color-mix(in srgb, var(--accent, #e3132b) 38%, transparent);
+    stroke-width: 1.2;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: fr-loading-pulse 2.8s ease-out infinite;
+}
+.fr-loading-pulse.delay {
+    animation-delay: 1.4s;
+}
+.fr-loading-particle {
+    fill: color-mix(in srgb, var(--accent, #e3132b) 60%, #ff7d87);
+    opacity: 0.55;
+    animation: fr-loading-float 3.2s ease-in-out infinite;
+}
+.fr-loading-particle:nth-of-type(2n) {
+    animation-delay: -1.6s;
+}
+@keyframes fr-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes fr-loading-flow {
+    to {
+        stroke-dashoffset: -56;
+    }
+}
+@keyframes fr-loading-travel {
+    to {
+        stroke-dashoffset: -271;
+    }
+}
+@keyframes fr-loading-pulse {
+    0% {
+        opacity: 0.65;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.3);
+    }
+}
+@keyframes fr-loading-float {
+    50% {
+        transform: translateY(-7px);
+        opacity: 0.95;
+    }
+}
+@media (max-width: 560px) {
+    .fr-loading-visual {
+        width: 92vw;
+        height: 48vh;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fr-loading-screen * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

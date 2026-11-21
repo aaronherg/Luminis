@@ -1,0 +1,1484 @@
+{
+  "predeterminado": "DO",
+  "preferidosPorPrefijo": {
+    "+1": "DO",
+    "+7": "RU",
+    "+39": "IT",
+    "+44": "GB",
+    "+47": "NO",
+    "+61": "AU",
+    "+212": "MA",
+    "+262": "RE",
+    "+358": "FI",
+    "+590": "GP",
+    "+599": "CW"
+  },
+  "destacados": [
+    "DO",
+    "US",
+    "PR",
+    "ES",
+    "MX",
+    "CO"
+  ],
+  "paises": [
+    {
+      "codigo": "DO",
+      "nombre": "República Dominicana",
+      "prefijo": "+1",
+      "bandera": "img/banderas/do.png"
+    },
+    {
+      "codigo": "US",
+      "nombre": "Estados Unidos",
+      "prefijo": "+1",
+      "bandera": "img/banderas/us.png"
+    },
+    {
+      "codigo": "PR",
+      "nombre": "Puerto Rico",
+      "prefijo": "+1",
+      "bandera": "img/banderas/pr.png"
+    },
+    {
+      "codigo": "ES",
+      "nombre": "España",
+      "prefijo": "+34",
+      "bandera": "img/banderas/es.png"
+    },
+    {
+      "codigo": "MX",
+      "nombre": "México",
+      "prefijo": "+52",
+      "bandera": "img/banderas/mx.png"
+    },
+    {
+      "codigo": "CO",
+      "nombre": "Colombia",
+      "prefijo": "+57",
+      "bandera": "img/banderas/co.png"
+    },
+    {
+      "codigo": "AF",
+      "nombre": "Afganistán",
+      "prefijo": "+93",
+      "bandera": "img/banderas/af.png"
+    },
+    {
+      "codigo": "AL",
+      "nombre": "Albania",
+      "prefijo": "+355",
+      "bandera": "img/banderas/al.png"
+    },
+    {
+      "codigo": "DE",
+      "nombre": "Alemania",
+      "prefijo": "+49",
+      "bandera": "img/banderas/de.png"
+    },
+    {
+      "codigo": "AD",
+      "nombre": "Andorra",
+      "prefijo": "+376",
+      "bandera": "img/banderas/ad.png"
+    },
+    {
+      "codigo": "AO",
+      "nombre": "Angola",
+      "prefijo": "+244",
+      "bandera": "img/banderas/ao.png"
+    },
+    {
+      "codigo": "AI",
+      "nombre": "Anguila",
+      "prefijo": "+1",
+      "bandera": "img/banderas/ai.png"
+    },
+    {
+      "codigo": "AG",
+      "nombre": "Antigua y Barbuda",
+      "prefijo": "+1",
+      "bandera": "img/banderas/ag.png"
+    },
+    {
+      "codigo": "SA",
+      "nombre": "Arabia Saudita",
+      "prefijo": "+966",
+      "bandera": "img/banderas/sa.png"
+    },
+    {
+      "codigo": "DZ",
+      "nombre": "Argelia",
+      "prefijo": "+213",
+      "bandera": "img/banderas/dz.png"
+    },
+    {
+      "codigo": "AR",
+      "nombre": "Argentina",
+      "prefijo": "+54",
+      "bandera": "img/banderas/ar.png"
+    },
+    {
+      "codigo": "AM",
+      "nombre": "Armenia",
+      "prefijo": "+374",
+      "bandera": "img/banderas/am.png"
+    },
+    {
+      "codigo": "AW",
+      "nombre": "Aruba",
+      "prefijo": "+297",
+      "bandera": "img/banderas/aw.png"
+    },
+    {
+      "codigo": "AU",
+      "nombre": "Australia",
+      "prefijo": "+61",
+      "bandera": "img/banderas/au.png"
+    },
+    {
+      "codigo": "AT",
+      "nombre": "Austria",
+      "prefijo": "+43",
+      "bandera": "img/banderas/at.png"
+    },
+    {
+      "codigo": "AZ",
+      "nombre": "Azerbaiyán",
+      "prefijo": "+994",
+      "bandera": "img/banderas/az.png"
+    },
+    {
+      "codigo": "BS",
+      "nombre": "Bahamas",
+      "prefijo": "+1",
+      "bandera": "img/banderas/bs.png"
+    },
+    {
+      "codigo": "BD",
+      "nombre": "Bangladés",
+      "prefijo": "+880",
+      "bandera": "img/banderas/bd.png"
+    },
+    {
+      "codigo": "BB",
+      "nombre": "Barbados",
+      "prefijo": "+1",
+      "bandera": "img/banderas/bb.png"
+    },
+    {
+      "codigo": "BH",
+      "nombre": "Baréin",
+      "prefijo": "+973",
+      "bandera": "img/banderas/bh.png"
+    },
+    {
+      "codigo": "BE",
+      "nombre": "Bélgica",
+      "prefijo": "+32",
+      "bandera": "img/banderas/be.png"
+    },
+    {
+      "codigo": "BZ",
+      "nombre": "Belice",
+      "prefijo": "+501",
+      "bandera": "img/banderas/bz.png"
+    },
+    {
+      "codigo": "BJ",
+      "nombre": "Benín",
+      "prefijo": "+229",
+      "bandera": "img/banderas/bj.png"
+    },
+    {
+      "codigo": "BM",
+      "nombre": "Bermudas",
+      "prefijo": "+1",
+      "bandera": "img/banderas/bm.png"
+    },
+    {
+      "codigo": "BY",
+      "nombre": "Bielorrusia",
+      "prefijo": "+375",
+      "bandera": "img/banderas/by.png"
+    },
+    {
+      "codigo": "MM",
+      "nombre": "Birmania",
+      "prefijo": "+95",
+      "bandera": "img/banderas/mm.png"
+    },
+    {
+      "codigo": "BO",
+      "nombre": "Bolivia",
+      "prefijo": "+591",
+      "bandera": "img/banderas/bo.png"
+    },
+    {
+      "codigo": "BA",
+      "nombre": "Bosnia y Herzegovina",
+      "prefijo": "+387",
+      "bandera": "img/banderas/ba.png"
+    },
+    {
+      "codigo": "BW",
+      "nombre": "Botsuana",
+      "prefijo": "+267",
+      "bandera": "img/banderas/bw.png"
+    },
+    {
+      "codigo": "BR",
+      "nombre": "Brasil",
+      "prefijo": "+55",
+      "bandera": "img/banderas/br.png"
+    },
+    {
+      "codigo": "BN",
+      "nombre": "Brunéi",
+      "prefijo": "+673",
+      "bandera": "img/banderas/bn.png"
+    },
+    {
+      "codigo": "BG",
+      "nombre": "Bulgaria",
+      "prefijo": "+359",
+      "bandera": "img/banderas/bg.png"
+    },
+    {
+      "codigo": "BF",
+      "nombre": "Burkina Faso",
+      "prefijo": "+226",
+      "bandera": "img/banderas/bf.png"
+    },
+    {
+      "codigo": "BI",
+      "nombre": "Burundi",
+      "prefijo": "+257",
+      "bandera": "img/banderas/bi.png"
+    },
+    {
+      "codigo": "BT",
+      "nombre": "Bután",
+      "prefijo": "+975",
+      "bandera": "img/banderas/bt.png"
+    },
+    {
+      "codigo": "CV",
+      "nombre": "Cabo Verde",
+      "prefijo": "+238",
+      "bandera": "img/banderas/cv.png"
+    },
+    {
+      "codigo": "KH",
+      "nombre": "Camboya",
+      "prefijo": "+855",
+      "bandera": "img/banderas/kh.png"
+    },
+    {
+      "codigo": "CM",
+      "nombre": "Camerún",
+      "prefijo": "+237",
+      "bandera": "img/banderas/cm.png"
+    },
+    {
+      "codigo": "CA",
+      "nombre": "Canadá",
+      "prefijo": "+1",
+      "bandera": "img/banderas/ca.png"
+    },
+    {
+      "codigo": "BQ",
+      "nombre": "Caribe Neerlandés",
+      "prefijo": "+599",
+      "bandera": "img/banderas/bq.png"
+    },
+    {
+      "codigo": "QA",
+      "nombre": "Catar",
+      "prefijo": "+974",
+      "bandera": "img/banderas/qa.png"
+    },
+    {
+      "codigo": "TD",
+      "nombre": "Chad",
+      "prefijo": "+235",
+      "bandera": "img/banderas/td.png"
+    },
+    {
+      "codigo": "CZ",
+      "nombre": "Chequia",
+      "prefijo": "+420",
+      "bandera": "img/banderas/cz.png"
+    },
+    {
+      "codigo": "CL",
+      "nombre": "Chile",
+      "prefijo": "+56",
+      "bandera": "img/banderas/cl.png"
+    },
+    {
+      "codigo": "CN",
+      "nombre": "China",
+      "prefijo": "+86",
+      "bandera": "img/banderas/cn.png"
+    },
+    {
+      "codigo": "CY",
+      "nombre": "Chipre",
+      "prefijo": "+357",
+      "bandera": "img/banderas/cy.png"
+    },
+    {
+      "codigo": "VA",
+      "nombre": "Ciudad del Vaticano",
+      "prefijo": "+39",
+      "bandera": "img/banderas/va.png"
+    },
+    {
+      "codigo": "KM",
+      "nombre": "Comoras",
+      "prefijo": "+269",
+      "bandera": "img/banderas/km.png"
+    },
+    {
+      "codigo": "KP",
+      "nombre": "Corea del Norte",
+      "prefijo": "+850",
+      "bandera": "img/banderas/kp.png"
+    },
+    {
+      "codigo": "KR",
+      "nombre": "Corea del Sur",
+      "prefijo": "+82",
+      "bandera": "img/banderas/kr.png"
+    },
+    {
+      "codigo": "CI",
+      "nombre": "Costa de Marfil",
+      "prefijo": "+225",
+      "bandera": "img/banderas/ci.png"
+    },
+    {
+      "codigo": "CR",
+      "nombre": "Costa Rica",
+      "prefijo": "+506",
+      "bandera": "img/banderas/cr.png"
+    },
+    {
+      "codigo": "HR",
+      "nombre": "Croacia",
+      "prefijo": "+385",
+      "bandera": "img/banderas/hr.png"
+    },
+    {
+      "codigo": "CU",
+      "nombre": "Cuba",
+      "prefijo": "+53",
+      "bandera": "img/banderas/cu.png"
+    },
+    {
+      "codigo": "CW",
+      "nombre": "Curazao",
+      "prefijo": "+599",
+      "bandera": "img/banderas/cw.png"
+    },
+    {
+      "codigo": "DK",
+      "nombre": "Dinamarca",
+      "prefijo": "+45",
+      "bandera": "img/banderas/dk.png"
+    },
+    {
+      "codigo": "DM",
+      "nombre": "Dominica",
+      "prefijo": "+1",
+      "bandera": "img/banderas/dm.png"
+    },
+    {
+      "codigo": "EC",
+      "nombre": "Ecuador",
+      "prefijo": "+593",
+      "bandera": "img/banderas/ec.png"
+    },
+    {
+      "codigo": "EG",
+      "nombre": "Egipto",
+      "prefijo": "+20",
+      "bandera": "img/banderas/eg.png"
+    },
+    {
+      "codigo": "SV",
+      "nombre": "El Salvador",
+      "prefijo": "+503",
+      "bandera": "img/banderas/sv.png"
+    },
+    {
+      "codigo": "AE",
+      "nombre": "Emiratos Árabes Unidos",
+      "prefijo": "+971",
+      "bandera": "img/banderas/ae.png"
+    },
+    {
+      "codigo": "ER",
+      "nombre": "Eritrea",
+      "prefijo": "+291",
+      "bandera": "img/banderas/er.png"
+    },
+    {
+      "codigo": "SK",
+      "nombre": "Eslovaquia",
+      "prefijo": "+421",
+      "bandera": "img/banderas/sk.png"
+    },
+    {
+      "codigo": "SI",
+      "nombre": "Eslovenia",
+      "prefijo": "+386",
+      "bandera": "img/banderas/si.png"
+    },
+    {
+      "codigo": "EE",
+      "nombre": "Estonia",
+      "prefijo": "+372",
+      "bandera": "img/banderas/ee.png"
+    },
+    {
+      "codigo": "SZ",
+      "nombre": "Esuatini",
+      "prefijo": "+268",
+      "bandera": "img/banderas/sz.png"
+    },
+    {
+      "codigo": "ET",
+      "nombre": "Etiopía",
+      "prefijo": "+251",
+      "bandera": "img/banderas/et.png"
+    },
+    {
+      "codigo": "PH",
+      "nombre": "Filipinas",
+      "prefijo": "+63",
+      "bandera": "img/banderas/ph.png"
+    },
+    {
+      "codigo": "FI",
+      "nombre": "Finlandia",
+      "prefijo": "+358",
+      "bandera": "img/banderas/fi.png"
+    },
+    {
+      "codigo": "FJ",
+      "nombre": "Fiyi",
+      "prefijo": "+679",
+      "bandera": "img/banderas/fj.png"
+    },
+    {
+      "codigo": "FR",
+      "nombre": "Francia",
+      "prefijo": "+33",
+      "bandera": "img/banderas/fr.png"
+    },
+    {
+      "codigo": "GA",
+      "nombre": "Gabón",
+      "prefijo": "+241",
+      "bandera": "img/banderas/ga.png"
+    },
+    {
+      "codigo": "GM",
+      "nombre": "Gambia",
+      "prefijo": "+220",
+      "bandera": "img/banderas/gm.png"
+    },
+    {
+      "codigo": "GE",
+      "nombre": "Georgia",
+      "prefijo": "+995",
+      "bandera": "img/banderas/ge.png"
+    },
+    {
+      "codigo": "GH",
+      "nombre": "Ghana",
+      "prefijo": "+233",
+      "bandera": "img/banderas/gh.png"
+    },
+    {
+      "codigo": "GI",
+      "nombre": "Gibraltar",
+      "prefijo": "+350",
+      "bandera": "img/banderas/gi.png"
+    },
+    {
+      "codigo": "GD",
+      "nombre": "Granada",
+      "prefijo": "+1",
+      "bandera": "img/banderas/gd.png"
+    },
+    {
+      "codigo": "GR",
+      "nombre": "Grecia",
+      "prefijo": "+30",
+      "bandera": "img/banderas/gr.png"
+    },
+    {
+      "codigo": "GL",
+      "nombre": "Groenlandia",
+      "prefijo": "+299",
+      "bandera": "img/banderas/gl.png"
+    },
+    {
+      "codigo": "GP",
+      "nombre": "Guadalupe",
+      "prefijo": "+590",
+      "bandera": "img/banderas/gp.png"
+    },
+    {
+      "codigo": "GU",
+      "nombre": "Guam",
+      "prefijo": "+1",
+      "bandera": "img/banderas/gu.png"
+    },
+    {
+      "codigo": "GT",
+      "nombre": "Guatemala",
+      "prefijo": "+502",
+      "bandera": "img/banderas/gt.png"
+    },
+    {
+      "codigo": "GF",
+      "nombre": "Guayana Francesa",
+      "prefijo": "+594",
+      "bandera": "img/banderas/gf.png"
+    },
+    {
+      "codigo": "GG",
+      "nombre": "Guernsey",
+      "prefijo": "+44",
+      "bandera": "img/banderas/gg.png"
+    },
+    {
+      "codigo": "GN",
+      "nombre": "Guinea",
+      "prefijo": "+224",
+      "bandera": "img/banderas/gn.png"
+    },
+    {
+      "codigo": "GQ",
+      "nombre": "Guinea Ecuatorial",
+      "prefijo": "+240",
+      "bandera": "img/banderas/gq.png"
+    },
+    {
+      "codigo": "GW",
+      "nombre": "Guinea-Bisáu",
+      "prefijo": "+245",
+      "bandera": "img/banderas/gw.png"
+    },
+    {
+      "codigo": "GY",
+      "nombre": "Guyana",
+      "prefijo": "+592",
+      "bandera": "img/banderas/gy.png"
+    },
+    {
+      "codigo": "HT",
+      "nombre": "Haití",
+      "prefijo": "+509",
+      "bandera": "img/banderas/ht.png"
+    },
+    {
+      "codigo": "HN",
+      "nombre": "Honduras",
+      "prefijo": "+504",
+      "bandera": "img/banderas/hn.png"
+    },
+    {
+      "codigo": "HK",
+      "nombre": "Hong Kong",
+      "prefijo": "+852",
+      "bandera": "img/banderas/hk.png"
+    },
+    {
+      "codigo": "HU",
+      "nombre": "Hungría",
+      "prefijo": "+36",
+      "bandera": "img/banderas/hu.png"
+    },
+    {
+      "codigo": "IN",
+      "nombre": "India",
+      "prefijo": "+91",
+      "bandera": "img/banderas/in.png"
+    },
+    {
+      "codigo": "ID",
+      "nombre": "Indonesia",
+      "prefijo": "+62",
+      "bandera": "img/banderas/id.png"
+    },
+    {
+      "codigo": "IQ",
+      "nombre": "Irak",
+      "prefijo": "+964",
+      "bandera": "img/banderas/iq.png"
+    },
+    {
+      "codigo": "IR",
+      "nombre": "Irán",
+      "prefijo": "+98",
+      "bandera": "img/banderas/ir.png"
+    },
+    {
+      "codigo": "IE",
+      "nombre": "Irlanda",
+      "prefijo": "+353",
+      "bandera": "img/banderas/ie.png"
+    },
+    {
+      "codigo": "IM",
+      "nombre": "Isla de Man",
+      "prefijo": "+44",
+      "bandera": "img/banderas/im.png"
+    },
+    {
+      "codigo": "CX",
+      "nombre": "Isla de Navidad",
+      "prefijo": "+61",
+      "bandera": "img/banderas/cx.png"
+    },
+    {
+      "codigo": "NF",
+      "nombre": "Isla Norfolk",
+      "prefijo": "+672",
+      "bandera": "img/banderas/nf.png"
+    },
+    {
+      "codigo": "IS",
+      "nombre": "Islandia",
+      "prefijo": "+354",
+      "bandera": "img/banderas/is.png"
+    },
+    {
+      "codigo": "KY",
+      "nombre": "Islas Caimán",
+      "prefijo": "+1",
+      "bandera": "img/banderas/ky.png"
+    },
+    {
+      "codigo": "CC",
+      "nombre": "Islas Cocos",
+      "prefijo": "+61",
+      "bandera": "img/banderas/cc.png"
+    },
+    {
+      "codigo": "CK",
+      "nombre": "Islas Cook",
+      "prefijo": "+682",
+      "bandera": "img/banderas/ck.png"
+    },
+    {
+      "codigo": "FO",
+      "nombre": "Islas Feroe",
+      "prefijo": "+298",
+      "bandera": "img/banderas/fo.png"
+    },
+    {
+      "codigo": "FK",
+      "nombre": "Islas Malvinas",
+      "prefijo": "+500",
+      "bandera": "img/banderas/fk.png"
+    },
+    {
+      "codigo": "MP",
+      "nombre": "Islas Marianas del Norte",
+      "prefijo": "+1",
+      "bandera": "img/banderas/mp.png"
+    },
+    {
+      "codigo": "MH",
+      "nombre": "Islas Marshall",
+      "prefijo": "+692",
+      "bandera": "img/banderas/mh.png"
+    },
+    {
+      "codigo": "SB",
+      "nombre": "Islas Salomón",
+      "prefijo": "+677",
+      "bandera": "img/banderas/sb.png"
+    },
+    {
+      "codigo": "TC",
+      "nombre": "Islas Turcas y Caicos",
+      "prefijo": "+1",
+      "bandera": "img/banderas/tc.png"
+    },
+    {
+      "codigo": "VG",
+      "nombre": "Islas Vírgenes Británicas",
+      "prefijo": "+1",
+      "bandera": "img/banderas/vg.png"
+    },
+    {
+      "codigo": "VI",
+      "nombre": "Islas Vírgenes de EE. UU.",
+      "prefijo": "+1",
+      "bandera": "img/banderas/vi.png"
+    },
+    {
+      "codigo": "AX",
+      "nombre": "Islas Åland",
+      "prefijo": "+358",
+      "bandera": "img/banderas/ax.png"
+    },
+    {
+      "codigo": "IL",
+      "nombre": "Israel",
+      "prefijo": "+972",
+      "bandera": "img/banderas/il.png"
+    },
+    {
+      "codigo": "IT",
+      "nombre": "Italia",
+      "prefijo": "+39",
+      "bandera": "img/banderas/it.png"
+    },
+    {
+      "codigo": "JM",
+      "nombre": "Jamaica",
+      "prefijo": "+1",
+      "bandera": "img/banderas/jm.png"
+    },
+    {
+      "codigo": "JP",
+      "nombre": "Japón",
+      "prefijo": "+81",
+      "bandera": "img/banderas/jp.png"
+    },
+    {
+      "codigo": "JE",
+      "nombre": "Jersey",
+      "prefijo": "+44",
+      "bandera": "img/banderas/je.png"
+    },
+    {
+      "codigo": "JO",
+      "nombre": "Jordania",
+      "prefijo": "+962",
+      "bandera": "img/banderas/jo.png"
+    },
+    {
+      "codigo": "KZ",
+      "nombre": "Kazajistán",
+      "prefijo": "+7",
+      "bandera": "img/banderas/kz.png"
+    },
+    {
+      "codigo": "KE",
+      "nombre": "Kenia",
+      "prefijo": "+254",
+      "bandera": "img/banderas/ke.png"
+    },
+    {
+      "codigo": "KG",
+      "nombre": "Kirguistán",
+      "prefijo": "+996",
+      "bandera": "img/banderas/kg.png"
+    },
+    {
+      "codigo": "KI",
+      "nombre": "Kiribati",
+      "prefijo": "+686",
+      "bandera": "img/banderas/ki.png"
+    },
+    {
+      "codigo": "XK",
+      "nombre": "Kosovo",
+      "prefijo": "+383",
+      "bandera": "img/banderas/xk.png"
+    },
+    {
+      "codigo": "KW",
+      "nombre": "Kuwait",
+      "prefijo": "+965",
+      "bandera": "img/banderas/kw.png"
+    },
+    {
+      "codigo": "LA",
+      "nombre": "Laos",
+      "prefijo": "+856",
+      "bandera": "img/banderas/la.png"
+    },
+    {
+      "codigo": "LS",
+      "nombre": "Lesoto",
+      "prefijo": "+266",
+      "bandera": "img/banderas/ls.png"
+    },
+    {
+      "codigo": "LV",
+      "nombre": "Letonia",
+      "prefijo": "+371",
+      "bandera": "img/banderas/lv.png"
+    },
+    {
+      "codigo": "LB",
+      "nombre": "Líbano",
+      "prefijo": "+961",
+      "bandera": "img/banderas/lb.png"
+    },
+    {
+      "codigo": "LR",
+      "nombre": "Liberia",
+      "prefijo": "+231",
+      "bandera": "img/banderas/lr.png"
+    },
+    {
+      "codigo": "LY",
+      "nombre": "Libia",
+      "prefijo": "+218",
+      "bandera": "img/banderas/ly.png"
+    },
+    {
+      "codigo": "LI",
+      "nombre": "Liechtenstein",
+      "prefijo": "+423",
+      "bandera": "img/banderas/li.png"
+    },
+    {
+      "codigo": "LT",
+      "nombre": "Lituania",
+      "prefijo": "+370",
+      "bandera": "img/banderas/lt.png"
+    },
+    {
+      "codigo": "LU",
+      "nombre": "Luxemburgo",
+      "prefijo": "+352",
+      "bandera": "img/banderas/lu.png"
+    },
+    {
+      "codigo": "MO",
+      "nombre": "Macao",
+      "prefijo": "+853",
+      "bandera": "img/banderas/mo.png"
+    },
+    {
+      "codigo": "MK",
+      "nombre": "Macedonia del Norte",
+      "prefijo": "+389",
+      "bandera": "img/banderas/mk.png"
+    },
+    {
+      "codigo": "MG",
+      "nombre": "Madagascar",
+      "prefijo": "+261",
+      "bandera": "img/banderas/mg.png"
+    },
+    {
+      "codigo": "MY",
+      "nombre": "Malasia",
+      "prefijo": "+60",
+      "bandera": "img/banderas/my.png"
+    },
+    {
+      "codigo": "MW",
+      "nombre": "Malaui",
+      "prefijo": "+265",
+      "bandera": "img/banderas/mw.png"
+    },
+    {
+      "codigo": "MV",
+      "nombre": "Maldivas",
+      "prefijo": "+960",
+      "bandera": "img/banderas/mv.png"
+    },
+    {
+      "codigo": "ML",
+      "nombre": "Malí",
+      "prefijo": "+223",
+      "bandera": "img/banderas/ml.png"
+    },
+    {
+      "codigo": "MT",
+      "nombre": "Malta",
+      "prefijo": "+356",
+      "bandera": "img/banderas/mt.png"
+    },
+    {
+      "codigo": "MA",
+      "nombre": "Marruecos",
+      "prefijo": "+212",
+      "bandera": "img/banderas/ma.png"
+    },
+    {
+      "codigo": "MQ",
+      "nombre": "Martinica",
+      "prefijo": "+596",
+      "bandera": "img/banderas/mq.png"
+    },
+    {
+      "codigo": "MU",
+      "nombre": "Mauricio",
+      "prefijo": "+230",
+      "bandera": "img/banderas/mu.png"
+    },
+    {
+      "codigo": "MR",
+      "nombre": "Mauritania",
+      "prefijo": "+222",
+      "bandera": "img/banderas/mr.png"
+    },
+    {
+      "codigo": "YT",
+      "nombre": "Mayotte",
+      "prefijo": "+262",
+      "bandera": "img/banderas/yt.png"
+    },
+    {
+      "codigo": "FM",
+      "nombre": "Micronesia",
+      "prefijo": "+691",
+      "bandera": "img/banderas/fm.png"
+    },
+    {
+      "codigo": "MD",
+      "nombre": "Moldavia",
+      "prefijo": "+373",
+      "bandera": "img/banderas/md.png"
+    },
+    {
+      "codigo": "MC",
+      "nombre": "Mónaco",
+      "prefijo": "+377",
+      "bandera": "img/banderas/mc.png"
+    },
+    {
+      "codigo": "MN",
+      "nombre": "Mongolia",
+      "prefijo": "+976",
+      "bandera": "img/banderas/mn.png"
+    },
+    {
+      "codigo": "ME",
+      "nombre": "Montenegro",
+      "prefijo": "+382",
+      "bandera": "img/banderas/me.png"
+    },
+    {
+      "codigo": "MS",
+      "nombre": "Montserrat",
+      "prefijo": "+1",
+      "bandera": "img/banderas/ms.png"
+    },
+    {
+      "codigo": "MZ",
+      "nombre": "Mozambique",
+      "prefijo": "+258",
+      "bandera": "img/banderas/mz.png"
+    },
+    {
+      "codigo": "NA",
+      "nombre": "Namibia",
+      "prefijo": "+264",
+      "bandera": "img/banderas/na.png"
+    },
+    {
+      "codigo": "NR",
+      "nombre": "Nauru",
+      "prefijo": "+674",
+      "bandera": "img/banderas/nr.png"
+    },
+    {
+      "codigo": "NP",
+      "nombre": "Nepal",
+      "prefijo": "+977",
+      "bandera": "img/banderas/np.png"
+    },
+    {
+      "codigo": "NI",
+      "nombre": "Nicaragua",
+      "prefijo": "+505",
+      "bandera": "img/banderas/ni.png"
+    },
+    {
+      "codigo": "NE",
+      "nombre": "Níger",
+      "prefijo": "+227",
+      "bandera": "img/banderas/ne.png"
+    },
+    {
+      "codigo": "NG",
+      "nombre": "Nigeria",
+      "prefijo": "+234",
+      "bandera": "img/banderas/ng.png"
+    },
+    {
+      "codigo": "NU",
+      "nombre": "Niue",
+      "prefijo": "+683",
+      "bandera": "img/banderas/nu.png"
+    },
+    {
+      "codigo": "NO",
+      "nombre": "Noruega",
+      "prefijo": "+47",
+      "bandera": "img/banderas/no.png"
+    },
+    {
+      "codigo": "NC",
+      "nombre": "Nueva Caledonia",
+      "prefijo": "+687",
+      "bandera": "img/banderas/nc.png"
+    },
+    {
+      "codigo": "NZ",
+      "nombre": "Nueva Zelanda",
+      "prefijo": "+64",
+      "bandera": "img/banderas/nz.png"
+    },
+    {
+      "codigo": "OM",
+      "nombre": "Omán",
+      "prefijo": "+968",
+      "bandera": "img/banderas/om.png"
+    },
+    {
+      "codigo": "NL",
+      "nombre": "Países Bajos",
+      "prefijo": "+31",
+      "bandera": "img/banderas/nl.png"
+    },
+    {
+      "codigo": "PK",
+      "nombre": "Pakistán",
+      "prefijo": "+92",
+      "bandera": "img/banderas/pk.png"
+    },
+    {
+      "codigo": "PW",
+      "nombre": "Palaos",
+      "prefijo": "+680",
+      "bandera": "img/banderas/pw.png"
+    },
+    {
+      "codigo": "PS",
+      "nombre": "Palestina",
+      "prefijo": "+970",
+      "bandera": "img/banderas/ps.png"
+    },
+    {
+      "codigo": "PA",
+      "nombre": "Panamá",
+      "prefijo": "+507",
+      "bandera": "img/banderas/pa.png"
+    },
+    {
+      "codigo": "PG",
+      "nombre": "Papúa Nueva Guinea",
+      "prefijo": "+675",
+      "bandera": "img/banderas/pg.png"
+    },
+    {
+      "codigo": "PY",
+      "nombre": "Paraguay",
+      "prefijo": "+595",
+      "bandera": "img/banderas/py.png"
+    },
+    {
+      "codigo": "PE",
+      "nombre": "Perú",
+      "prefijo": "+51",
+      "bandera": "img/banderas/pe.png"
+    },
+    {
+      "codigo": "PF",
+      "nombre": "Polinesia Francesa",
+      "prefijo": "+689",
+      "bandera": "img/banderas/pf.png"
+    },
+    {
+      "codigo": "PL",
+      "nombre": "Polonia",
+      "prefijo": "+48",
+      "bandera": "img/banderas/pl.png"
+    },
+    {
+      "codigo": "PT",
+      "nombre": "Portugal",
+      "prefijo": "+351",
+      "bandera": "img/banderas/pt.png"
+    },
+    {
+      "codigo": "GB",
+      "nombre": "Reino Unido",
+      "prefijo": "+44",
+      "bandera": "img/banderas/gb.png"
+    },
+    {
+      "codigo": "CF",
+      "nombre": "República Centroafricana",
+      "prefijo": "+236",
+      "bandera": "img/banderas/cf.png"
+    },
+    {
+      "codigo": "CG",
+      "nombre": "República del Congo",
+      "prefijo": "+242",
+      "bandera": "img/banderas/cg.png"
+    },
+    {
+      "codigo": "CD",
+      "nombre": "República Democrática del Congo",
+      "prefijo": "+243",
+      "bandera": "img/banderas/cd.png"
+    },
+    {
+      "codigo": "RE",
+      "nombre": "Reunión",
+      "prefijo": "+262",
+      "bandera": "img/banderas/re.png"
+    },
+    {
+      "codigo": "RW",
+      "nombre": "Ruanda",
+      "prefijo": "+250",
+      "bandera": "img/banderas/rw.png"
+    },
+    {
+      "codigo": "RO",
+      "nombre": "Rumania",
+      "prefijo": "+40",
+      "bandera": "img/banderas/ro.png"
+    },
+    {
+      "codigo": "RU",
+      "nombre": "Rusia",
+      "prefijo": "+7",
+      "bandera": "img/banderas/ru.png"
+    },
+    {
+      "codigo": "EH",
+      "nombre": "Sáhara Occidental",
+      "prefijo": "+212",
+      "bandera": "img/banderas/eh.png"
+    },
+    {
+      "codigo": "WS",
+      "nombre": "Samoa",
+      "prefijo": "+685",
+      "bandera": "img/banderas/ws.png"
+    },
+    {
+      "codigo": "AS",
+      "nombre": "Samoa Americana",
+      "prefijo": "+1",
+      "bandera": "img/banderas/as.png"
+    },
+    {
+      "codigo": "BL",
+      "nombre": "San Bartolomé",
+      "prefijo": "+590",
+      "bandera": "img/banderas/bl.png"
+    },
+    {
+      "codigo": "KN",
+      "nombre": "San Cristóbal y Nieves",
+      "prefijo": "+1",
+      "bandera": "img/banderas/kn.png"
+    },
+    {
+      "codigo": "SM",
+      "nombre": "San Marino",
+      "prefijo": "+378",
+      "bandera": "img/banderas/sm.png"
+    },
+    {
+      "codigo": "MF",
+      "nombre": "San Martín (Francia)",
+      "prefijo": "+590",
+      "bandera": "img/banderas/mf.png"
+    },
+    {
+      "codigo": "PM",
+      "nombre": "San Pedro y Miquelón",
+      "prefijo": "+508",
+      "bandera": "img/banderas/pm.png"
+    },
+    {
+      "codigo": "VC",
+      "nombre": "San Vicente y las Granadinas",
+      "prefijo": "+1",
+      "bandera": "img/banderas/vc.png"
+    },
+    {
+      "codigo": "SH",
+      "nombre": "Santa Elena",
+      "prefijo": "+290",
+      "bandera": "img/banderas/sh.png"
+    },
+    {
+      "codigo": "LC",
+      "nombre": "Santa Lucía",
+      "prefijo": "+1",
+      "bandera": "img/banderas/lc.png"
+    },
+    {
+      "codigo": "ST",
+      "nombre": "Santo Tomé y Príncipe",
+      "prefijo": "+239",
+      "bandera": "img/banderas/st.png"
+    },
+    {
+      "codigo": "SN",
+      "nombre": "Senegal",
+      "prefijo": "+221",
+      "bandera": "img/banderas/sn.png"
+    },
+    {
+      "codigo": "RS",
+      "nombre": "Serbia",
+      "prefijo": "+381",
+      "bandera": "img/banderas/rs.png"
+    },
+    {
+      "codigo": "SC",
+      "nombre": "Seychelles",
+      "prefijo": "+248",
+      "bandera": "img/banderas/sc.png"
+    },
+    {
+      "codigo": "SL",
+      "nombre": "Sierra Leona",
+      "prefijo": "+232",
+      "bandera": "img/banderas/sl.png"
+    },
+    {
+      "codigo": "SG",
+      "nombre": "Singapur",
+      "prefijo": "+65",
+      "bandera": "img/banderas/sg.png"
+    },
+    {
+      "codigo": "SX",
+      "nombre": "Sint Maarten",
+      "prefijo": "+1",
+      "bandera": "img/banderas/sx.png"
+    },
+    {
+      "codigo": "SY",
+      "nombre": "Siria",
+      "prefijo": "+963",
+      "bandera": "img/banderas/sy.png"
+    },
+    {
+      "codigo": "SO",
+      "nombre": "Somalia",
+      "prefijo": "+252",
+      "bandera": "img/banderas/so.png"
+    },
+    {
+      "codigo": "LK",
+      "nombre": "Sri Lanka",
+      "prefijo": "+94",
+      "bandera": "img/banderas/lk.png"
+    },
+    {
+      "codigo": "ZA",
+      "nombre": "Sudáfrica",
+      "prefijo": "+27",
+      "bandera": "img/banderas/za.png"
+    },
+    {
+      "codigo": "SD",
+      "nombre": "Sudán",
+      "prefijo": "+249",
+      "bandera": "img/banderas/sd.png"
+    },
+    {
+      "codigo": "SS",
+      "nombre": "Sudán del Sur",
+      "prefijo": "+211",
+      "bandera": "img/banderas/ss.png"
+    },
+    {
+      "codigo": "SE",
+      "nombre": "Suecia",
+      "prefijo": "+46",
+      "bandera": "img/banderas/se.png"
+    },
+    {
+      "codigo": "CH",
+      "nombre": "Suiza",
+      "prefijo": "+41",
+      "bandera": "img/banderas/ch.png"
+    },
+    {
+      "codigo": "SR",
+      "nombre": "Surinam",
+      "prefijo": "+597",
+      "bandera": "img/banderas/sr.png"
+    },
+    {
+      "codigo": "SJ",
+      "nombre": "Svalbard y Jan Mayen",
+      "prefijo": "+47",
+      "bandera": "img/banderas/sj.png"
+    },
+    {
+      "codigo": "TH",
+      "nombre": "Tailandia",
+      "prefijo": "+66",
+      "bandera": "img/banderas/th.png"
+    },
+    {
+      "codigo": "TW",
+      "nombre": "Taiwán",
+      "prefijo": "+886",
+      "bandera": "img/banderas/tw.png"
+    },
+    {
+      "codigo": "TZ",
+      "nombre": "Tanzania",
+      "prefijo": "+255",
+      "bandera": "img/banderas/tz.png"
+    },
+    {
+      "codigo": "TJ",
+      "nombre": "Tayikistán",
+      "prefijo": "+992",
+      "bandera": "img/banderas/tj.png"
+    },
+    {
+      "codigo": "IO",
+      "nombre": "Territorio Británico del Océano Índico",
+      "prefijo": "+246",
+      "bandera": "img/banderas/io.png"
+    },
+    {
+      "codigo": "TL",
+      "nombre": "Timor Oriental",
+      "prefijo": "+670",
+      "bandera": "img/banderas/tl.png"
+    },
+    {
+      "codigo": "TG",
+      "nombre": "Togo",
+      "prefijo": "+228",
+      "bandera": "img/banderas/tg.png"
+    },
+    {
+      "codigo": "TK",
+      "nombre": "Tokelau",
+      "prefijo": "+690",
+      "bandera": "img/banderas/tk.png"
+    },
+    {
+      "codigo": "TO",
+      "nombre": "Tonga",
+      "prefijo": "+676",
+      "bandera": "img/banderas/to.png"
+    },
+    {
+      "codigo": "TT",
+      "nombre": "Trinidad y Tobago",
+      "prefijo": "+1",
+      "bandera": "img/banderas/tt.png"
+    },
+    {
+      "codigo": "TN",
+      "nombre": "Túnez",
+      "prefijo": "+216",
+      "bandera": "img/banderas/tn.png"
+    },
+    {
+      "codigo": "TM",
+      "nombre": "Turkmenistán",
+      "prefijo": "+993",
+      "bandera": "img/banderas/tm.png"
+    },
+    {
+      "codigo": "TR",
+      "nombre": "Turquía",
+      "prefijo": "+90",
+      "bandera": "img/banderas/tr.png"
+    },
+    {
+      "codigo": "TV",
+      "nombre": "Tuvalu",
+      "prefijo": "+688",
+      "bandera": "img/banderas/tv.png"
+    },
+    {
+      "codigo": "UA",
+      "nombre": "Ucrania",
+      "prefijo": "+380",
+      "bandera": "img/banderas/ua.png"
+    },
+    {
+      "codigo": "UG",
+      "nombre": "Uganda",
+      "prefijo": "+256",
+      "bandera": "img/banderas/ug.png"
+    },
+    {
+      "codigo": "UY",
+      "nombre": "Uruguay",
+      "prefijo": "+598",
+      "bandera": "img/banderas/uy.png"
+    },
+    {
+      "codigo": "UZ",
+      "nombre": "Uzbekistán",
+      "prefijo": "+998",
+      "bandera": "img/banderas/uz.png"
+    },
+    {
+      "codigo": "VU",
+      "nombre": "Vanuatu",
+      "prefijo": "+678",
+      "bandera": "img/banderas/vu.png"
+    },
+    {
+      "codigo": "VE",
+      "nombre": "Venezuela",
+      "prefijo": "+58",
+      "bandera": "img/banderas/ve.png"
+    },
+    {
+      "codigo": "VN",
+      "nombre": "Vietnam",
+      "prefijo": "+84",
+      "bandera": "img/banderas/vn.png"
+    },
+    {
+      "codigo": "WF",
+      "nombre": "Wallis y Futuna",
+      "prefijo": "+681",
+      "bandera": "img/banderas/wf.png"
+    },
+    {
+      "codigo": "YE",
+      "nombre": "Yemen",
+      "prefijo": "+967",
+      "bandera": "img/banderas/ye.png"
+    },
+    {
+      "codigo": "DJ",
+      "nombre": "Yibuti",
+      "prefijo": "+253",
+      "bandera": "img/banderas/dj.png"
+    },
+    {
+      "codigo": "ZM",
+      "nombre": "Zambia",
+      "prefijo": "+260",
+      "bandera": "img/banderas/zm.png"
+    },
+    {
+      "codigo": "ZW",
+      "nombre": "Zimbabue",
+      "prefijo": "+263",
+      "bandera": "img/banderas/zw.png"
+    }
+  ]
+}

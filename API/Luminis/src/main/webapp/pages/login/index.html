@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050817">
+    <link rel="icon" type="image/png" sizes="128x128" href="../files/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../files/img/apple-touch-icon.png">
+    <title>Iniciar sesión | Luminis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../files/temes/theme.css?v=20261122-2">
+    <link rel="stylesheet" href="../../styles.css?v=20261122-2">
+    <link rel="stylesheet" href="../librerias/aarondeveloper/toastr.min.css?v=20261122-2">
+    <link rel="stylesheet" href="../loading.css?v=20261122-2">
+    <link rel="stylesheet" href="style.css?v=20261122-2">
+    <script src="../files/temes/theme.js?v=20261122-2"></script>
+</head>
+<body class="auth-page">
+    <div class="lm-sky" aria-hidden="true">
+        <span class="lm-aurora a1"></span>
+        <span class="lm-aurora a2"></span>
+        <span class="lm-aurora a3"></span>
+        <i class="auth-stars"></i>
+    </div>
+
+    <header class="auth-top">
+        <a class="auth-brand" href="../"><img src="../files/img/isotipo.png" alt=""><span>Lumin<b>is</b></span></a>
+        <div class="auth-tools">
+            <a class="auth-back" href="../">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+                <span>Volver al inicio</span>
+            </a>
+            <select class="language-select" data-language-switcher aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="fr-icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <section class="auth-card">
+            <div class="auth-emblem" aria-hidden="true">
+                <span class="auth-orbit"></span>
+                <span class="auth-orbit o2"></span>
+                <img src="../files/img/isotipo.png" alt="" class="auth-mark">
+            </div>
+            <h1>Bienvenido de vuelta</h1>
+            <p class="auth-subtitle">Ingresa con tu usuario para continuar a tu área.</p>
+
+            <form class="auth-form" data-login-form novalidate>
+                <label class="fr-field">
+                    <span>Usuario</span>
+                    <span class="auth-input"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><input class="fr-input" name="usuario" autocomplete="username" required maxlength="60" placeholder="tu.usuario"></span>
+                </label>
+                <label class="fr-field">
+                    <span>Contraseña</span>
+                    <span class="auth-input password-field"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><input class="fr-input" name="contrasena" type="password" autocomplete="current-password" required maxlength="120" placeholder="••••••••">
+                        <button type="button" class="password-toggle" data-password-toggle aria-label="Mostrar contraseña" title="Mostrar contraseña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                    </span>
+                </label>
+                <p class="auth-error" data-login-error role="alert" hidden></p>
+                <button class="fr-btn fr-btn-gold fr-btn-lg auth-submit" type="submit">Iniciar sesión</button>
+            </form>
+
+            <p class="auth-divider"><span>¿Aún no tienes cuenta?</span></p>
+            <a class="fr-btn fr-btn-lg auth-alt" href="../registro/">Crear una cuenta</a>
+        </section>
+
+        <ul class="auth-trust">
+            <li><i></i>Conexión cifrada</li>
+            <li><i></i>Eventos en tiempo real</li>
+            <li><i></i>Planes a tu medida</li>
+        </ul>
+    </main>
+
+    <footer class="auth-foot">© AaronDevs · Luminis</footer>
+
+    <script src="../../services/core/config.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/toastr.bundle.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/notificaciones.js?v=20261122-2"></script>
+    <script src="../loading.js?v=20261122-2"></script>
+    <script src="../../services/core/LocalStorageService.js?v=20261122-2"></script>
+    <script src="../../services/core/ApiService.js?v=20261122-2"></script>
+    <script src="../../services/core/AutenticacionService.js?v=20261122-2"></script>
+    <script src="../files/languages/i18n.js?v=20261122-2"></script>
+    <script src="../files/languages/language-switcher.js?v=20261122-2"></script>
+    <script src="script.js?v=20261122-2"></script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+{
+  "messages": {
+    "Luminis | Mensajería WebSocket en tiempo real": {
+      "en": "Luminis | Real-time WebSocket messaging"
+    },
+    "Mensajería en tiempo real, sin encender un servidor.": {
+      "en": "Real-time messaging, without running a server."
+    },
+    "Servidor en línea · WebSocket": {
+      "en": "Service online · WebSocket"
+    },
+    "Comenzar gratis": {
+      "en": "Get started for free"
+    },
+    "Ver documentación": {
+      "en": "View documentation"
+    },
+    "Cómo funciona": {
+      "en": "How it works"
+    },
+    "Desarrolladores": {
+      "en": "Developers"
+    },
+    "Mensajería WebSocket": {
+      "en": "WebSocket messaging"
+    },
+    "Cada mensaje tiene un recorrido claro": {
+      "en": "Every message has a clear journey"
+    },
+    "Enviado": {
+      "en": "Sent"
+    },
+    "Entregado": {
+      "en": "Delivered"
+    },
+    "Visto": {
+      "en": "Seen"
+    },
+    "Expirado": {
+      "en": "Expired"
+    },
+    "Conecta en minutos": {
+      "en": "Connect in minutes"
+    },
+    "Elige la capacidad para tu producto": {
+      "en": "Choose the capacity for your product"
+    },
+    "Peticiones/mes": {
+      "en": "Requests/month"
+    },
+    "Conexiones": {
+      "en": "Connections"
+    },
+    "Mensaje máx.": {
+      "en": "Max message"
+    },
+    "Cola offline": {
+      "en": "Offline queue"
+    },
+    "Ilimitadas": {
+      "en": "Unlimited"
+    },
+    "Sin límite": {
+      "en": "No limit"
+    },
+    "Más elegido": {
+      "en": "Most popular"
+    },
+    "Comenzar con": {
+      "en": "Choose"
+    },
+    "Preguntas": {
+      "en": "FAQ"
+    },
+    "Respuestas para empezar": {
+      "en": "Answers to get started"
+    },
+    "Crear cuenta": {
+      "en": "Create account"
+    },
+    "Entrar": {
+      "en": "Sign in"
+    },
+    "Bienvenido a Luminis": {
+      "en": "Welcome to Luminis"
+    },
+    "Iniciar sesión": {
+      "en": "Sign in"
+    },
+    "Volver al portal": {
+      "en": "Back to home"
+    },
+    "Consola WebSocket": {
+      "en": "WebSocket console"
+    },
+    "Monitor en vivo": {
+      "en": "Live monitor"
+    },
+    "Luminis | Datos en tiempo real para cualquier aplicación": {
+      "en": "Luminis | Real-time data for any application"
+    },
+    "Navegación principal": {
+      "en": "Main navigation"
+    },
+    "Red en vivo": {
+      "en": "Live network"
+    },
+    "Casos de uso": {
+      "en": "Use cases"
+    },
+    "Planes": {
+      "en": "Plans"
+    },
+    "Idioma": {
+      "en": "Language"
+    },
+    "Cambiar tema": {
+      "en": "Toggle theme"
+    },
+    "Abrir menú": {
+      "en": "Open menu"
+    },
+    "conexiones ahora": {
+      "en": "connections right now"
+    },
+    "Tus datos viajan": {
+      "en": "Your data travels"
+    },
+    "a la velocidad de la luz": {
+      "en": "at the speed of light"
+    },
+    "Luminis es una red WebSocket como servicio para mover cualquier información en tiempo real: lecturas de sensores, estados de pedidos, precios, posiciones GPS, notificaciones o mensajes. Tú publicas el evento; nosotros lo llevamos a cada dispositivo conectado.": {
+      "en": "Luminis is a WebSocket network as a service to move any information in real time: sensor readings, order statuses, prices, GPS positions, notifications or messages. You publish the event; we deliver it to every connected device."
+    },
+    "Encender mi proyecto": {
+      "en": "Light up my project"
+    },
+    "Ver cómo se conecta": {
+      "en": "See how it connects"
+    },
+    "Copiar endpoint": {
+      "en": "Copy endpoint"
+    },
+    "Globo con el tráfico de eventos en tiempo real": {
+      "en": "Globe showing real-time event traffic"
+    },
+    "Arrastra para girar el planeta": {
+      "en": "Drag to spin the planet"
+    },
+    "Conexiones activas": {
+      "en": "Active connections"
+    },
+    "en este instante": {
+      "en": "right now"
+    },
+    "Eventos hoy": {
+      "en": "Events today"
+    },
+    "en toda la red": {
+      "en": "across the network"
+    },
+    "Eventos por segundo": {
+      "en": "Events per second"
+    },
+    "ritmo actual": {
+      "en": "current pace"
+    },
+    "últimos 30 días": {
+      "en": "last 30 days"
+    },
+    "Proyectos encendidos": {
+      "en": "Projects online"
+    },
+    "clientes activos": {
+      "en": "active customers"
+    },
+    "Telemetría IoT": {
+      "en": "IoT telemetry"
+    },
+    "Dashboards en vivo": {
+      "en": "Live dashboards"
+    },
+    "Rastreo GPS": {
+      "en": "GPS tracking"
+    },
+    "Notificaciones push": {
+      "en": "Push notifications"
+    },
+    "Juegos multijugador": {
+      "en": "Multiplayer games"
+    },
+    "Precios y cotizaciones": {
+      "en": "Prices and quotes"
+    },
+    "Estados de pedidos": {
+      "en": "Order statuses"
+    },
+    "Chat y soporte": {
+      "en": "Chat and support"
+    },
+    "Una sola red para": {
+      "en": "One network for"
+    },
+    "cualquier tipo de dato": {
+      "en": "any kind of data"
+    },
+    "Luminis no sabe ni le importa qué envías: cualquier JSON viaja con la misma velocidad, confirmación y seguridad.": {
+      "en": "Luminis doesn't know or care what you send: any JSON travels with the same speed, acknowledgement and security."
+    },
+    "Telemetría e IoT": {
+      "en": "Telemetry and IoT"
+    },
+    "Sensores, medidores y máquinas reportando lecturas al segundo.": {
+      "en": "Sensors, meters and machines reporting readings every second."
+    },
+    "KPIs, ventas y métricas que se actualizan sin recargar la página.": {
+      "en": "KPIs, sales and metrics that update without reloading the page."
+    },
+    "Rastreo y logística": {
+      "en": "Tracking and logistics"
+    },
+    "Posiciones de flotas, repartidores y pedidos en el mapa.": {
+      "en": "Fleet, courier and order positions on the map."
+    },
+    "Notificaciones": {
+      "en": "Notifications"
+    },
+    "Alertas, avisos de pago y cambios de estado al instante.": {
+      "en": "Alerts, payment notices and status changes instantly."
+    },
+    "Juegos y colaboración": {
+      "en": "Games and collaboration"
+    },
+    "Movimientos, cursores y estados compartidos entre jugadores.": {
+      "en": "Moves, cursors and shared state between players."
+    },
+    "Conversaciones con entregado y visto, también disponibles.": {
+      "en": "Conversations with delivered and seen receipts, also available."
+    },
+    "El viaje de un evento": {
+      "en": "The journey of an event"
+    },
+    "Cada evento deja": {
+      "en": "Every event leaves"
+    },
+    "un rastro de luz": {
+      "en": "a trail of light"
+    },
+    "Tu aplicación sabe en todo momento dónde está cada dato, desde que sale hasta que se procesa.": {
+      "en": "Your application always knows where each piece of data is, from the moment it leaves until it is processed."
+    },
+    "Aceptado": {
+      "en": "Accepted"
+    },
+    "Luminis recibe el evento, le asigna un identificador y te lo confirma al instante.": {
+      "en": "Luminis receives the event, assigns it an identifier and confirms it instantly."
+    },
+    "Llega a cada dispositivo del destino, incluso si se conecta más tarde.": {
+      "en": "It reaches every device of the recipient, even if it connects later."
+    },
+    "Procesado": {
+      "en": "Processed"
+    },
+    "El receptor confirma que lo usó y el emisor recibe el acuse al momento.": {
+      "en": "The receiver confirms it used it and the sender gets the acknowledgement right away."
+    },
+    "Si nadie lo reclama dentro de la retención del plan, se descarta y se avisa.": {
+      "en": "If nobody claims it within the plan's retention, it is discarded and the sender is notified."
+    },
+    "Plataforma": {
+      "en": "Platform"
+    },
+    "Todo lo que necesita una app": {
+      "en": "Everything an app needs"
+    },
+    "que vive en tiempo real": {
+      "en": "that lives in real time"
+    },
+    "Consumo claro, límites que tú controlas": {
+      "en": "Clear usage, limits you control"
+    },
+    "Cada plan define peticiones al mes, conexiones simultáneas, tamaño máximo de evento y retención. Elige límites fijos, adicionales por cada mil o capacidad ilimitada.": {
+      "en": "Each plan defines monthly requests, concurrent connections, maximum event size and retention. Choose fixed limits, overage per thousand or unlimited capacity."
+    },
+    "Presencia en vivo": {
+      "en": "Live presence"
+    },
+    "Sabe qué dispositivos y usuarios están conectados ahora mismo.": {
+      "en": "Know which devices and users are connected right now."
+    },
+    "3 en línea": {
+      "en": "3 online"
+    },
+    "API keys con permisos": {
+      "en": "API keys with permissions"
+    },
+    "Conectar, enviar, publicar o consultar presencia: cada llave hace solo lo que le das.": {
+      "en": "Connect, send, publish or query presence: each key does only what you allow."
+    },
+    "Cola offline con retención": {
+      "en": "Offline queue with retention"
+    },
+    "Si el destino no está conectado, el evento espera el tiempo de tu plan y se entrega en cuanto vuelve.": {
+      "en": "If the recipient is offline, the event waits for your plan's retention time and is delivered as soon as it returns."
+    },
+    "Monitor y consola en tu panel": {
+      "en": "Monitor and console in your dashboard"
+    },
+    "Observa sesiones en vivo, desconecta dispositivos y prueba eventos desde el navegador sin escribir código.": {
+      "en": "Watch live sessions, disconnect devices and test events from the browser without writing code."
+    },
+    "Para desarrolladores": {
+      "en": "For developers"
+    },
+    "Tres pasos y tus datos": {
+      "en": "Three steps and your data"
+    },
+    "ya están viajando": {
+      "en": "is already traveling"
+    },
+    "Un endpoint WebSocket, eventos JSON libres y una API REST para publicar desde tu backend. Sin servidores que mantener.": {
+      "en": "One WebSocket endpoint, free-form JSON events and a REST API to publish from your backend. No servers to maintain."
+    },
+    "Crea tu API key": {
+      "en": "Create your API key"
+    },
+    "Desde el panel, con los permisos que necesites.": {
+      "en": "From the dashboard, with the permissions you need."
+    },
+    "Abre el socket": {
+      "en": "Open the socket"
+    },
+    "Conecta a": {
+      "en": "Connect to"
+    },
+    "con tu llave y el identificador del dispositivo.": {
+      "en": "with your key and the device identifier."
+    },
+    "Publica y escucha": {
+      "en": "Publish and listen"
+    },
+    "Envía cualquier JSON y recibe": {
+      "en": "Send any JSON and receive"
+    },
+    "Navegador": {
+      "en": "Browser"
+    },
+    "Copiar": {
+      "en": "Copy"
+    },
+    "Copiado": {
+      "en": "Copied"
+    },
+    "eventos · red luminis": {
+      "en": "events · luminis network"
+    },
+    "en vivo": {
+      "en": "live"
+    },
+    "Elige cuánta": {
+      "en": "Choose how much"
+    },
+    "luz necesita": {
+      "en": "light"
+    },
+    "tu producto": {
+      "en": "your product needs"
+    },
+    "Compara peticiones, conexiones, tamaño de evento y retención. Cambia de plan cuando crezcas.": {
+      "en": "Compare requests, connections, event size and retention. Switch plans as you grow."
+    },
+    "Pronto publicaremos nuestros planes. Crea tu cuenta y te avisamos.": {
+      "en": "We will publish our plans soon. Create your account and we'll let you know."
+    },
+    "Respuestas antes de encender": {
+      "en": "Answers before you light up"
+    },
+    "¿Qué tipo de datos puedo enviar?": {
+      "en": "What kind of data can I send?"
+    },
+    "Cualquier JSON o texto: lecturas de sensores, coordenadas, estados, precios, comandos o mensajes. El único límite es el tamaño máximo de evento de tu plan.": {
+      "en": "Any JSON or text: sensor readings, coordinates, statuses, prices, commands or messages. The only limit is your plan's maximum event size."
+    },
+    "¿Qué cuenta como petición?": {
+      "en": "What counts as a request?"
+    },
+    "Cada evento enviado por el socket y cada llamada a la API pública de Luminis. Los pings y confirmaciones de procesado no consumen tu plan.": {
+      "en": "Every event sent through the socket and every call to the Luminis public API. Pings and processed acknowledgements don't consume your plan."
+    },
+    "¿Qué pasa si llego al límite?": {
+      "en": "What happens if I reach the limit?"
+    },
+    "Si tu plan no permite adicionales, las nuevas peticiones se rechazan con el error LIMITE_PETICIONES. Si los permite, se cobran por cada mil peticiones extra.": {
+      "en": "If your plan doesn't allow overage, new requests are rejected with the LIMITE_PETICIONES error. If it does, they are charged per thousand extra requests."
+    },
+    "¿Cómo funciona la cola offline?": {
+      "en": "How does the offline queue work?"
+    },
+    "Los eventos para destinos desconectados esperan el tiempo de retención del plan y se entregan al reconectarse. Si expiran, el emisor recibe el evento desaparecido.": {
+      "en": "Events for offline recipients wait for the plan's retention time and are delivered on reconnect. If they expire, the sender receives the desaparecido event."
+    },
+    "¿Puedo conectar varios dispositivos?": {
+      "en": "Can I connect several devices?"
+    },
+    "Sí. Un mismo usuario o dispositivo puede tener varias sesiones abiertas y todas reciben sus eventos, dentro del límite de conexiones simultáneas.": {
+      "en": "Yes. The same user or device can have several open sessions and all of them receive their events, within the concurrent connection limit."
+    },
+    "¿Existen planes sin límites?": {
+      "en": "Are there unlimited plans?"
+    },
+    "Sí. Algunos planes tienen peticiones, conexiones o tamaño de evento ilimitados. Los verás marcados con el símbolo ∞.": {
+      "en": "Yes. Some plans have unlimited requests, connections or event size. You'll see them marked with the ∞ symbol."
+    },
+    "Enciende tu próximo producto en tiempo real": {
+      "en": "Light up your next real-time product"
+    },
+    "Crea tu cuenta, genera tu API key y publica tu primer evento hoy mismo.": {
+      "en": "Create your account, generate your API key and publish your first event today."
+    },
+    "Iniciar sesión | Luminis": {
+      "en": "Sign in | Luminis"
+    },
+    "Volver al inicio": {
+      "en": "Back to home"
+    },
+    "Bienvenido de vuelta": {
+      "en": "Welcome back"
+    },
+    "Ingresa con tu usuario para continuar a tu área.": {
+      "en": "Sign in with your username to continue to your area."
+    },
+    "Usuario": {
+      "en": "User"
+    },
+    "tu.usuario": {
+      "en": "your.username"
+    },
+    "Contraseña": {
+      "en": "Password"
+    },
+    "Mostrar contraseña": {
+      "en": "Show password"
+    },
+    "¿Aún no tienes cuenta?": {
+      "en": "Don't have an account yet?"
+    },
+    "Crear una cuenta": {
+      "en": "Create an account"
+    },
+    "Conexión cifrada": {
+      "en": "Encrypted connection"
+    },
+    "Eventos en tiempo real": {
+      "en": "Real-time events"
+    },
+    "Planes a tu medida": {
+      "en": "Plans that fit you"
+    },
+    "Crear cuenta | Luminis": {
+      "en": "Create account | Luminis"
+    },
+    "Crea tu cuenta": {
+      "en": "Create your account"
+    },
+    "Registra tu empresa o perfil personal. Elegirás tu plan desde tu área de cliente.": {
+      "en": "Register your company or personal profile. You'll choose your plan from your customer area."
+    },
+    "Datos de la cuenta": {
+      "en": "Account details"
+    },
+    "Tipo de cliente": {
+      "en": "Customer type"
+    },
+    "Empresa": {
+      "en": "Company"
+    },
+    "Persona": {
+      "en": "Individual"
+    },
+    "Nombre comercial": {
+      "en": "Trade name"
+    },
+    "Razón social": {
+      "en": "Legal name"
+    },
+    "Documento (RNC o cédula)": {
+      "en": "Tax ID or national ID"
+    },
+    "Correo": {
+      "en": "Email"
+    },
+    "Teléfono": {
+      "en": "Phone"
+    },
+    "Dirección": {
+      "en": "Address"
+    },
+    "Usuario propietario": {
+      "en": "Owner user"
+    },
+    "Nombres": {
+      "en": "First names"
+    },
+    "Apellidos": {
+      "en": "Last names"
+    },
+    "De 3 a 60 caracteres: letras, números, punto, guion, guion bajo o @": {
+      "en": "3 to 60 characters: letters, numbers, dot, hyphen, underscore or @"
+    },
+    "Confirmar contraseña": {
+      "en": "Confirm password"
+    },
+    "Al menos 8 caracteres": {
+      "en": "At least 8 characters"
+    },
+    "Una letra mayúscula": {
+      "en": "One uppercase letter"
+    },
+    "Una letra minúscula": {
+      "en": "One lowercase letter"
+    },
+    "Un número": {
+      "en": "One number"
+    },
+    "Un carácter especial": {
+      "en": "One special character"
+    },
+    "¿Ya tienes cuenta?": {
+      "en": "Already have an account?"
+    },
+    "¡Tu cuenta está lista!": {
+      "en": "Your account is ready!"
+    },
+    "Inicia sesión con tu usuario para elegir tu plan y conectar tu aplicación al socket.": {
+      "en": "Sign in with your username to choose your plan and connect your application to the socket."
+    },
+    "Tu propia área de cliente con equipo y roles": {
+      "en": "Your own customer area with team and roles"
+    },
+    "API keys con permisos por acción": {
+      "en": "API keys with per-action permissions"
+    },
+    "Eventos, telemetría y notificaciones por WebSocket": {
+      "en": "Events, telemetry and notifications over WebSocket"
+    },
+    "Buscar": {
+      "en": "Search"
+    },
+    "Buscar opción": {
+      "en": "Search option"
+    },
+    "Opciones de categoría": {
+      "en": "Category options"
+    },
+    "Menú principal": {
+      "en": "Main menu"
+    },
+    "Cambiar contraseña": {
+      "en": "Change password"
+    },
+    "Cerrar sesión": {
+      "en": "Sign out"
+    },
+    "Cargando": {
+      "en": "Loading"
+    },
+    "Customer | Luminis": {
+      "en": "Customer | Luminis"
+    },
+    "Luminis Cliente": {
+      "en": "Luminis Customer"
+    },
+    "Cliente": {
+      "en": "Customer"
+    },
+    "Nombre completo": {
+      "en": "Full name"
+    },
+    "Cédula": {
+      "en": "National ID"
+    },
+    "RNC": {
+      "en": "Tax ID (RNC)"
+    },
+    "Nombre de la empresa": {
+      "en": "Company name"
+    },
+    "Nombre y apellidos": {
+      "en": "First and last name"
+    },
+    "Tipo": {
+      "en": "Type"
+    },
+    "El nombre es obligatorio.": {
+      "en": "The name is required."
+    }
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050817">
+    <link rel="icon" type="image/png" sizes="128x128" href="../files/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../files/img/apple-touch-icon.png">
+    <title>Crear cuenta | Luminis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../files/temes/theme.css?v=20261122-2">
+    <link rel="stylesheet" href="../../styles.css?v=20261122-2">
+    <link rel="stylesheet" href="../librerias/aarondeveloper/toastr.min.css?v=20261122-2">
+    <link rel="stylesheet" href="../loading.css?v=20261122-2">
+    <link rel="stylesheet" href="../login/style.css?v=20261122-2">
+    <link rel="stylesheet" href="style.css?v=20261122-2">
+    <script src="../files/temes/theme.js?v=20261122-2"></script>
+</head>
+<body class="auth-page">
+    <div class="lm-sky" aria-hidden="true">
+        <span class="lm-aurora a1"></span>
+        <span class="lm-aurora a2"></span>
+        <span class="lm-aurora a3"></span>
+        <i class="auth-stars"></i>
+    </div>
+
+    <header class="auth-top">
+        <a class="auth-brand" href="../"><img src="../files/img/isotipo.png" alt=""><span>Lumin<b>is</b></span></a>
+        <div class="auth-tools">
+            <a class="auth-back" href="../">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+                <span>Volver al inicio</span>
+            </a>
+            <select class="language-select" data-language-switcher aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="fr-icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <section class="auth-card is-wide" data-registro-card>
+    <div class="auth-emblem" aria-hidden="true">
+        <span class="auth-orbit"></span>
+        <span class="auth-orbit o2"></span>
+        <img src="../files/img/isotipo.png" alt="" class="auth-mark">
+    </div>
+        <h1>Crea tu cuenta</h1>
+        <p class="auth-subtitle">Registra tu empresa o perfil personal. Elegirás tu plan desde tu área de cliente.</p>
+        <p class="registro-plan" data-plan-elegido hidden></p>
+
+        <form class="auth-form registro-form" data-registro-form novalidate>
+            <fieldset class="registro-grupo">
+                <legend><b>1</b>Datos de la cuenta</legend>
+                <div class="tipo-cliente" role="radiogroup" aria-label="Tipo de cliente">
+                    <label><input type="radio" name="tipoCliente" value="Empresa" checked><span>Empresa</span></label>
+                    <label><input type="radio" name="tipoCliente" value="Persona"><span>Persona</span></label>
+                </div>
+                <div class="registro-grid">
+                    <label class="fr-field registro-span">
+                        <span>Nombre comercial</span>
+                        <input class="fr-input" name="nombreComercial" required maxlength="150" autocomplete="organization">
+                    </label>
+                    <label class="fr-field" data-solo-empresa>
+                        <span>Razón social</span>
+                        <input class="fr-input" name="razonSocial" maxlength="150">
+                    </label>
+                    <label class="fr-field">
+                        <span>RNC</span>
+                        <input class="fr-input" name="documento" maxlength="30">
+                    </label>
+                    <label class="fr-field">
+                        <span>Correo</span>
+                        <input class="fr-input" name="correo" type="email" required maxlength="150" autocomplete="email">
+                    </label>
+                    <div class="fr-field">
+                        <span>Teléfono</span>
+                        <div class="telefono-field">
+                            <input class="fr-input" name="prefijoTelefono" data-phone-prefix value="+1" aria-label="Prefijo">
+                            <input class="fr-input" name="telefono" maxlength="20" autocomplete="tel" aria-label="Teléfono">
+                        </div>
+                    </div>
+                    <label class="fr-field registro-span">
+                        <span>Dirección</span>
+                        <input class="fr-input" name="direccion" maxlength="250" autocomplete="street-address">
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset class="registro-grupo">
+                <legend><b>2</b>Usuario propietario</legend>
+                <div class="registro-grid">
+                    <label class="fr-field">
+                        <span>Nombres</span>
+                        <input class="fr-input" name="nombres" required maxlength="100" autocomplete="given-name">
+                    </label>
+                    <label class="fr-field">
+                        <span>Apellidos</span>
+                        <input class="fr-input" name="apellidos" maxlength="100" autocomplete="family-name">
+                    </label>
+                    <label class="fr-field">
+                        <span>Usuario</span>
+                        <input class="fr-input" name="usuario" required maxlength="60" autocomplete="username">
+                        <small>De 3 a 60 caracteres: letras, números, punto, guion, guion bajo o @</small>
+                    </label>
+                    <span class="registro-hueco" aria-hidden="true"></span>
+                    <label class="fr-field">
+                        <span>Contraseña</span>
+                        <input class="fr-input" name="contrasena" type="password" required maxlength="120" autocomplete="new-password">
+                    </label>
+                    <label class="fr-field">
+                        <span>Confirmar contraseña</span>
+                        <input class="fr-input" name="confirmacion" type="password" required maxlength="120" autocomplete="new-password">
+                    </label>
+                </div>
+                <ul class="password-rules" data-password-rules>
+                    <li data-rule="largo">Al menos 8 caracteres</li>
+                    <li data-rule="mayuscula">Una letra mayúscula</li>
+                    <li data-rule="minuscula">Una letra minúscula</li>
+                    <li data-rule="numero">Un número</li>
+                    <li data-rule="especial">Un carácter especial</li>
+                </ul>
+            </fieldset>
+
+            <p class="auth-error" data-registro-error role="alert" hidden></p>
+            <button class="fr-btn fr-btn-gold fr-btn-lg auth-submit" type="submit">Crear cuenta</button>
+        </form>
+
+        <p class="auth-switch">¿Ya tienes cuenta? <a href="../login/">Iniciar sesión</a></p>
+    </section>
+
+        <section class="auth-card registro-exito" data-registro-exito hidden>
+        <span class="exito-icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+        </span>
+        <h1>¡Tu cuenta está lista!</h1>
+        <p class="auth-subtitle">Inicia sesión con tu usuario para elegir tu plan y conectar tu aplicación al socket.</p>
+        <a class="fr-btn fr-btn-gold fr-btn-lg auth-submit" href="../login/">Iniciar sesión</a>
+    </section>
+
+        <ul class="auth-trust">
+            <li><i></i>Tu propia área de cliente con equipo y roles</li>
+            <li><i></i>API keys con permisos por acción</li>
+            <li><i></i>Eventos, telemetría y notificaciones por WebSocket</li>
+        </ul>
+    </main>
+
+    <footer class="auth-foot">© AaronDevs · Luminis</footer>
+
+    <script src="../../services/core/config.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/toastr.bundle.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/notificaciones.js?v=20261122-2"></script>
+    <script src="../loading.js?v=20261122-2"></script>
+    <script src="../phone-prefixes.js?v=20261122-2"></script>
+    <script src="../../services/core/LocalStorageService.js?v=20261122-2"></script>
+    <script src="../../services/core/ApiService.js?v=20261122-2"></script>
+    <script src="../../services/clientes/RegistroService.js?v=20261122-2"></script>
+    <script src="../../services/administracion/PlanService.js?v=20261122-2"></script>
+    <script src="../files/languages/i18n.js?v=20261122-2"></script>
+    <script src="../files/languages/language-switcher.js?v=20261122-2"></script>
+    <script src="script.js?v=20261122-2"></script>
+</body>
+</html>

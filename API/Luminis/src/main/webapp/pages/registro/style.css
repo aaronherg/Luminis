@@ -1,0 +1,193 @@
+.registro-plan {
+    margin: -14px auto 24px;
+    padding: 12px 16px;
+    border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+    border-radius: 16px;
+    background: var(--gold-soft);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.registro-form {
+    gap: 20px;
+}
+
+.registro-grupo {
+    margin: 0;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
+}
+
+.registro-grupo legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.registro-grupo legend b {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffe08c, #f2a40b);
+    color: #2a1900;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    box-shadow: 0 0 16px -2px var(--gold-glow);
+}
+
+.registro-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.registro-span {
+    grid-column: 1 / -1;
+}
+
+.tipo-cliente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin: 6px 0 18px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-alt);
+}
+
+.tipo-cliente label {
+    position: relative;
+    cursor: pointer;
+}
+
+.tipo-cliente input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tipo-cliente span {
+    display: block;
+    padding: 9px 22px;
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+.tipo-cliente input:checked + span {
+    background: linear-gradient(135deg, #6b98ff, #3f6dff);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -8px rgba(63, 109, 255, 0.8);
+}
+
+.tipo-cliente input:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.telefono-field {
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr);
+    gap: 8px;
+}
+
+.registro-hueco {
+    display: block;
+}
+
+.password-rules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.password-rules li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 12.5px;
+    transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.password-rules li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: background 200ms ease, box-shadow 200ms ease;
+}
+
+.password-rules li.is-ok {
+    border-color: color-mix(in srgb, var(--success) 40%, transparent);
+    background: color-mix(in srgb, var(--success) 10%, transparent);
+    color: var(--success);
+}
+
+.password-rules li.is-ok::before {
+    background: var(--success);
+    box-shadow: 0 0 10px var(--success);
+}
+
+.registro-exito {
+    padding-top: 40px;
+}
+
+.exito-icono {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 201, 74, 0.3), rgba(255, 201, 74, 0.05) 70%);
+    color: var(--gold);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent), 0 0 60px -10px var(--gold-glow);
+    animation: exito-latido 2.4s ease-in-out infinite;
+}
+
+.exito-icono svg {
+    width: 40px;
+    height: 40px;
+}
+
+@keyframes exito-latido {
+    50% {
+        box-shadow: 0 0 0 10px color-mix(in srgb, var(--gold) 10%, transparent), 0 0 80px -10px var(--gold-glow);
+    }
+}
+
+@media (max-width: 640px) {
+    .registro-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .registro-hueco {
+        display: none;
+    }
+
+    .registro-grupo {
+        padding: 16px;
+    }
+}

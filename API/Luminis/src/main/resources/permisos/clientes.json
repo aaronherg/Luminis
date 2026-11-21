@@ -1,0 +1,232 @@
+{
+  "categorias": [
+    {
+      "clave": "dashboard",
+      "nombre": "Dashboard",
+      "icono": "layout-dashboard",
+      "sola": true,
+      "opciones": [
+        {
+          "clave": "inicio",
+          "nombre": "Dashboard",
+          "descripcion": "Pulso de tu tráfico en tiempo real.",
+          "icono": "layout-dashboard",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar resumen"
+            }
+          ],
+          "orden": 1
+        }
+      ],
+      "orden": 1
+    },
+    {
+      "clave": "tiempo_real",
+      "nombre": "Tiempo real",
+      "icono": "radio",
+      "opciones": [
+        {
+          "clave": "monitor",
+          "nombre": "Monitor en vivo",
+          "descripcion": "Usuarios y sesiones conectadas ahora mismo.",
+          "icono": "radio",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar conexiones en vivo"
+            },
+            {
+              "clave": "desconectar",
+              "nombre": "Desconectar usuarios y sesiones"
+            }
+          ],
+          "orden": 1
+        },
+        {
+          "clave": "consola",
+          "nombre": "Consola de pruebas",
+          "descripcion": "Conéctate y envía mensajes de prueba con tu API key.",
+          "icono": "terminal",
+          "acciones": [
+            {
+              "clave": "usar",
+              "nombre": "Usar la consola de pruebas"
+            }
+          ],
+          "orden": 2
+        }
+      ],
+      "orden": 2
+    },
+    {
+      "clave": "facturacion",
+      "nombre": "Facturación",
+      "icono": "receipt",
+      "opciones": [
+        {
+          "clave": "suscripcion",
+          "nombre": "Mi plan",
+          "descripcion": "Plan vigente, consumo y solicitudes.",
+          "icono": "gauge",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar suscripción"
+            },
+            {
+              "clave": "solicitar",
+              "nombre": "Solicitar plan"
+            }
+          ],
+          "orden": 1
+        },
+        {
+          "clave": "pagos",
+          "nombre": "Pagos",
+          "descripcion": "Cargos y abonos de tu cuenta.",
+          "icono": "receipt",
+          "acciones": [
+            {
+              "clave": "listar",
+              "nombre": "Consultar pagos"
+            }
+          ],
+          "orden": 2
+        }
+      ],
+      "orden": 3
+    },
+    {
+      "clave": "reportes",
+      "nombre": "Reportes",
+      "icono": "bar-chart",
+      "opciones": [
+        {
+          "clave": "reporte_consumo",
+          "nombre": "Consumo de peticiones",
+          "descripcion": "Peticiones por día frente al límite de tu plan.",
+          "icono": "gauge",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar consumo de peticiones"
+            }
+          ],
+          "orden": 1
+        },
+        {
+          "clave": "reporte_entregas",
+          "nombre": "Entregas de mensajes",
+          "descripcion": "Entregados, vistos y desaparecidos por día.",
+          "icono": "activity",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar entregas de mensajes"
+            }
+          ],
+          "orden": 2
+        }
+      ],
+      "orden": 4
+    },
+    {
+      "clave": "configuracion",
+      "nombre": "Configuración",
+      "icono": "settings",
+      "opciones": [
+        {
+          "clave": "apikeys",
+          "nombre": "API keys",
+          "descripcion": "Credenciales de integración.",
+          "icono": "key-round",
+          "acciones": [
+            {
+              "clave": "listar",
+              "nombre": "Consultar API keys"
+            },
+            {
+              "clave": "crear",
+              "nombre": "Crear API key"
+            },
+            {
+              "clave": "revocar",
+              "nombre": "Revocar API key"
+            }
+          ],
+          "orden": 1
+        },
+        {
+          "clave": "usuarios",
+          "nombre": "Usuarios",
+          "descripcion": "Usuarios de tu cuenta.",
+          "icono": "users",
+          "acciones": [
+            {
+              "clave": "listar",
+              "nombre": "Consultar usuarios"
+            },
+            {
+              "clave": "crear",
+              "nombre": "Crear usuario"
+            },
+            {
+              "clave": "modificar",
+              "nombre": "Modificar usuario"
+            },
+            {
+              "clave": "cambiar_estado",
+              "nombre": "Suspender o reactivar usuario"
+            }
+          ],
+          "orden": 2
+        },
+        {
+          "clave": "roles",
+          "nombre": "Roles",
+          "descripcion": "Roles y permisos de tu cuenta.",
+          "icono": "shield-check",
+          "acciones": [
+            {
+              "clave": "listar",
+              "nombre": "Consultar roles"
+            },
+            {
+              "clave": "crear",
+              "nombre": "Crear rol"
+            },
+            {
+              "clave": "modificar",
+              "nombre": "Modificar rol y permisos"
+            },
+            {
+              "clave": "eliminar",
+              "nombre": "Eliminar rol"
+            }
+          ],
+          "orden": 3
+        },
+        {
+          "clave": "perfil",
+          "nombre": "Perfil de la cuenta",
+          "descripcion": "Datos de tu cuenta.",
+          "icono": "id-card",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar perfil"
+            },
+            {
+              "clave": "modificar",
+              "nombre": "Modificar perfil"
+            }
+          ],
+          "orden": 4
+        }
+      ],
+      "orden": 5
+    }
+  ]
+}

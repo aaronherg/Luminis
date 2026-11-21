@@ -1,0 +1,610 @@
+{
+  "messages": {
+    "MÓDULOS": {
+      "en": "MODULES"
+    },
+    "Menú principal": {
+      "en": "Main menu"
+    },
+    "Cargando": {
+      "en": "Loading"
+    },
+    "Cambiar contraseña": {
+      "en": "Change password"
+    },
+    "Cerrar sesión": {
+      "en": "Sign out"
+    },
+    "Abrir": {
+      "en": "Open"
+    },
+    "Acciones": {
+      "en": "Actions"
+    },
+    "Actualizar": {
+      "en": "Refresh"
+    },
+    "Anterior": {
+      "en": "Previous"
+    },
+    "Siguiente": {
+      "en": "Next"
+    },
+    "{total} registros": {
+      "en": "{total} records"
+    },
+    "{total} registros · Página {pagina} de {paginas}": {
+      "en": "{total} records · Page {pagina} of {paginas}"
+    },
+    "No hay registros para mostrar.": {
+      "en": "No records to show."
+    },
+    "Cancelar": {
+      "en": "Cancel"
+    },
+    "Guardar": {
+      "en": "Save"
+    },
+    "Confirmar": {
+      "en": "Confirm"
+    },
+    "Confirmar acción": {
+      "en": "Confirm action"
+    },
+    "Cerrar": {
+      "en": "Close"
+    },
+    "Editar": {
+      "en": "Edit"
+    },
+    "Eliminar": {
+      "en": "Delete"
+    },
+    "Estado": {
+      "en": "Status"
+    },
+    "Nombre": {
+      "en": "Name"
+    },
+    "Usuario": {
+      "en": "User"
+    },
+    "Correo": {
+      "en": "Email"
+    },
+    "Roles": {
+      "en": "Roles"
+    },
+    "Rol": {
+      "en": "Role"
+    },
+    "Sin rol": {
+      "en": "No role"
+    },
+    "Activo": {
+      "en": "Active"
+    },
+    "Activa": {
+      "en": "Active"
+    },
+    "Inactivo": {
+      "en": "Inactive"
+    },
+    "Suspendido": {
+      "en": "Suspended"
+    },
+    "Pendiente": {
+      "en": "Pending"
+    },
+    "Pagado": {
+      "en": "Paid"
+    },
+    "Aprobada": {
+      "en": "Approved"
+    },
+    "Rechazada": {
+      "en": "Rejected"
+    },
+    "Cancelada": {
+      "en": "Cancelled"
+    },
+    "Cancelado": {
+      "en": "Cancelled"
+    },
+    "Reemplazado": {
+      "en": "Replaced"
+    },
+    "Eliminado": {
+      "en": "Deleted"
+    },
+    "Propietario": {
+      "en": "Owner"
+    },
+    "Protegido": {
+      "en": "Protected"
+    },
+    "Destacado": {
+      "en": "Featured"
+    },
+    "Buscar usuarios": {
+      "en": "Search users"
+    },
+    "Buscar por nombre, usuario o correo": {
+      "en": "Search by name, username or email"
+    },
+    "Nuevo usuario": {
+      "en": "New user"
+    },
+    "Editar usuario": {
+      "en": "Edit user"
+    },
+    "El usuario podrá iniciar sesión con las acciones de sus roles.": {
+      "en": "The user will be able to sign in with the actions of their roles."
+    },
+    "Aún no hay roles. Crea uno en el módulo Roles.": {
+      "en": "There are no roles yet. Create one in the Roles module."
+    },
+    "Los roles del propietario no se pueden cambiar.": {
+      "en": "The owner's roles cannot be changed."
+    },
+    "Restablecer contraseña": {
+      "en": "Reset password"
+    },
+    "Restablecer": {
+      "en": "Reset"
+    },
+    "Nueva contraseña": {
+      "en": "New password"
+    },
+    "El usuario deberá cambiarla en su próximo inicio de sesión.": {
+      "en": "The user must change it on their next sign in."
+    },
+    "Suspender": {
+      "en": "Suspend"
+    },
+    "Reactivar": {
+      "en": "Reactivate"
+    },
+    "Suspender usuario": {
+      "en": "Suspend user"
+    },
+    "Reactivar usuario": {
+      "en": "Reactivate user"
+    },
+    "Eliminar usuario": {
+      "en": "Delete user"
+    },
+    "@{usuario} no podrá iniciar sesión hasta que lo reactives.": {
+      "en": "@{usuario} will not be able to sign in until you reactivate them."
+    },
+    "@{usuario} podrá volver a iniciar sesión.": {
+      "en": "@{usuario} will be able to sign in again."
+    },
+    "Se eliminará @{usuario}. Esta acción no se puede deshacer.": {
+      "en": "@{usuario} will be deleted. This action cannot be undone."
+    },
+    "Usuario creado correctamente": {
+      "en": "User created successfully"
+    },
+    "Usuario actualizado correctamente": {
+      "en": "User updated successfully"
+    },
+    "Usuario suspendido": {
+      "en": "User suspended"
+    },
+    "Usuario reactivado": {
+      "en": "User reactivated"
+    },
+    "Usuario eliminado correctamente": {
+      "en": "User deleted successfully"
+    },
+    "Contraseña restablecida correctamente": {
+      "en": "Password reset successfully"
+    },
+    "No hay usuarios registrados.": {
+      "en": "There are no users."
+    },
+    "Los nombres son obligatorios.": {
+      "en": "First names are required."
+    },
+    "Define qué acciones puede realizar cada rol. Los roles protegidos se mantienen con todos los permisos.": {
+      "en": "Define which actions each role can perform. Protected roles always keep every permission."
+    },
+    "Nuevo rol": {
+      "en": "New role"
+    },
+    "Editar rol": {
+      "en": "Edit role"
+    },
+    "Rol protegido": {
+      "en": "Protected role"
+    },
+    "Este rol siempre conserva todos los permisos. Solo puedes cambiar su descripción y color.": {
+      "en": "This role always keeps every permission. You can only change its description and color."
+    },
+    "Ver permisos": {
+      "en": "View permissions"
+    },
+    "Eliminar rol": {
+      "en": "Delete role"
+    },
+    "Permisos": {
+      "en": "Permissions"
+    },
+    "{actuales} de {total}": {
+      "en": "{actuales} of {total}"
+    },
+    "Color": {
+      "en": "Color"
+    },
+    "Descripción": {
+      "en": "Description"
+    },
+    "Todo": {
+      "en": "All"
+    },
+    "Selecciona al menos un permiso.": {
+      "en": "Select at least one permission."
+    },
+    "El nombre del rol es obligatorio.": {
+      "en": "The role name is required."
+    },
+    "Rol creado correctamente": {
+      "en": "Role created successfully"
+    },
+    "Rol actualizado correctamente": {
+      "en": "Role updated successfully"
+    },
+    "Rol eliminado correctamente": {
+      "en": "Role deleted successfully"
+    },
+    "No hay roles registrados.": {
+      "en": "There are no roles."
+    },
+    "Se eliminará el rol {rol}. Los usuarios que lo tengan perderán sus permisos.": {
+      "en": "The role {rol} will be deleted. Users that have it will lose its permissions."
+    },
+    "Define una nueva contraseña": {
+      "en": "Set a new password"
+    },
+    "Por seguridad debes cambiar tu contraseña antes de continuar.": {
+      "en": "For security you must change your password before continuing."
+    },
+    "Contraseña actual": {
+      "en": "Current password"
+    },
+    "Confirmar nueva contraseña": {
+      "en": "Confirm new password"
+    },
+    "Ingresa tu contraseña actual.": {
+      "en": "Enter your current password."
+    },
+    "Contraseña actualizada correctamente": {
+      "en": "Password updated successfully"
+    },
+    "La contraseña debe tener al menos 8 caracteres, mayúscula, minúscula, número y carácter especial": {
+      "en": "The password must have at least 8 characters, an uppercase letter, a lowercase letter, a number and a special character"
+    },
+    "Tu usuario no tiene módulos asignados. Contacta al administrador.": {
+      "en": "Your user has no modules assigned. Contact the administrator."
+    },
+    "Copiado al portapapeles": {
+      "en": "Copied to clipboard"
+    },
+    "No se pudo copiar automáticamente": {
+      "en": "Could not copy automatically"
+    },
+    "Listo": {
+      "en": "Done"
+    },
+    "Aviso": {
+      "en": "Notice"
+    },
+    "Revisa esto": {
+      "en": "Check this"
+    },
+    "No se pudo completar": {
+      "en": "Could not complete"
+    },
+    "Teléfono": {
+      "en": "Phone"
+    },
+    "Prefijo": {
+      "en": "Prefix"
+    },
+    "Inicio": {
+      "en": "Home"
+    },
+    "Clientes": {
+      "en": "Customers"
+    },
+    "Suscripciones": {
+      "en": "Subscriptions"
+    },
+    "Suscripción": {
+      "en": "Subscription"
+    },
+    "Pagos": {
+      "en": "Payments"
+    },
+    "Monedas": {
+      "en": "Currencies"
+    },
+    "Usuarios": {
+      "en": "Users"
+    },
+    "Archivos": {
+      "en": "Files"
+    },
+    "API keys": {
+      "en": "API keys"
+    },
+    "Perfil": {
+      "en": "Profile"
+    },
+    "{modulo} | FileRed": {
+      "en": "{modulo} | FileRed"
+    },
+    "Resumen general de la plataforma.": {
+      "en": "Platform overview."
+    },
+    "Resumen de tu almacenamiento.": {
+      "en": "Your storage overview."
+    },
+    "Almacenes, carpetas y archivos.": {
+      "en": "Stores, folders and files."
+    },
+    "Periodo": {
+      "en": "Period"
+    },
+    "Vence": {
+      "en": "Due"
+    },
+    "Total": {
+      "en": "Total"
+    },
+    "Monto": {
+      "en": "Amount"
+    },
+    "Método": {
+      "en": "Method"
+    },
+    "Referencia": {
+      "en": "Reference"
+    },
+    "Fecha": {
+      "en": "Date"
+    },
+    "Abonos": {
+      "en": "Installments"
+    },
+    "Ver abonos": {
+      "en": "View installments"
+    },
+    "Detalle del cargo": {
+      "en": "Charge details"
+    },
+    "Aún no hay abonos registrados.": {
+      "en": "There are no installments yet."
+    },
+    "GB adicionales": {
+      "en": "Extra GB"
+    },
+    "Pagado ": {
+      "en": "Paid "
+    },
+    "Plan": {
+      "en": "Plan"
+    },
+    "Sin historial.": {
+      "en": "No history."
+    },
+    "Sin plan vigente": {
+      "en": "No active plan"
+    },
+    "Efectivo": {
+      "en": "Cash"
+    },
+    "Transferencia": {
+      "en": "Transfer"
+    },
+    "Tarjeta": {
+      "en": "Card"
+    },
+    "Depósito": {
+      "en": "Deposit"
+    },
+    "Otro": {
+      "en": "Other"
+    },
+    "Mensual": {
+      "en": "Monthly"
+    },
+    "Bimestral": {
+      "en": "Bimonthly"
+    },
+    "Trimestral": {
+      "en": "Quarterly"
+    },
+    "Semestral": {
+      "en": "Semiannual"
+    },
+    "Anual": {
+      "en": "Annual"
+    },
+    "PREPAGO": {
+      "en": "PREPAID"
+    },
+    "POSTPAGO": {
+      "en": "POSTPAID"
+    },
+    "Empresa": {
+      "en": "Company"
+    },
+    "Persona": {
+      "en": "Individual"
+    },
+    "Usted no tiene permiso para ejecutar esta acción": {
+      "en": "You do not have permission to perform this action"
+    },
+    "Token JWT requerido": {
+      "en": "JWT token required"
+    },
+    "Token JWT inválido o expirado": {
+      "en": "Invalid or expired JWT token"
+    },
+    "Buscar país o código": {
+      "en": "Search country or code"
+    },
+    "Ilimitado": {
+      "en": "Unlimited"
+    },
+    "Sin límite": {
+      "en": "No limit"
+    },
+    "Espacio ilimitado": {
+      "en": "Unlimited storage"
+    },
+    "Sin límite por archivo": {
+      "en": "No per-file limit"
+    },
+    "Sin límite de espacio": {
+      "en": "No storage limit"
+    },
+    "Siempre aplica el tope global del servidor.": {
+      "en": "The server's global cap always applies."
+    },
+    "usados · espacio ilimitado": {
+      "en": "used · unlimited storage"
+    },
+    "ilimitado": {
+      "en": "unlimited"
+    },
+    "Dashboard": {
+      "en": "Dashboard"
+    },
+    "Gestión": {
+      "en": "Management"
+    },
+    "Reportes": {
+      "en": "Reports"
+    },
+    "Configuración": {
+      "en": "Settings"
+    },
+    "Almacenamiento": {
+      "en": "Storage"
+    },
+    "Facturación": {
+      "en": "Billing"
+    },
+    "Buscar opción": {
+      "en": "Search option"
+    },
+    "Ir a…": {
+      "en": "Go to…"
+    },
+    "Escribe el nombre de una opción": {
+      "en": "Type an option name"
+    },
+    "Desde": {
+      "en": "From"
+    },
+    "Hasta": {
+      "en": "To"
+    },
+    "7 días": {
+      "en": "7 days"
+    },
+    "30 días": {
+      "en": "30 days"
+    },
+    "90 días": {
+      "en": "90 days"
+    },
+    "1 año": {
+      "en": "1 year"
+    },
+    "Exportar CSV": {
+      "en": "Export CSV"
+    },
+    "Generar": {
+      "en": "Generate"
+    },
+    "Explorador de archivos": {
+      "en": "File explorer"
+    },
+    "Mi plan": {
+      "en": "My plan"
+    },
+    "Perfil de la cuenta": {
+      "en": "Account profile"
+    },
+    "Ingresos": {
+      "en": "Revenue"
+    },
+    "Cuentas por cobrar": {
+      "en": "Accounts receivable"
+    },
+    "Consumo por cliente": {
+      "en": "Usage by customer"
+    },
+    "Uso de la API": {
+      "en": "API usage"
+    },
+    "Consumo de almacenamiento": {
+      "en": "Storage usage"
+    },
+    "Actividad de la API": {
+      "en": "API activity"
+    },
+    "Pagos y abonos recibidos por periodo.": {
+      "en": "Payments received by period."
+    },
+    "Cargos pendientes y antigüedad de la deuda.": {
+      "en": "Pending charges and debt aging."
+    },
+    "Espacio, archivos y plan de cada cliente.": {
+      "en": "Storage, files and plan of each customer."
+    },
+    "Solicitudes, subidas y descargas por cliente.": {
+      "en": "Requests, uploads and downloads by customer."
+    },
+    "Espacio y archivos por almacén y carpeta.": {
+      "en": "Storage and files by store and folder."
+    },
+    "Solicitudes, subidas y descargas por día.": {
+      "en": "Requests, uploads and downloads per day."
+    },
+    "Planes asignados y solicitudes de los clientes.": {
+      "en": "Assigned plans and customer requests."
+    },
+    "Plan vigente, consumo y solicitudes.": {
+      "en": "Active plan, usage and requests."
+    },
+    "Cargos y abonos de tu cuenta.": {
+      "en": "Your account charges and payments."
+    },
+    "Ver reporte": {
+      "en": "View report"
+    },
+    "Ir a pagos": {
+      "en": "Go to payments"
+    },
+    "Clientes por plan": {
+      "en": "Customers per plan"
+    },
+    "Pagos y abonos de los últimos 6 meses": {
+      "en": "Payments over the last 6 months"
+    },
+    "Aún no hay clientes con plan vigente.": {
+      "en": "No customers with an active plan yet."
+    },
+    "Solicitudes API": {
+      "en": "API requests"
+    },
+    "Descargas": {
+      "en": "Downloads"
+    }
+  }
+}

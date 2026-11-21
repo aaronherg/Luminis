@@ -1,0 +1,3 @@
+.panel-page[data-area="customer"] .panel-brand small {
+    color: var(--cyan);
+}

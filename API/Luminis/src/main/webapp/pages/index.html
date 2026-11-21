@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050817">
+    <meta name="description" content="Red WebSocket en tiempo real como servicio: envía eventos, datos y notificaciones a cualquier dispositivo con presencia, confirmación de entrega y cola offline.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Luminis">
+    <meta property="og:title" content="Luminis | Datos en tiempo real para cualquier aplicación">
+    <meta property="og:description" content="Conecta tus aplicaciones a una red WebSocket lista para producción.">
+    <meta property="og:image" content="files/img/logotipo-web.webp">
+    <link rel="icon" href="files/img/favicon.png">
+    <link rel="apple-touch-icon" href="files/img/apple-touch-icon.png">
+    <title>Luminis | Datos en tiempo real para cualquier aplicación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="files/temes/theme.css?v=20261122-2">
+    <link rel="stylesheet" href="../styles.css?v=20261122-2">
+    <script src="files/temes/theme.js?v=20261122-2"></script>
+</head>
+<body class="portal-page">
+    <div class="lm-sky" aria-hidden="true">
+        <span class="lm-aurora a1"></span>
+        <span class="lm-aurora a2"></span>
+        <span class="lm-aurora a3"></span>
+        <canvas data-stars></canvas>
+    </div>
+
+    <header class="lm-header" data-header>
+        <a class="lm-brand" href="#inicio"><img src="files/img/isotipo.png" alt=""><span>Lumin<b>is</b></span></a>
+        <nav class="lm-nav" aria-label="Navegación principal" data-nav>
+            <a href="#red">Red en vivo</a>
+            <a href="#usos">Casos de uso</a>
+            <a href="#desarrolladores">Desarrolladores</a>
+            <a href="#planes">Planes</a>
+            <a href="#preguntas">Preguntas</a>
+            <div class="lm-mobile-only">
+                <a class="fr-btn" href="login/">Entrar</a>
+                <a class="fr-btn fr-btn-gold" href="registro/">Crear cuenta</a>
+            </div>
+        </nav>
+        <div class="lm-actions">
+            <select class="language-select" data-language-switcher aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="fr-icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M20 15a8 8 0 0 1-11-11 8 8 0 1 0 11 11Z"/></svg>
+            </button>
+            <a class="fr-btn fr-btn-ghost lm-desktop-only" href="login/">Entrar</a>
+            <a class="fr-btn fr-btn-gold lm-desktop-only" href="registro/">Crear cuenta</a>
+            <button class="fr-icon-btn lm-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu>
+                <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <section class="lm-hero">
+            <div class="lm-hero-copy" data-reveal>
+                <p class="lm-live"><i></i><span>Red en vivo</span><b data-net="conexiones" data-i18n-skip>0</b><span>conexiones ahora</span></p>
+                <h1>Tus datos viajan <span class="grad-text">a la velocidad de la luz</span>.</h1>
+                <p class="lm-hero-lead">Luminis es una red WebSocket como servicio para mover cualquier información en tiempo real: lecturas de sensores, estados de pedidos, precios, posiciones GPS, notificaciones o mensajes. Tú publicas el evento; nosotros lo llevamos a cada dispositivo conectado.</p>
+                <div class="lm-hero-actions">
+                    <a class="fr-btn fr-btn-gold fr-btn-lg" href="registro/">Encender mi proyecto</a>
+                    <a class="fr-btn fr-btn-lg" href="#desarrolladores">Ver cómo se conecta</a>
+                </div>
+                <div class="lm-endpoint" data-i18n-skip>
+                    <span>wss://</span>
+                    <code>tu-dominio/socket?apikey=<b>lm_…</b>&amp;usuario=<b>sensor-01</b></code>
+                    <button type="button" aria-label="Copiar endpoint" data-copy-endpoint>
+                        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="lm-globe-stage">
+                <div class="lm-globe" data-globe-wrap>
+                    <canvas data-globe aria-label="Globo con el tráfico de eventos en tiempo real" role="img"></canvas>
+                </div>
+                <div class="lm-event-card c1" data-event-card="0" aria-hidden="true"></div>
+                <div class="lm-event-card c2" data-event-card="1" aria-hidden="true"></div>
+                <div class="lm-event-card c3" data-event-card="2" aria-hidden="true"></div>
+                <p class="lm-globe-hint"><svg viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11.5v-2a1.5 1.5 0 0 1 3 0V12M14 10.5a1.5 1.5 0 0 1 3 0V12M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L4.3 15a1.5 1.5 0 0 1 2.5-1.6L8 15"/></svg>Arrastra para girar el planeta</p>
+            </div>
+        </section>
+
+        <section class="lm-netbar" id="red" data-reveal>
+            <article><span>Conexiones activas</span><strong data-net="conexiones" data-i18n-skip>0</strong><em class="is-live">en este instante</em></article>
+            <article><span>Eventos hoy</span><strong data-net="eventosHoy" data-i18n-skip>0</strong><em>en toda la red</em></article>
+            <article><span>Eventos por segundo</span><strong data-net="porSegundo" data-i18n-skip>0</strong><em>ritmo actual</em></article>
+            <article><span>Tasa de entrega</span><strong data-net="tasa" data-i18n-skip>100%</strong><em>últimos 30 días</em></article>
+            <article><span>Proyectos encendidos</span><strong data-net="proyectos" data-i18n-skip>0</strong><em>clientes activos</em></article>
+        </section>
+
+        <div class="lm-marquee" aria-hidden="true">
+            <div class="lm-marquee-track">
+                <span>Telemetría IoT</span><span>Dashboards en vivo</span><span>Rastreo GPS</span><span>Notificaciones push</span><span>Juegos multijugador</span><span>Precios y cotizaciones</span><span>Estados de pedidos</span><span>Chat y soporte</span>
+                <span>Telemetría IoT</span><span>Dashboards en vivo</span><span>Rastreo GPS</span><span>Notificaciones push</span><span>Juegos multijugador</span><span>Precios y cotizaciones</span><span>Estados de pedidos</span><span>Chat y soporte</span>
+            </div>
+        </div>
+
+        <section class="lm-section" id="usos">
+            <header class="lm-section-head is-center" data-reveal>
+                <p class="lm-eyebrow">Casos de uso</p>
+                <h2>Una sola red para <span class="grad-text">cualquier tipo de dato</span></h2>
+                <p>Luminis no sabe ni le importa qué envías: cualquier JSON viaja con la misma velocidad, confirmación y seguridad.</p>
+            </header>
+            <div class="lm-uses">
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 2v3M14 2v3M10 19v3M14 19v3M2 10h3M2 14h3M19 10h3M19 14h3"/></svg></div>
+                    <h3>Telemetría e IoT</h3>
+                    <p>Sensores, medidores y máquinas reportando lecturas al segundo.</p>
+                    <code data-i18n-skip>{"temp":23.4,"hum":61}</code>
+                </article>
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+                    <h3>Dashboards en vivo</h3>
+                    <p>KPIs, ventas y métricas que se actualizan sin recargar la página.</p>
+                    <code data-i18n-skip>{"ventasHoy":18420}</code>
+                </article>
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+                    <h3>Rastreo y logística</h3>
+                    <p>Posiciones de flotas, repartidores y pedidos en el mapa.</p>
+                    <code data-i18n-skip>{"lat":18.48,"lng":-69.93}</code>
+                </article>
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+                    <h3>Notificaciones</h3>
+                    <p>Alertas, avisos de pago y cambios de estado al instante.</p>
+                    <code data-i18n-skip>{"pedido":"en_camino"}</code>
+                </article>
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="6"/><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/></svg></div>
+                    <h3>Juegos y colaboración</h3>
+                    <p>Movimientos, cursores y estados compartidos entre jugadores.</p>
+                    <code data-i18n-skip>{"x":120,"y":48}</code>
+                </article>
+                <article data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                    <h3>Chat y soporte</h3>
+                    <p>Conversaciones con entregado y visto, también disponibles.</p>
+                    <code data-i18n-skip>{"texto":"hola"}</code>
+                </article>
+            </div>
+        </section>
+
+        <section class="lm-section" id="flujo">
+            <header class="lm-section-head is-center" data-reveal>
+                <p class="lm-eyebrow">El viaje de un evento</p>
+                <h2>Cada evento deja <span class="grad-text">un rastro de luz</span></h2>
+                <p>Tu aplicación sabe en todo momento dónde está cada dato, desde que sale hasta que se procesa.</p>
+            </header>
+            <div class="lm-journey" data-reveal>
+                <span class="lm-journey-line"><i></i></span>
+                <article><div class="lm-journey-node">01</div><code>sent</code><h3>Aceptado</h3><p>Luminis recibe el evento, le asigna un identificador y te lo confirma al instante.</p></article>
+                <article><div class="lm-journey-node">02</div><code>delivered</code><h3>Entregado</h3><p>Llega a cada dispositivo del destino, incluso si se conecta más tarde.</p></article>
+                <article><div class="lm-journey-node">03</div><code>seen</code><h3>Procesado</h3><p>El receptor confirma que lo usó y el emisor recibe el acuse al momento.</p></article>
+                <article><div class="lm-journey-node">04</div><code>desaparecido</code><h3>Expirado</h3><p>Si nadie lo reclama dentro de la retención del plan, se descarta y se avisa.</p></article>
+            </div>
+        </section>
+
+        <section class="lm-section" id="producto">
+            <header class="lm-section-head" data-reveal>
+                <p class="lm-eyebrow">Plataforma</p>
+                <h2>Todo lo que necesita una app <span class="grad-text">que vive en tiempo real</span></h2>
+            </header>
+            <div class="lm-bento">
+                <article class="lm-tile is-big" data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg></div>
+                    <h3>Consumo claro, límites que tú controlas</h3>
+                    <p>Cada plan define peticiones al mes, conexiones simultáneas, tamaño máximo de evento y retención. Elige límites fijos, adicionales por cada mil o capacidad ilimitada.</p>
+                    <div class="lm-meters" data-i18n-skip>
+                        <div class="lm-meter-row"><span>peticiones</span><div class="lm-meter-bar"><span style="--a:42%;--b:78%"></span></div><b>78%</b></div>
+                        <div class="lm-meter-row"><span>conexiones</span><div class="lm-meter-bar"><span style="--a:20%;--b:55%"></span></div><b>55%</b></div>
+                        <div class="lm-meter-row"><span>entregas</span><div class="lm-meter-bar"><span style="--a:90%;--b:99%"></span></div><b>99.9%</b></div>
+                    </div>
+                </article>
+                <article class="lm-tile" data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M6.3 6.3a8 8 0 0 0 0 11.4M17.7 6.3a8 8 0 0 1 0 11.4M3.5 3.5a12 12 0 0 0 0 17M20.5 3.5a12 12 0 0 1 0 17"/></svg></div>
+                    <h3>Presencia en vivo</h3>
+                    <p>Sabe qué dispositivos y usuarios están conectados ahora mismo.</p>
+                    <div class="lm-presence"><span class="lm-avatar">S1</span><span class="lm-avatar is-gold">TV</span><span class="lm-avatar is-cyan">AP</span><em>3 en línea</em></div>
+                </article>
+                <article class="lm-tile" data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 9.2-9.2M17 6l3 3M14 9l2 2"/></svg></div>
+                    <h3>API keys con permisos</h3>
+                    <p>Conectar, enviar, publicar o consultar presencia: cada llave hace solo lo que le das.</p>
+                </article>
+                <article class="lm-tile is-wide" data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+                    <h3>Cola offline con retención</h3>
+                    <p>Si el destino no está conectado, el evento espera el tiempo de tu plan y se entrega en cuanto vuelve.</p>
+                </article>
+                <article class="lm-tile is-wide" data-reveal data-glow>
+                    <div class="lm-tile-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+                    <h3>Monitor y consola en tu panel</h3>
+                    <p>Observa sesiones en vivo, desconecta dispositivos y prueba eventos desde el navegador sin escribir código.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lm-section" id="desarrolladores">
+            <div class="lm-dev">
+                <div class="lm-dev-copy" data-reveal>
+                    <p class="lm-eyebrow">Para desarrolladores</p>
+                    <h2>Tres pasos y tus datos <span class="grad-text">ya están viajando</span></h2>
+                    <p>Un endpoint WebSocket, eventos JSON libres y una API REST para publicar desde tu backend. Sin servidores que mantener.</p>
+                    <ol class="lm-dev-steps">
+                        <li><div><strong>Crea tu API key</strong><span>Desde el panel, con los permisos que necesites.</span></div></li>
+                        <li><div><strong>Abre el socket</strong><span>Conecta a <code>/socket</code> con tu llave y el identificador del dispositivo.</span></div></li>
+                        <li><div><strong>Publica y escucha</strong><span>Envía cualquier JSON y recibe <code>message</code>, <code>delivered</code> y <code>seen</code>.</span></div></li>
+                    </ol>
+                </div>
+                <div data-reveal>
+                    <div class="lm-code">
+                        <div class="lm-code-bar">
+                            <button type="button" class="is-active" data-code-tab="browser">Navegador</button>
+                            <button type="button" data-code-tab="node">Node.js</button>
+                            <button type="button" data-code-tab="rest">API REST</button>
+                            <button type="button" class="lm-copy" data-copy-code>Copiar</button>
+                        </div>
+<pre data-code-panel="browser" data-i18n-skip><code><span class="k">const</span> socket = <span class="k">new</span> <span class="f">WebSocket</span>(<span class="s">"wss://tu-dominio/socket?apikey=lm_xxx&amp;usuario=dashboard"</span>);
+
+socket.<span class="f">onmessage</span> = (e) =&gt; {
+  <span class="k">const</span> evento = JSON.<span class="f">parse</span>(e.data);
+  <span class="k">if</span> (evento.type === <span class="s">"message"</span>) <span class="f">actualizarGrafica</span>(evento.mensaje);
+};</code></pre>
+<pre data-code-panel="node" data-i18n-skip hidden><code><span class="k">import</span> WebSocket <span class="k">from</span> <span class="s">"ws"</span>;
+
+<span class="k">const</span> socket = <span class="k">new</span> <span class="f">WebSocket</span>(<span class="s">"wss://tu-dominio/socket?apikey=lm_xxx&amp;usuario=sensor-01"</span>);
+
+<span class="f">setInterval</span>(() =&gt; socket.<span class="f">send</span>(JSON.<span class="f">stringify</span>({
+  type: <span class="s">"message"</span>,
+  destino: <span class="s">"dashboard"</span>,
+  mensaje: { temp: <span class="f">leerTemperatura</span>(), hum: <span class="f">leerHumedad</span>() }
+})), <span class="s">1000</span>);</code></pre>
+<pre data-code-panel="rest" data-i18n-skip hidden><code>curl -X POST https://tu-dominio/api/luminis/mensajes/add \
+  -H <span class="s">"X-Api-Key: lm_xxx"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"origen":"erp","destino":"cliente-42","mensaje":{"pedido":"A-901","estado":"en_camino"}}'</span>
+
+curl -X POST https://tu-dominio/api/luminis/presencia/getById \
+  -H <span class="s">"X-Api-Key: lm_xxx"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"usuario":"cliente-42"}'</span></code></pre>
+                    </div>
+                    <div class="lm-terminal">
+                        <div class="lm-terminal-bar"><i></i><i></i><i></i><span>eventos · red luminis</span><em>en vivo</em></div>
+                        <div class="lm-terminal-body" data-terminal data-i18n-skip></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lm-section" id="planes">
+            <header class="lm-section-head is-center" data-reveal>
+                <p class="lm-eyebrow">Planes</p>
+                <h2>Elige cuánta <span class="grad-text">luz necesita</span> tu producto</h2>
+                <p>Compara peticiones, conexiones, tamaño de evento y retención. Cambia de plan cuando crezcas.</p>
+            </header>
+            <div class="lm-pricing" data-plans>
+                <article class="lm-plan is-loading"></article>
+                <article class="lm-plan is-loading"></article>
+                <article class="lm-plan is-loading"></article>
+            </div>
+            <p class="lm-empty" data-plans-empty hidden>Pronto publicaremos nuestros planes. Crea tu cuenta y te avisamos.</p>
+        </section>
+
+        <section class="lm-section" id="preguntas">
+            <header class="lm-section-head" data-reveal>
+                <p class="lm-eyebrow">Preguntas</p>
+                <h2>Respuestas antes de encender</h2>
+            </header>
+            <div class="lm-faq" data-reveal>
+                <details><summary>¿Qué tipo de datos puedo enviar?</summary><p>Cualquier JSON o texto: lecturas de sensores, coordenadas, estados, precios, comandos o mensajes. El único límite es el tamaño máximo de evento de tu plan.</p></details>
+                <details><summary>¿Qué cuenta como petición?</summary><p>Cada evento enviado por el socket y cada llamada a la API pública de Luminis. Los pings y confirmaciones de procesado no consumen tu plan.</p></details>
+                <details><summary>¿Qué pasa si llego al límite?</summary><p>Si tu plan no permite adicionales, las nuevas peticiones se rechazan con el error LIMITE_PETICIONES. Si los permite, se cobran por cada mil peticiones extra.</p></details>
+                <details><summary>¿Cómo funciona la cola offline?</summary><p>Los eventos para destinos desconectados esperan el tiempo de retención del plan y se entregan al reconectarse. Si expiran, el emisor recibe el evento desaparecido.</p></details>
+                <details><summary>¿Puedo conectar varios dispositivos?</summary><p>Sí. Un mismo usuario o dispositivo puede tener varias sesiones abiertas y todas reciben sus eventos, dentro del límite de conexiones simultáneas.</p></details>
+                <details><summary>¿Existen planes sin límites?</summary><p>Sí. Algunos planes tienen peticiones, conexiones o tamaño de evento ilimitados. Los verás marcados con el símbolo ∞.</p></details>
+            </div>
+        </section>
+
+        <section class="lm-cta" data-reveal>
+            <div>
+                <h2>Enciende tu próximo producto en tiempo real</h2>
+                <p>Crea tu cuenta, genera tu API key y publica tu primer evento hoy mismo.</p>
+            </div>
+            <a class="fr-btn fr-btn-gold fr-btn-lg" href="registro/">Crear cuenta</a>
+        </section>
+    </main>
+
+    <footer class="lm-footer">
+        <a class="lm-brand" href="#inicio"><img src="files/img/isotipo.png" alt=""><span>Lumin<b>is</b></span></a>
+        <nav>
+            <a href="#red">Red en vivo</a>
+            <a href="#planes">Planes</a>
+            <a href="login/">Entrar</a>
+        </nav>
+        <span>© <span data-year></span> AaronDevs · Luminis</span>
+    </footer>
+
+    <script src="../services/core/config.js?v=20261122-2"></script>
+    <script src="../services/core/LocalStorageService.js?v=20261122-2"></script>
+    <script src="../services/core/ApiService.js?v=20261122-2"></script>
+    <script src="../services/administracion/PlanService.js?v=20261122-2"></script>
+    <script src="../services/general/ResumenService.js?v=20261122-2"></script>
+    <script src="files/languages/i18n.js?v=20261122-2"></script>
+    <script src="files/languages/language-switcher.js?v=20261122-2"></script>
+    <script src="globo.js?v=20261122-2"></script>
+    <script src="script.js?v=20261122-2"></script>
+</body>
+</html>

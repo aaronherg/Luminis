@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050817">
+    <link rel="icon" type="image/png" sizes="128x128" href="../files/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../files/img/apple-touch-icon.png">
+    <title>Customer | Luminis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../files/temes/theme.css?v=20261122-2">
+    <link rel="stylesheet" href="../../styles.css?v=20261122-2">
+    <link rel="stylesheet" href="../librerias/aarondeveloper/toastr.min.css?v=20261122-2">
+    <link rel="stylesheet" href="../loading.css?v=20261122-2">
+    <link rel="stylesheet" href="../skeleton.css?v=20261122-2">
+    <link rel="stylesheet" href="../panel.css?v=20261122-2">
+    <link rel="stylesheet" href="style.css?v=20261122-2">
+    <script src="../files/temes/theme.js?v=20261122-2"></script>
+</head>
+<body class="panel-page is-booting" data-area="customer">
+    <div class="lm-sky panel-sky" aria-hidden="true">
+        <span class="lm-aurora a1"></span>
+        <span class="lm-aurora a2"></span>
+        <span class="lm-aurora a3"></span>
+        <i class="panel-grid"></i>
+    </div>
+
+    <header class="panel-island">
+        <button class="fr-icon-btn panel-nav-toggle" type="button" data-nav-toggle aria-label="Abrir menú">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <a class="panel-brand" href="#/inicio" aria-label="Luminis Cliente">
+            <img src="../files/img/isotipo.png" alt="">
+            <span><strong>Lumin<b>is</b></strong><small>Cliente</small></span>
+        </a>
+        <div class="nav-skeleton" data-nav-skeleton aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <nav class="panel-nav" data-panel-nav aria-label="Menú principal"></nav>
+        <div class="panel-tools">
+            <button class="panel-search" type="button" data-palette-open aria-label="Buscar opción">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <span>Buscar</span>
+                <kbd>Ctrl K</kbd>
+            </button>
+            <select class="language-select" data-language-switcher aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="fr-icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/></svg>
+            </button>
+            <div class="panel-user" data-user-menu>
+                <button class="panel-user-chip" type="button" data-user-toggle aria-haspopup="true" aria-expanded="false">
+                    <span class="panel-avatar" data-user-initials></span>
+                    <span class="panel-user-copy"><strong data-user-name></strong><small data-user-detail></small></span>
+                </button>
+                <div class="panel-user-menu">
+                    <div class="panel-user-card">
+                        <span class="panel-avatar" data-user-initials></span>
+                        <span class="panel-user-copy"><strong data-user-name></strong><small data-user-detail></small></span>
+                    </div>
+                    <button type="button" data-change-password>
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Cambiar contraseña</span>
+                    </button>
+                    <button type="button" class="is-danger" data-logout>
+                        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="panel-scrim" data-nav-scrim></div>
+
+    <div class="panel-main">
+        <section class="panel-hero">
+            <div class="panel-heading">
+                <p class="panel-crumb" data-panel-crumb></p>
+                <h1 data-panel-title>Cargando</h1>
+                <p class="panel-description" data-panel-description></p>
+            </div>
+            <div class="panel-hero-side">
+                <span class="panel-clock" data-panel-clock></span>
+                <nav class="panel-subnav" data-panel-subnav aria-label="Opciones de categoría"></nav>
+            </div>
+        </section>
+        <main class="panel-stage" data-panel-stage data-stage></main>
+    </div>
+
+    <script src="../../services/core/config.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/toastr.bundle.js?v=20261122-2"></script>
+    <script src="../librerias/aarondeveloper/notificaciones.js?v=20261122-2"></script>
+    <script src="../loading.js?v=20261122-2"></script>
+    <script src="../skeleton.js?v=20261122-2"></script>
+    <script src="../phone-prefixes.js?v=20261122-2"></script>
+    <script src="../../services/core/LocalStorageService.js?v=20261122-2"></script>
+    <script src="../../services/core/ApiService.js?v=20261122-2"></script>
+    <script src="../../services/core/AutenticacionService.js?v=20261122-2"></script>
+    <script src="../../services/general/ResumenService.js?v=20261122-2"></script>
+    <script src="../../services/general/ReporteService.js?v=20261122-2"></script>
+    <script src="../../services/clientes/ClienteService.js?v=20261122-2"></script>
+    <script src="../../services/clientes/UsuarioClienteService.js?v=20261122-2"></script>
+    <script src="../../services/clientes/RolClienteService.js?v=20261122-2"></script>
+    <script src="../../services/clientes/ModuloClienteService.js?v=20261122-2"></script>
+    <script src="../../services/suscripciones/SuscripcionService.js?v=20261122-2"></script>
+    <script src="../../services/suscripciones/SuscripcionSolicitudService.js?v=20261122-2"></script>
+    <script src="../../services/suscripciones/PagoSuscripcionService.js?v=20261122-2"></script>
+    <script src="../../services/administracion/PlanService.js?v=20261122-2"></script>
+    <script src="../../services/mensajeria/ApiKeyService.js?v=20261122-2"></script>
+    <script src="../../services/mensajeria/MonitorService.js?v=20261122-2"></script>
+    <script src="../files/languages/i18n.js?v=20261122-2"></script>
+    <script src="../files/languages/language-switcher.js?v=20261122-2"></script>
+    <script src="../globo.js?v=20261122-2"></script>
+    <script src="../panel.js?v=20261122-2"></script>
+    <script src="script.js?v=20261122-2"></script>
+</body>
+</html>
