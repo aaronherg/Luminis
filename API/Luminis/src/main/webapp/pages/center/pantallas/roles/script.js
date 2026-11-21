@@ -1,4 +1,4 @@
-import { crearPantallaRoles } from "../../../comunes/roles.js?v=20261122-2";
+import { crearPantallaRoles } from "../../../comunes/roles.js?v=20261122-3";
 
 const pantalla = crearPantallaRoles({
     servicio: RolAdministracionService,

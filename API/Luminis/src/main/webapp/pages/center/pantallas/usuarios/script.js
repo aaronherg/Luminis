@@ -1,4 +1,4 @@
-import { crearPantallaUsuarios } from "../../../comunes/usuarios.js?v=20261122-2";
+import { crearPantallaUsuarios } from "../../../comunes/usuarios.js?v=20261122-3";
 
 const pantalla = crearPantallaUsuarios({
     servicio: UsuarioAdministracionService,

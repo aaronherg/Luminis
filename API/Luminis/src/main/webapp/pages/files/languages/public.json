@@ -593,6 +593,165 @@
     },
     "El nombre es obligatorio.": {
       "en": "The name is required."
+    },
+    "Documentación": {
+      "en": "Documentation"
+    },
+    "Documentación | Luminis": {
+      "en": "Documentation | Luminis"
+    },
+    "Leer la documentación completa": {
+      "en": "Read the full documentation"
+    },
+    "Empezar": {
+      "en": "Get started"
+    },
+    "Introducción": {
+      "en": "Introduction"
+    },
+    "Inicio rápido": {
+      "en": "Quick start"
+    },
+    "Probar con Postman": {
+      "en": "Test with Postman"
+    },
+    "Conexión": {
+      "en": "Connection"
+    },
+    "Enviar eventos": {
+      "en": "Sending events"
+    },
+    "Recibir eventos": {
+      "en": "Receiving events"
+    },
+    "Ciclo de entrega": {
+      "en": "Delivery lifecycle"
+    },
+    "Confirmar procesado": {
+      "en": "Confirm processing"
+    },
+    "Presencia": {
+      "en": "Presence"
+    },
+    "Ping y conexión viva": {
+      "en": "Ping and keep-alive"
+    },
+    "Errores": {
+      "en": "Errors"
+    },
+    "Códigos de cierre": {
+      "en": "Close codes"
+    },
+    "Autenticación y respuesta": {
+      "en": "Authentication and response"
+    },
+    "Publicar un evento": {
+      "en": "Publish an event"
+    },
+    "Consultar presencia": {
+      "en": "Query presence"
+    },
+    "Desconectar un usuario": {
+      "en": "Disconnect a user"
+    },
+    "Consultar la cuenta": {
+      "en": "Query the account"
+    },
+    "Guías": {
+      "en": "Guides"
+    },
+    "Consumo y límites": {
+      "en": "Usage and limits"
+    },
+    "Ejemplos completos": {
+      "en": "Full examples"
+    },
+    "Buenas prácticas": {
+      "en": "Best practices"
+    },
+    "Contenido": {
+      "en": "Contents"
+    },
+    "Documentación de": {
+      "en": "Documentation for"
+    },
+    "API REST: autenticación y respuesta": {
+      "en": "REST API: authentication and response"
+    },
+    "Permisos de API key": {
+      "en": "API key permissions"
+    },
+    "¿Listo para empezar?": {
+      "en": "Ready to start?"
+    },
+    "Parámetro": {
+      "en": "Parameter"
+    },
+    "Requerido": {
+      "en": "Required"
+    },
+    "Descripción": {
+      "en": "Description"
+    },
+    "Campo": {
+      "en": "Field"
+    },
+    "Evento": {
+      "en": "Event"
+    },
+    "Cuándo ocurre": {
+      "en": "When it happens"
+    },
+    "Campos": {
+      "en": "Fields"
+    },
+    "Código": {
+      "en": "Code"
+    },
+    "Motivo": {
+      "en": "Reason"
+    },
+    "Qué hacer": {
+      "en": "What to do"
+    },
+    "Significado": {
+      "en": "Meaning"
+    },
+    "Ruta": {
+      "en": "Route"
+    },
+    "Cuerpo": {
+      "en": "Body"
+    },
+    "Devuelve": {
+      "en": "Returns"
+    },
+    "Acción": {
+      "en": "Action"
+    },
+    "¿Consume una petición?": {
+      "en": "Does it consume a request?"
+    },
+    "Sí": {
+      "en": "Yes"
+    },
+    "No": {
+      "en": "No"
+    },
+    "Destino": {
+      "en": "Recipient"
+    },
+    "Enviar": {
+      "en": "Send"
+    },
+    "Respuesta": {
+      "en": "Response"
+    },
+    "Evento recibido": {
+      "en": "Received event"
+    },
+    "Trama a enviar": {
+      "en": "Frame to send"
     }
   }
 }

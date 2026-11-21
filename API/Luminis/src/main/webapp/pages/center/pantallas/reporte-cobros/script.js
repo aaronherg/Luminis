@@ -1,4 +1,4 @@
-import { barras, exportarCsv } from "../../../comunes/graficos.js?v=20261122-2";
+import { barras, exportarCsv } from "../../../comunes/graficos.js?v=20261122-3";
 
 let ui;
 let raiz;

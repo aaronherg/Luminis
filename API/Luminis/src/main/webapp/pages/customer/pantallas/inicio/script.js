@@ -1,4 +1,4 @@
-import { area, activarTooltips, fechaCorta } from "../../../comunes/graficos.js?v=20261122-2";
+import { area, activarTooltips, fechaCorta } from "../../../comunes/graficos.js?v=20261122-3";
 
 let ui;
 let root;

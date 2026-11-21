@@ -17,7 +17,7 @@ public class PagesController {
         request.getRequestDispatcher("/pages/index.html").forward(request, response);
     }
 
-    @GetMapping({"/pages/{pagina:login|registro|center|customer}", "/pages/{pagina:login|registro|center|customer}/"})
+    @GetMapping({"/pages/{pagina:login|registro|docs|center|customer}", "/pages/{pagina:login|registro|docs|center|customer}/"})
     public void pagina(@PathVariable String pagina, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (!request.getRequestURI().endsWith("/")) {
             response.sendRedirect(request.getContextPath() + "/pages/" + pagina + "/");

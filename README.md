@@ -22,6 +22,10 @@ Luminis mueve cualquier JSON o texto en tiempo real: lecturas de sensores, estad
 - **Center** (administración): dashboard con la red en vivo, clientes, suscripciones, pagos, monitor de conexiones, planes, monedas, usuarios, roles e informes.
 - **Customer** (cliente): dashboard con consumo y red en vivo, monitor, consola WebSocket, suscripción, pagos, API keys, usuarios, roles y perfil.
 
+## Documentación para desarrolladores
+
+La guía completa (conexión, envío y recepción de eventos, ciclo de entrega, presencia, errores, códigos de cierre, API REST, consumo y ejemplos en JavaScript, Node.js y Python) está publicada en el propio Luminis: `http://localhost:8081/pages/docs/`.
+
 ## Probar el socket con Postman
 
 1. Arranca la API (puerto `8081`) y entra a `http://localhost:8081/pages/registro/` para crear una cuenta, o usa una existente.

@@ -2820,3 +2820,7 @@ textarea {
 .lm-code pre[hidden]{display:none}
 @media(max-width:850px){.lm-mobile-only{display:flex;gap:8px}.lm-desktop-only{display:none}.lm-menu-toggle{display:inline-flex}.lm-nav{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;align-items:stretch;padding:16px;border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.lm-nav.is-open{display:flex}.lm-nav a{padding:10px}.lm-header{position:sticky}.lm-hero{grid-template-columns:1fr}.lm-demo{max-width:600px;margin:auto}}
 
+
+.lm-docs-link {
+    margin-top: 22px;
+}

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050817">
+    <meta name="description" content="Documentación para desarrolladores de Luminis: conexión WebSocket, envío y recepción de eventos, estados de entrega, presencia, errores y API REST.">
+    <link rel="icon" href="../files/img/favicon.png">
+    <link rel="apple-touch-icon" href="../files/img/apple-touch-icon.png">
+    <title>Documentación | Luminis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../files/temes/theme.css?v=20261122-3">
+    <link rel="stylesheet" href="../../styles.css?v=20261122-3">
+    <link rel="stylesheet" href="style.css?v=20261122-3">
+    <script src="../files/temes/theme.js?v=20261122-3"></script>
+</head>
+<body class="portal-page docs-page">
+    <div class="lm-sky" aria-hidden="true">
+        <span class="lm-aurora a1"></span>
+        <span class="lm-aurora a2"></span>
+    </div>
+
+    <header class="lm-header is-scrolled" data-header>
+        <a class="lm-brand" href="../"><img src="../files/img/isotipo.png" alt=""><span>Lumin<b>is</b></span></a>
+        <nav class="lm-nav" aria-label="Navegación principal" data-nav>
+            <a href="../#red">Red en vivo</a>
+            <a href="../#usos">Casos de uso</a>
+            <a href="./" class="is-current">Documentación</a>
+            <a href="../#planes">Planes</a>
+            <div class="lm-mobile-only">
+                <a class="fr-btn" href="../login/">Entrar</a>
+                <a class="fr-btn fr-btn-gold" href="../registro/">Crear cuenta</a>
+            </div>
+        </nav>
+        <div class="lm-actions">
+            <select class="language-select" data-language-switcher aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="fr-icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M20 15a8 8 0 0 1-11-11 8 8 0 1 0 11 11Z"/></svg>
+            </button>
+            <a class="fr-btn fr-btn-ghost lm-desktop-only" href="../login/">Entrar</a>
+            <a class="fr-btn fr-btn-gold lm-desktop-only" href="../registro/">Crear cuenta</a>
+            <button class="fr-icon-btn lm-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu>
+                <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="docs-layout">
+        <aside class="docs-toc" data-toc>
+            <p class="docs-toc-title">Documentación</p>
+            <nav aria-label="Contenido">
+                <p>Empezar</p>
+                <a href="#introduccion">Introducción</a>
+                <a href="#inicio-rapido">Inicio rápido</a>
+                <a href="#postman">Probar con Postman</a>
+                <p>WebSocket</p>
+                <a href="#conexion">Conexión</a>
+                <a href="#enviar">Enviar eventos</a>
+                <a href="#recibir">Recibir eventos</a>
+                <a href="#ciclo">Ciclo de entrega</a>
+                <a href="#procesado">Confirmar procesado</a>
+                <a href="#presencia">Presencia</a>
+                <a href="#ping">Ping y conexión viva</a>
+                <a href="#errores">Errores</a>
+                <a href="#cierres">Códigos de cierre</a>
+                <p>API REST</p>
+                <a href="#rest">Autenticación y respuesta</a>
+                <a href="#rest-publicar">Publicar un evento</a>
+                <a href="#rest-presencia">Consultar presencia</a>
+                <a href="#rest-desconectar">Desconectar un usuario</a>
+                <a href="#rest-cuenta">Consultar la cuenta</a>
+                <p>Guías</p>
+                <a href="#consumo">Consumo y límites</a>
+                <a href="#ejemplos">Ejemplos completos</a>
+                <a href="#practicas">Buenas prácticas</a>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section class="docs-hero" id="introduccion">
+                <p class="lm-eyebrow">Para desarrolladores</p>
+                <h1>Documentación de <span class="grad-text">Luminis</span></h1>
+                <p class="docs-lead">Todo lo necesario para conectar tus aplicaciones a la red de Luminis: abrir el socket, publicar cualquier tipo de dato, seguir su entrega y usar la API REST desde tu backend.</p>
+                <div class="docs-endpoints" data-i18n-skip>
+                    <div><span>WebSocket</span><code data-ws-base>ws://localhost:8081/socket</code><button type="button" class="docs-copy-mini" data-copy-text data-ws-base-copy aria-label="Copiar">Copiar</button></div>
+                    <div><span>API REST</span><code data-http-base>http://localhost:8081/api/luminis</code><button type="button" class="docs-copy-mini" data-copy-text data-http-base-copy aria-label="Copiar">Copiar</button></div>
+                </div>
+                <div class="docs-concepts">
+                    <article><strong>API key</strong><p>Llave secreta <code>lm_…</code> que identifica tu cuenta. Cada una tiene sus propios permisos y se crea desde tu área de cliente.</p></article>
+                    <article><strong>Usuario</strong><p>Identificador libre de quien se conecta: una persona, un sensor, una pantalla o un servidor. Ejemplos: <code>ana</code>, <code>sensor-01</code>, <code>dashboard</code>.</p></article>
+                    <article><strong>Evento</strong><p>Cualquier JSON o texto que envías a un destino. Luminis no interpreta su contenido: solo lo entrega.</p></article>
+                    <article><strong>Destino</strong><p>El usuario que debe recibir el evento. Si tiene varias conexiones abiertas, todas lo reciben.</p></article>
+                </div>
+            </section>
+
+            <section class="docs-section" id="inicio-rapido">
+                <h2>Inicio rápido</h2>
+                <ol class="docs-steps">
+                    <li><strong>Crea tu cuenta y activa un plan.</strong><span>Sin plan vigente las conexiones se rechazan con el código <code>4402</code>.</span></li>
+                    <li><strong>Crea una API key.</strong><span>En tu área de cliente: <em>Configuración → API keys</em>. Para el socket necesitas al menos <code>conectar</code> y <code>enviar</code>.</span></li>
+                    <li><strong>Abre el socket y publica.</strong><span>Conecta con tu llave y el nombre del usuario, y envía tu primer evento.</span></li>
+                </ol>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>JavaScript · navegador</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>const socket = new WebSocket("{{WS}}?apikey=lm_TU_CLAVE&amp;usuario=sensor-01");
+
+socket.onopen = () =&gt; console.log("Conectando…");
+
+socket.onmessage = (e) =&gt; {
+  const evento = JSON.parse(e.data);
+  if (evento.type === "ready") {
+    socket.send(JSON.stringify({
+      type: "message",
+      destino: "dashboard",
+      mensaje: { temp: 23.4, hum: 61 }
+    }));
+  }
+  console.log(evento.type, evento);
+};</code></pre>
+                </div>
+            </section>
+
+            <section class="docs-section" id="postman">
+                <h2>Probar con Postman</h2>
+                <p>Postman permite abrir conexiones WebSocket sin escribir código. Es la forma más rápida de verificar que tu API key y tu plan funcionan.</p>
+                <ol class="docs-steps">
+                    <li><strong>New → WebSocket.</strong><span>Pega la URL de conexión y pulsa <em>Connect</em>:</span></li>
+                </ol>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>URL</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{{WS}}?apikey=lm_TU_CLAVE&amp;usuario=sensor-01</code></pre>
+                </div>
+                <ol class="docs-steps" start="2">
+                    <li><strong>Recibirás el evento <code>ready</code>.</strong><span>Confirma que la conexión está autenticada e incluye los límites de tu plan.</span></li>
+                    <li><strong>Abre otra pestaña WebSocket con <code>usuario=dashboard</code>.</strong><span>Desde la primera, escribe este mensaje en el panel <em>Message</em> y pulsa <em>Send</em>:</span></li>
+                </ol>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>JSON</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "message", "destino": "dashboard", "mensaje": { "temp": 23.4, "hum": 61 }, "ref": "prueba-1" }</code></pre>
+                </div>
+                <p>La primera pestaña recibe <code>sent</code> y <code>delivered</code>; la segunda recibe <code>message</code> con un <code>mensajeId</code>. Si cierras la segunda y vuelves a enviar, el evento queda en la cola offline y llega en cuanto reconectas.</p>
+                <p class="docs-tip">También puedes probarlo sin Postman desde la <strong>Consola</strong> de tu área de cliente, que abre un socket real desde el navegador.</p>
+            </section>
+
+            <section class="docs-section" id="conexion">
+                <h2>Conexión</h2>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>URL</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{{WS}}?apikey=&lt;API_KEY&gt;&amp;usuario=&lt;USUARIO&gt;</code></pre>
+                </div>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Parámetro</th><th>Requerido</th><th>Descripción</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>apikey</code></td><td>Sí</td><td>Tu API key con el permiso <code>conectar</code>. También puede enviarse en el encabezado <code>X-Api-Key</code> cuando tu cliente WebSocket lo permita.</td></tr>
+                            <tr><td><code>usuario</code></td><td>Sí</td><td>De 1 a 80 caracteres: letras, números y <code>. _ @ : -</code>. Es el nombre con el que otros te enviarán eventos.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Al aceptar la conexión, Luminis envía el evento <code>ready</code>:</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Evento recibido</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{
+  "type": "ready",
+  "usuario": "sensor-01",
+  "sesion": "8c1f2a90b3d4",
+  "protocolo": "2",
+  "limites": {
+    "plan": "Destello",
+    "peticionesMes": 500000,
+    "conexiones": 100,
+    "mensajeKb": 64,
+    "retencionSegundos": 3600
+  }
+}</code></pre>
+                </div>
+                <p>Un límite <code>null</code> significa ilimitado. Un mismo usuario puede tener hasta 20 conexiones abiertas a la vez (por ejemplo, el móvil y el ordenador); todas reciben sus eventos.</p>
+            </section>
+
+            <section class="docs-section" id="enviar">
+                <h2>Enviar eventos</h2>
+                <p>Envía un objeto JSON con <code>type: "message"</code>. El campo <code>mensaje</code> acepta cualquier valor JSON: objeto, arreglo, número o texto.</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Trama a enviar</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{
+  "type": "message",
+  "destino": "dashboard",
+  "mensaje": { "pedido": "A-901", "estado": "en_camino" },
+  "ref": "mi-id-local-123"
+}</code></pre>
+                </div>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Campo</th><th>Requerido</th><th>Descripción</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>type</code></td><td>No</td><td>Si se omite se asume <code>message</code>.</td></tr>
+                            <tr><td><code>destino</code></td><td>Sí</td><td>Usuario que recibirá el evento (mismas reglas que <code>usuario</code>).</td></tr>
+                            <tr><td><code>mensaje</code></td><td>Sí</td><td>El contenido. Su tamaño no puede superar el máximo por evento de tu plan.</td></tr>
+                            <tr><td><code>ref</code></td><td>No</td><td>Identificador tuyo. Luminis lo devuelve en <code>sent</code>, <code>delivered</code> y en los errores para que relaciones respuestas con envíos.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Requiere el permiso <code>enviar</code>. Cada conexión puede enviar hasta 30 eventos por segundo con ráfagas de 60; por encima se responde el error <code>RATE_LIMIT</code>.</p>
+            </section>
+
+            <section class="docs-section" id="recibir">
+                <h2>Recibir eventos</h2>
+                <p>Cada conexión del destino recibe:</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Evento recibido</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{
+  "type": "message",
+  "mensajeId": "3f9a1c7e2b",
+  "origen": "sensor-01",
+  "destino": "dashboard",
+  "mensaje": { "temp": 23.4, "hum": 61 },
+  "fecha": "2026-11-20T18:42:07.512Z"
+}</code></pre>
+                </div>
+                <p>Usa <code>origen</code> para saber quién lo envió y <code>mensajeId</code> para confirmar el procesado.</p>
+            </section>
+
+            <section class="docs-section" id="ciclo">
+                <h2>Ciclo de entrega</h2>
+                <p>Después de enviar, el emisor recibe eventos que indican en qué punto está su mensaje:</p>
+                <div class="docs-flow">
+                    <article><code>sent</code><p>Luminis aceptó el evento y le asignó un <code>mensajeId</code>.</p></article>
+                    <article><code>delivered</code><p>Llegó a al menos una conexión del destino. Si estaba desconectado, se envía cuando reconecta.</p></article>
+                    <article><code>seen</code><p>El destino confirmó que lo procesó.</p></article>
+                </div>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Evento</th><th>Cuándo ocurre</th><th>Campos</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>sent</code></td><td>Siempre que el evento es aceptado.</td><td><code>mensajeId</code>, <code>destino</code>, <code>ref</code></td></tr>
+                            <tr><td><code>delivered</code></td><td>Al llegar al destino, al momento o al reconectar.</td><td><code>mensajeId</code>, <code>destino</code>, <code>ref</code></td></tr>
+                            <tr><td><code>seen</code></td><td>Cuando el destino envía la confirmación de procesado.</td><td><code>mensajeId</code>, <code>origen</code></td></tr>
+                            <tr><td><code>desaparecido</code></td><td>El destino no reconectó dentro de la retención de tu plan y el evento se descartó.</td><td><code>mensajeId</code>, <code>destino</code></td></tr>
+                            <tr><td><code>desconocido</code></td><td>El destino nunca se ha conectado a tu cuenta; el evento no se guarda.</td><td><code>mensajeId</code>, <code>destino</code>, <code>ref</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="docs-tip">La cola offline guarda eventos solo para usuarios que ya se conectaron alguna vez. Conecta tus dispositivos al menos una vez para que puedan recibir eventos mientras están fuera de línea.</p>
+            </section>
+
+            <section class="docs-section" id="procesado">
+                <h2>Confirmar procesado</h2>
+                <p>Cuando el destino termina de usar un evento, puede avisar al emisor. Esta confirmación no consume peticiones de tu plan.</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Trama a enviar</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "seen", "mensajeId": "3f9a1c7e2b", "destino": "sensor-01" }</code></pre>
+                </div>
+                <p>En <code>destino</code> va el <code>origen</code> del evento recibido. Si el emisor está desconectado, la confirmación le llega cuando reconecta.</p>
+            </section>
+
+            <section class="docs-section" id="presencia">
+                <h2>Presencia</h2>
+                <p>Consulta si hasta 200 usuarios están conectados. Requiere el permiso <code>consultar_presencia</code>.</p>
+                <div class="docs-grid-2">
+                    <div class="docs-code" data-code>
+                        <div class="docs-code-bar"><span>Enviar</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "presencia", "usuarios": ["ana", "dashboard"], "ref": "p1" }</code></pre>
+                    </div>
+                    <div class="docs-code" data-code>
+                        <div class="docs-code-bar"><span>Respuesta</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "presencia", "ref": "p1", "usuarios": { "ana": false, "dashboard": true } }</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="docs-section" id="ping">
+                <h2>Ping y conexión viva</h2>
+                <p>Luminis envía un ping de protocolo cada 25 segundos y cierra la conexión si no recibe respuesta en 75 segundos. Los navegadores, Postman y la mayoría de librerías responden automáticamente.</p>
+                <p>Para medir latencia o mantener viva la conexión a través de proxies, envía tu propio ping de aplicación:</p>
+                <div class="docs-grid-2">
+                    <div class="docs-code" data-code>
+                        <div class="docs-code-bar"><span>Enviar</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "ping", "ref": "p1" }</code></pre>
+                    </div>
+                    <div class="docs-code" data-code>
+                        <div class="docs-code-bar"><span>Respuesta</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "pong", "ref": "p1", "hora": "2026-11-20T18:42:07Z" }</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="docs-section" id="errores">
+                <h2>Errores</h2>
+                <p>Los errores de una trama no cierran la conexión. Llegan como un evento <code>error</code> con el <code>ref</code> de la trama que lo causó:</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Evento recibido</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{ "type": "error", "code": "LIMITE_PETICIONES", "mensaje": "Se alcanzó el límite de peticiones del plan", "ref": "mi-id-local-123" }</code></pre>
+                </div>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Código</th><th>Motivo</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>FORMATO</code></td><td>La trama no es un objeto JSON válido, o a <code>seen</code> le falta <code>mensajeId</code> o <code>destino</code>.</td></tr>
+                            <tr><td><code>TIPO_DESCONOCIDO</code></td><td>El <code>type</code> no es <code>message</code>, <code>seen</code>, <code>presencia</code> ni <code>ping</code>.</td></tr>
+                            <tr><td><code>DESTINO_INVALIDO</code></td><td>Falta <code>destino</code> o no cumple el formato.</td></tr>
+                            <tr><td><code>MENSAJE_VACIO</code></td><td>Falta el campo <code>mensaje</code>.</td></tr>
+                            <tr><td><code>MENSAJE_GRANDE</code></td><td>El evento supera el tamaño máximo de tu plan.</td></tr>
+                            <tr><td><code>SIN_PERMISO</code></td><td>La API key no tiene el permiso necesario (<code>enviar</code> o <code>consultar_presencia</code>).</td></tr>
+                            <tr><td><code>RATE_LIMIT</code></td><td>Demasiados eventos por segundo en esta conexión.</td></tr>
+                            <tr><td><code>LIMITE_PETICIONES</code></td><td>Se agotaron las peticiones del mes y tu plan no permite adicionales.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="docs-section" id="cierres">
+                <h2>Códigos de cierre</h2>
+                <p>Cuando Luminis cierra la conexión, envía antes un evento <code>error</code> con el motivo y luego cierra con uno de estos códigos:</p>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Código</th><th>Motivo</th><th>Qué hacer</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>4400</code></td><td>Parámetro <code>usuario</code> ausente o inválido.</td><td>Corrige el usuario.</td></tr>
+                            <tr><td><code>4401</code></td><td>API key ausente, inválida o revocada.</td><td>No reconectes con la misma llave.</td></tr>
+                            <tr><td><code>4402</code></td><td>La cuenta no tiene un plan vigente.</td><td>Activa o renueva el plan.</td></tr>
+                            <tr><td><code>4403</code></td><td>La API key no tiene el permiso <code>conectar</code>.</td><td>Edita los permisos de la llave.</td></tr>
+                            <tr><td><code>4429</code></td><td>Se alcanzó el límite de conexiones del plan o del usuario.</td><td>Reintenta más tarde o amplía el plan.</td></tr>
+                            <tr><td><code>1000</code> / <code>1006</code></td><td>Cierre normal o conexión perdida.</td><td>Reconecta con espera progresiva.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="docs-section" id="rest">
+                <h2>API REST: autenticación y respuesta</h2>
+                <p>Usa la API REST desde tu backend para publicar eventos sin mantener un socket abierto. Envía tu llave en el encabezado <code>X-Api-Key</code>. Todas las respuestas tienen la misma forma:</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>Respuesta</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>{
+  "validation": "Success",
+  "status": 201,
+  "data": { "mensajeId": "3f9a1c7e2b", "estado": "entregado" },
+  "mensage": "Mensaje publicado"
+}</code></pre>
+                </div>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>HTTP</th><th>Significado</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>200</code> / <code>201</code></td><td>Correcto.</td></tr>
+                            <tr><td><code>400</code></td><td>Datos inválidos (origen, destino, tamaño del evento…).</td></tr>
+                            <tr><td><code>401</code></td><td>Falta la API key o no es válida.</td></tr>
+                            <tr><td><code>402</code></td><td>La cuenta no tiene plan vigente.</td></tr>
+                            <tr><td><code>403</code></td><td>La llave no tiene el permiso requerido.</td></tr>
+                            <tr><td><code>429</code></td><td>Se alcanzó el límite de peticiones del plan.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="docs-section" id="rest-publicar">
+                <h2><span class="docs-verb is-post">POST</span> Publicar un evento</h2>
+                <p><code>/api/luminis/mensajes/add</code> · permiso <code>publicar</code>. El <code>origen</code> es el nombre con el que aparecerá el emisor (por ejemplo, <code>servidor</code> o <code>erp</code>).</p>
+                <div class="docs-tabs" data-tabs>
+                    <div class="docs-code-bar">
+                        <button type="button" class="is-active" data-tab="curl">cURL</button>
+                        <button type="button" data-tab="js">JavaScript</button>
+                        <button type="button" data-tab="py">Python</button>
+                        <button type="button" data-copy-code>Copiar</button>
+                    </div>
+<pre data-panel="curl" data-i18n-skip><code>curl -X POST {{HTTP}}/mensajes/add \
+  -H "X-Api-Key: lm_TU_CLAVE" \
+  -H "Content-Type: application/json" \
+  -d '{"origen":"erp","destino":"cliente-42","mensaje":{"pedido":"A-901","estado":"en_camino"}}'</code></pre>
+<pre data-panel="js" data-i18n-skip hidden><code>const respuesta = await fetch("{{HTTP}}/mensajes/add", {
+  method: "POST",
+  headers: { "X-Api-Key": "lm_TU_CLAVE", "Content-Type": "application/json" },
+  body: JSON.stringify({ origen: "erp", destino: "cliente-42", mensaje: { pedido: "A-901", estado: "en_camino" } })
+});
+const { data } = await respuesta.json();
+console.log(data.estado);</code></pre>
+<pre data-panel="py" data-i18n-skip hidden><code>import requests
+
+r = requests.post(
+    "{{HTTP}}/mensajes/add",
+    headers={"X-Api-Key": "lm_TU_CLAVE"},
+    json={"origen": "erp", "destino": "cliente-42", "mensaje": {"pedido": "A-901", "estado": "en_camino"}},
+)
+print(r.json()["data"]["estado"])</code></pre>
+                </div>
+                <p>El campo <code>data.estado</code> puede ser <code>entregado</code>, <code>en_cola</code> (el destino está desconectado y se entregará al volver), <code>desaparecido</code> o <code>desconocido</code>.</p>
+            </section>
+
+            <section class="docs-section" id="rest-presencia">
+                <h2><span class="docs-verb is-post">POST</span> Consultar presencia</h2>
+                <p>Permiso <code>consultar_presencia</code>.</p>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Ruta</th><th>Cuerpo</th><th>Devuelve</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>/api/luminis/presencia/getById</code></td><td><code>{ "usuario": "beto" }</code></td><td><code>usuario</code>, <code>enLinea</code>, <code>conexiones</code></td></tr>
+                            <tr><td><code>/api/luminis/presencia/getAll</code></td><td><code>{ "usuarios": ["ana","beto"] }</code> (hasta 500) o <code>{ "limite": 100 }</code></td><td>Estado de cada usuario, o la lista <code>enLinea</code>, además de los totales de conexiones</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>cURL</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>curl -X POST {{HTTP}}/presencia/getById \
+  -H "X-Api-Key: lm_TU_CLAVE" \
+  -H "Content-Type: application/json" \
+  -d '{"usuario":"beto"}'</code></pre>
+                </div>
+            </section>
+
+            <section class="docs-section" id="rest-desconectar">
+                <h2><span class="docs-verb is-delete">DELETE</span> Desconectar un usuario</h2>
+                <p><code>/api/luminis/conexiones/delete</code> · permiso <code>desconectar</code>. Cierra todas las conexiones del usuario y devuelve <code>conexionesCerradas</code>.</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>cURL</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>curl -X DELETE {{HTTP}}/conexiones/delete \
+  -H "X-Api-Key: lm_TU_CLAVE" \
+  -H "Content-Type: application/json" \
+  -d '{"usuario":"beto"}'</code></pre>
+                </div>
+            </section>
+
+            <section class="docs-section" id="rest-cuenta">
+                <h2><span class="docs-verb is-get">GET</span> Consultar la cuenta</h2>
+                <p><code>/api/luminis/cuenta/getById</code> · permiso <code>consultar_cuenta</code>. Devuelve el plan vigente, peticiones usadas y límite, límite de conexiones, conexiones en vivo y los permisos de la llave. No consume peticiones.</p>
+                <div class="docs-code" data-code>
+                    <div class="docs-code-bar"><span>cURL</span><button type="button" data-copy-code>Copiar</button></div>
+<pre data-i18n-skip><code>curl {{HTTP}}/cuenta/getById -H "X-Api-Key: lm_TU_CLAVE"</code></pre>
+                </div>
+            </section>
+
+            <section class="docs-section" id="consumo">
+                <h2>Consumo y límites</h2>
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead><tr><th>Acción</th><th>¿Consume una petición?</th></tr></thead>
+                        <tbody>
+                            <tr><td>Enviar un evento por el socket (<code>message</code>)</td><td>Sí</td></tr>
+                            <tr><td>Publicar por la API REST</td><td>Sí</td></tr>
+                            <tr><td>Consultar presencia por la API REST</td><td>Sí</td></tr>
+                            <tr><td>Desconectar un usuario por la API REST</td><td>Sí</td></tr>
+                            <tr><td>Confirmar procesado (<code>seen</code>), <code>ping</code> y presencia por el socket</td><td>No</td></tr>
+                            <tr><td>Consultar la cuenta</td><td>No</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Las peticiones se reinician en cada periodo del plan. Si tu plan permite adicionales, al superar el límite se cobran por cada mil; si no, se rechazan con <code>LIMITE_PETICIONES</code> o HTTP <code>429</code>.</p>
+                <h3>Permisos de API key</h3>
+                <div class="docs-perms">
+                    <span><code>conectar</code> abrir el socket</span>
+                    <span><code>enviar</code> enviar eventos por el socket</span>
+                    <span><code>publicar</code> publicar por la API REST</span>
+                    <span><code>consultar_presencia</code> consultar quién está conectado</span>
+                    <span><code>desconectar</code> cerrar conexiones de usuarios</span>
+                    <span><code>consultar_cuenta</code> ver plan y consumo</span>
+                </div>
+            </section>
+
+            <section class="docs-section" id="ejemplos">
+                <h2>Ejemplos completos</h2>
+                <div class="docs-tabs" data-tabs>
+                    <div class="docs-code-bar">
+                        <button type="button" class="is-active" data-tab="nav">Navegador</button>
+                        <button type="button" data-tab="node">Node.js</button>
+                        <button type="button" data-tab="python">Python</button>
+                        <button type="button" data-copy-code>Copiar</button>
+                    </div>
+<pre data-panel="nav" data-i18n-skip><code>function conectarLuminis({ apiKey, usuario, alRecibir }) {
+  let socket;
+  let espera = 1000;
+
+  const abrir = () =&gt; {
+    socket = new WebSocket(`{{WS}}?apikey=${apiKey}&amp;usuario=${usuario}`);
+
+    socket.onmessage = (e) =&gt; {
+      const evento = JSON.parse(e.data);
+      if (evento.type === "ready") espera = 1000;
+      if (evento.type === "message") {
+        alRecibir(evento.mensaje, evento);
+        socket.send(JSON.stringify({ type: "seen", mensajeId: evento.mensajeId, destino: evento.origen }));
+      }
+    };
+
+    socket.onclose = (e) =&gt; {
+      if ([4400, 4401, 4402, 4403].includes(e.code)) return;
+      setTimeout(abrir, espera);
+      espera = Math.min(espera * 2, 30000);
+    };
+  };
+
+  abrir();
+  return {
+    enviar: (destino, mensaje) =&gt; socket.send(JSON.stringify({ type: "message", destino, mensaje }))
+  };
+}
+
+const luminis = conectarLuminis({
+  apiKey: "lm_TU_CLAVE",
+  usuario: "dashboard",
+  alRecibir: (datos) =&gt; console.log("Nuevo dato", datos)
+});</code></pre>
+<pre data-panel="node" data-i18n-skip hidden><code>import WebSocket from "ws";
+
+const socket = new WebSocket("{{WS}}?apikey=lm_TU_CLAVE&amp;usuario=sensor-01");
+
+socket.on("message", (datos) =&gt; {
+  const evento = JSON.parse(datos);
+  if (evento.type === "ready") {
+    setInterval(() =&gt; {
+      socket.send(JSON.stringify({
+        type: "message",
+        destino: "dashboard",
+        mensaje: { temp: 20 + Math.random() * 5, hora: Date.now() }
+      }));
+    }, 1000);
+  }
+  if (evento.type === "error") console.error(evento.code, evento.mensaje);
+});
+
+socket.on("close", (codigo) =&gt; console.log("Cerrado", codigo));</code></pre>
+<pre data-panel="python" data-i18n-skip hidden><code>import asyncio, json
+import websockets
+
+async def main():
+    url = "{{WS}}?apikey=lm_TU_CLAVE&amp;usuario=sensor-01"
+    async with websockets.connect(url) as socket:
+        async for crudo in socket:
+            evento = json.loads(crudo)
+            if evento["type"] == "ready":
+                await socket.send(json.dumps({
+                    "type": "message",
+                    "destino": "dashboard",
+                    "mensaje": {"temp": 23.4}
+                }))
+            print(evento["type"], evento)
+
+asyncio.run(main())</code></pre>
+                </div>
+            </section>
+
+            <section class="docs-section" id="practicas">
+                <h2>Buenas prácticas</h2>
+                <ul class="docs-list">
+                    <li><strong>Nunca expongas una llave con permisos de más.</strong> En aplicaciones de navegador usa llaves con solo <code>conectar</code> y <code>enviar</code>; reserva <code>publicar</code> y <code>desconectar</code> para tu backend.</li>
+                    <li><strong>Reconecta con espera progresiva.</strong> Duplica la espera en cada intento (1 s, 2 s, 4 s… hasta 30 s) y no reconectes ante los cierres 4400, 4401, 4402 y 4403.</li>
+                    <li><strong>Usa <code>ref</code>.</strong> Relaciona cada <code>sent</code>, <code>delivered</code> o <code>error</code> con lo que enviaste.</li>
+                    <li><strong>Confirma lo que procesas.</strong> Enviar <code>seen</code> permite al emisor saber que el dato se usó, sin coste para tu plan.</li>
+                    <li><strong>Usa nombres de usuario estables.</strong> La cola offline funciona por usuario: un sensor debe reconectar siempre con el mismo nombre.</li>
+                    <li><strong>Mantén los eventos pequeños.</strong> Envía solo lo que cambió; respeta el tamaño máximo por evento de tu plan.</li>
+                </ul>
+            </section>
+
+            <footer class="docs-foot">
+                <p>¿Listo para empezar?</p>
+                <a class="fr-btn fr-btn-gold fr-btn-lg" href="../registro/">Crear cuenta</a>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../files/languages/i18n.js?v=20261122-3"></script>
+    <script src="../files/languages/language-switcher.js?v=20261122-3"></script>
+    <script src="script.js?v=20261122-3"></script>
+</body>
+</html>
