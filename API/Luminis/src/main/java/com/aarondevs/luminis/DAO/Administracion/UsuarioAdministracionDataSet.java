@@ -3,12 +3,15 @@ package com.aarondevs.luminis.DAO.Administracion;
 import com.aarondevs.luminis.Models.Administracion.UsuarioAdministracion;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionActualizarParameters;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionAgregarParameters;
+import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionPerfilParameters;
 import java.util.List;
 
 public interface UsuarioAdministracionDataSet {
     UsuarioAdministracion create(UsuarioAdministracionAgregarParameters parametro, String contrasenaHash, String actor);
 
     UsuarioAdministracion update(UsuarioAdministracionActualizarParameters parametro, String actor);
+
+    UsuarioAdministracion actualizarPerfil(Long usuarioAdministracionId, UsuarioAdministracionPerfilParameters parametro, String actor);
 
     UsuarioAdministracion findById(Long id);
 

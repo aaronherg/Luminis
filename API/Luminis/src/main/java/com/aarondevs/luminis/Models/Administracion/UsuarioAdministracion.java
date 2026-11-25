@@ -20,6 +20,10 @@ public class UsuarioAdministracion extends BaseVersionado {
     private String correo;
     private String prefijoTelefono;
     private String telefono;
+    private String documento;
+    private String direccion;
+    private String whatsapp;
     private String usuario;
     private java.util.List<Long> rolesIds;
+    private java.util.List<String> rolesNombres;
 }

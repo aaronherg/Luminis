@@ -4,6 +4,7 @@ import com.aarondevs.luminis.DAO.Clientes.UsuarioClienteDataSet;
 import com.aarondevs.luminis.Models.Clientes.UsuarioCliente;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteActualizarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteAgregarParameters;
+import com.aarondevs.luminis.Parameters.Clientes.UsuarioClientePerfilParameters;
 import com.aarondevs.luminis.Services.Seguridad.ContrasenaService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,17 @@ public class UsuarioClienteServiceImpl implements UsuarioClienteService {
         }
         if (Boolean.TRUE.equals(actual.getPropietario())) parametro.setRolesIds(null);
         return datos.update(parametro, actor);
+    }
+
+    @Override
+    @Transactional
+    public UsuarioCliente actualizarPerfil(Long usuarioClienteId, UsuarioClientePerfilParameters parametro, String actor) {
+        if (parametro == null || parametro.getNombres() == null || parametro.getNombres().isBlank()
+                || parametro.getCorreo() == null || !parametro.getCorreo().trim().matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+")) {
+            throw new IllegalArgumentException("nombres y un correo válido son requeridos");
+        }
+        if (datos.findById(usuarioClienteId) == null) throw new IllegalArgumentException("Usuario no encontrado");
+        return datos.actualizarPerfil(usuarioClienteId, parametro, actor);
     }
 
     @Override

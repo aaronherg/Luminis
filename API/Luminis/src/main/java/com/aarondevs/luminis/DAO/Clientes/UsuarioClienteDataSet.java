@@ -3,12 +3,15 @@ package com.aarondevs.luminis.DAO.Clientes;
 import com.aarondevs.luminis.Models.Clientes.UsuarioCliente;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteActualizarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteAgregarParameters;
+import com.aarondevs.luminis.Parameters.Clientes.UsuarioClientePerfilParameters;
 import java.util.List;
 
 public interface UsuarioClienteDataSet {
     UsuarioCliente create(UsuarioClienteAgregarParameters parametro, String contrasenaHash, boolean propietario, String actor);
 
     UsuarioCliente update(UsuarioClienteActualizarParameters parametro, String actor);
+
+    UsuarioCliente actualizarPerfil(Long usuarioClienteId, UsuarioClientePerfilParameters parametro, String actor);
 
     UsuarioCliente findById(Long id);
 

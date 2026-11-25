@@ -513,6 +513,34 @@
             }
         }
 
+        async function abrirPerfil() {
+            const ruta = pantallas.__perfil;
+            if (!ruta) return;
+            rutaActual = "__perfil";
+            navegacion.querySelectorAll("[data-nav]").forEach(e => e.classList.remove("is-active"));
+            navegacion.querySelectorAll("[data-grupo]").forEach(g => g.classList.remove("has-active"));
+            if (subnav) subnav.innerHTML = "";
+            cerrarMenus();
+            document.body.classList.remove("nav-open");
+            if (migas) migas.textContent = "Mi perfil";
+            tituloPagina.textContent = "Mi perfil";
+            descripcionPagina.textContent = "Administra tu información personal y de contacto";
+            document.title = "Mi perfil | Luminis";
+            const turno = ++carga;
+            try {
+                pantallaActual?.reset?.();
+                const pantalla = await import(new URL(`${ruta}?v=${version}`, document.baseURI).href);
+                if (turno !== carga) return;
+                pantalla.loadStyles?.();
+                escenario.innerHTML = pantalla.render();
+                pantallaActual = pantalla;
+                await pantalla.bind(escenario, api);
+            } catch (error) {
+                if (turno !== carga) return;
+                escenario.innerHTML = `<div class="fr-empty">${icono("ban")}<p>${escapar(error.message)}</p></div>`;
+            }
+        }
+
         const api = {
             sesion,
             puede,
@@ -537,14 +565,16 @@
             correoValido,
             usuarioValido,
             MENSAJE_CONTRASENA,
-            recargar: () => abrir(rutaActual),
-            abrir
+            recargar: () => (rutaActual === "__perfil" ? abrirPerfil() : abrir(rutaActual)),
+            abrir,
+            abrirPerfil
         };
         window.LuminisPanelApi = api;
 
         document.querySelector("[data-nav-toggle]")?.addEventListener("click", () => document.body.classList.toggle("nav-open"));
         document.querySelector("[data-nav-scrim]")?.addEventListener("click", () => document.body.classList.remove("nav-open"));
         document.querySelector("[data-change-password]")?.addEventListener("click", () => cambiarContrasena(false));
+        document.querySelector("[data-mi-perfil]")?.addEventListener("click", () => { cerrarMenus(); abrirPerfil(); });
         document.querySelector("[data-logout]")?.addEventListener("click", async event => {
             await ocupado(event.currentTarget, () => AutenticacionService.logout());
             window.location.replace(`${contexto}/pages/login/`);

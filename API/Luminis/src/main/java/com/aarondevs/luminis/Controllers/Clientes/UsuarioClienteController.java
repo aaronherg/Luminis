@@ -3,6 +3,7 @@ package com.aarondevs.luminis.Controllers.Clientes;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteActualizarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteAgregarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteIdParameters;
+import com.aarondevs.luminis.Parameters.Clientes.UsuarioClientePerfilParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClientePorClienteParameters;
 import com.aarondevs.luminis.Parameters.Clientes.UsuarioClienteRestablecerContrasenaParameters;
 import com.aarondevs.luminis.Parameters.Response.ApiResponse;
@@ -100,6 +101,33 @@ public class UsuarioClienteController {
             contextoService.validarCliente(contexto, usuario.getClienteId());
             service.restablecerContrasena(parametro.getUsuarioClienteId(), parametro.getContrasena(), contexto.usuarioUuid());
             return ResponseEntity.ok(ApiResponse.success(200, null, "Contraseña restablecida correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PostMapping("/getActual")
+    public ResponseEntity<ApiResponse<?>> getActual(HttpServletRequest request) {
+        try {
+            var contexto = contextoService.resolver(request);
+            contextoService.exigirCliente(contexto);
+            var resultado = service.id(contexto.usuarioClienteId());
+            return resultado == null ? noEncontrado()
+                    : ResponseEntity.ok(ApiResponse.success(200, resultado, "Perfil obtenido correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PutMapping("/updateActual")
+    public ResponseEntity<ApiResponse<?>> updateActual(@RequestBody UsuarioClientePerfilParameters parametro, HttpServletRequest request) {
+        try {
+            var contexto = contextoService.resolver(request);
+            contextoService.exigirCliente(contexto);
+            if (parametro == null) throw new IllegalArgumentException("Los datos del perfil son requeridos");
+            var resultado = service.actualizarPerfil(contexto.usuarioClienteId(), parametro, contexto.usuarioUuid());
+            return resultado == null ? noEncontrado()
+                    : ResponseEntity.ok(ApiResponse.success(200, resultado, "Perfil actualizado correctamente"));
         } catch (Exception error) {
             return error(error);
         }

@@ -3,11 +3,14 @@ package com.aarondevs.luminis.Services.Administracion;
 import com.aarondevs.luminis.Models.Administracion.UsuarioAdministracion;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionActualizarParameters;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionAgregarParameters;
+import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionPerfilParameters;
 
 public interface UsuarioAdministracionService {
     UsuarioAdministracion crear(UsuarioAdministracionAgregarParameters parametro, String actor);
 
     UsuarioAdministracion actualizar(UsuarioAdministracionActualizarParameters parametro, String actor);
+
+    UsuarioAdministracion actualizarPerfil(Long usuarioAdministracionId, UsuarioAdministracionPerfilParameters parametro, String actor);
 
     UsuarioAdministracion id(Long id);
 

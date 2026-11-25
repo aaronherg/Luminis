@@ -3,6 +3,7 @@ package com.aarondevs.luminis.DAO.Administracion;
 import com.aarondevs.luminis.Models.Administracion.UsuarioAdministracion;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionActualizarParameters;
 import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionAgregarParameters;
+import com.aarondevs.luminis.Parameters.Administracion.UsuarioAdministracionPerfilParameters;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -48,6 +49,16 @@ public class UsuarioAdministracionDAO implements UsuarioAdministracionDataSet {
                 actualizado.getEstado(), actor, actualizado.getUsuarioId());
         if (parametro.getRolesIds() != null) reemplazarRoles(actualizado.getUsuarioAdministracionId(), parametro.getRolesIds(), actor);
         return findByUuid(parametro.getUsuarioAdministracionUuid());
+    }
+
+    @Override
+    public UsuarioAdministracion actualizarPerfil(Long usuarioAdministracionId, UsuarioAdministracionPerfilParameters parametro, String actor) {
+        int actualizados = jdbc.update("UPDATE UsuariosAdministracion SET nombres=?, apellidos=?, documento=?, correo=?, prefijoTelefono=?, telefono=?, "
+                        + "whatsapp=?, direccion=?, fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1, "
+                        + "usuarioModificacionUuid=? WHERE usuarioAdministracionId=? AND estado<>'Eliminado'",
+                parametro.getNombres().trim(), parametro.getApellidos(), parametro.getDocumento(), parametro.getCorreo().trim(),
+                parametro.getPrefijoTelefono(), parametro.getTelefono(), parametro.getWhatsapp(), parametro.getDireccion(), actor, usuarioAdministracionId);
+        return actualizados == 0 ? null : findById(usuarioAdministracionId);
     }
 
     @Override
@@ -119,6 +130,8 @@ public class UsuarioAdministracionDAO implements UsuarioAdministracionDataSet {
         if (usuario != null) {
             usuario.setRolesIds(jdbc.queryForList("SELECT rolAdministracionId FROM UsuariosAdministracionRoles WHERE usuarioAdministracionId=? AND estado='Activo'",
                     Long.class, usuario.getUsuarioAdministracionId()));
+            usuario.setRolesNombres(jdbc.queryForList("SELECT r.nombre FROM UsuariosAdministracionRoles x JOIN RolesAdministracion r ON r.rolAdministracionId=x.rolAdministracionId WHERE x.usuarioAdministracionId=? AND x.estado='Activo'",
+                    String.class, usuario.getUsuarioAdministracionId()));
         }
         return usuario;
     }
