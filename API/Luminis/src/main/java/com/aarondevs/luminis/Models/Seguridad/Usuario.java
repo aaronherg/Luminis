@@ -20,4 +20,5 @@ public class Usuario extends BaseVersionado {
     private String tipo;
     private Boolean debeCambiarContrasena;
     private java.sql.Timestamp fechaUltimoAcceso;
+    private Boolean dosFactores;
 }

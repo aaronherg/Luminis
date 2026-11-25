@@ -2,6 +2,7 @@ package com.aarondevs.luminis.Controllers.Seguridad;
 
 import com.aarondevs.luminis.Parameters.Response.ApiResponse;
 import com.aarondevs.luminis.Parameters.Seguridad.AutenticacionCambiarContrasenaParameters;
+import com.aarondevs.luminis.Parameters.Seguridad.AutenticacionDosFactoresParameters;
 import com.aarondevs.luminis.Parameters.Seguridad.AutenticacionLoginParameters;
 import com.aarondevs.luminis.Services.Seguridad.AutenticacionService;
 import com.aarondevs.luminis.Services.Seguridad.ContextoAutenticacionService;
@@ -68,6 +69,54 @@ public class AutenticacionController {
         try {
             service.cambiarContrasena(contextoService.resolver(request), parametro);
             return ResponseEntity.ok(ApiResponse.success(200, null, "Contraseña actualizada correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PostMapping("/dosfactores/ingreso")
+    public ResponseEntity<ApiResponse<?>> ingresoDosFactores(@RequestBody AutenticacionLoginParameters parametro, HttpServletRequest request) {
+        try {
+            if (parametro != null) { parametro.setIpPublica(ip(request)); parametro.setAgente(request.getHeader(HttpHeaders.USER_AGENT)); }
+            return ResponseEntity.ok(ApiResponse.success(200, service.autenticarDosFactores(parametro), "Autenticacion realizada correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PostMapping("/dosfactores/estado")
+    public ResponseEntity<ApiResponse<?>> estadoDosFactores(HttpServletRequest request) {
+        try {
+            return ResponseEntity.ok(ApiResponse.success(200, service.dosFactoresEstado(contextoService.resolver(request)), "Estado obtenido correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PostMapping("/dosfactores/activar/enviar")
+    public ResponseEntity<ApiResponse<?>> activarEnviarDosFactores(HttpServletRequest request) {
+        try {
+            return ResponseEntity.ok(ApiResponse.success(200, service.activarDosFactoresEnviar(contextoService.resolver(request)), "Codigo enviado. Revisa tu correo"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PostMapping("/dosfactores/activar/confirmar")
+    public ResponseEntity<ApiResponse<?>> activarConfirmarDosFactores(@RequestBody AutenticacionDosFactoresParameters parametro, HttpServletRequest request) {
+        try {
+            service.activarDosFactoresConfirmar(contextoService.resolver(request), parametro);
+            return ResponseEntity.ok(ApiResponse.success(200, null, "Verificacion en dos pasos activada"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
+    @PutMapping("/dosfactores/desactivar")
+    public ResponseEntity<ApiResponse<?>> desactivarDosFactores(@RequestBody AutenticacionDosFactoresParameters parametro, HttpServletRequest request) {
+        try {
+            service.desactivarDosFactores(contextoService.resolver(request), parametro);
+            return ResponseEntity.ok(ApiResponse.success(200, null, "Verificacion en dos pasos desactivada"));
         } catch (Exception error) {
             return error(error);
         }

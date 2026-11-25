@@ -116,7 +116,7 @@ function pintar() {
                 <div class="pf-acciones"><div class="pf-acciones-info"><span class="pf-acciones-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h12l3 3v15H5zM8 3v6h9V3M8 21v-8h9v8"/></svg></span><div><strong>Acciones</strong><small>Revisa tus datos personales y de contacto antes de guardar.</small></div></div><button class="fr-btn fr-btn-primary" type="submit">${ui.icono("save")}<span>Guardar cambios</span></button></div>
             </form>
             <aside class="pf-lado">
-                <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.escudo)}Seguridad</h3></header><p class="pf-text">Usa una contraseña única con mayúscula, minúscula, número y carácter especial.</p><button class="fr-btn" type="button" data-cambiar-clave style="width:100%">${ui.icono("lock")}<span>Cambiar contraseña</span></button></section>
+                <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.escudo)}Seguridad</h3></header><p class="pf-text">Usa una contraseña única con mayúscula, minúscula, número y carácter especial.</p><button class="fr-btn" type="button" data-ir-seguridad style="width:100%">${ui.icono("lock")}<span>Ir a Seguridad</span></button></section>
                 <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.usuario)}Tu cuenta</h3></header><dl class="pf-datos">
                     <div><dt>Usuario</dt><dd>${ui.escapar(d.usuario || "—")}</dd></div>
                     <div><dt>Rol</dt><dd>${ui.escapar(roles.join(", ") || "—")}</dd></div>
@@ -142,8 +142,8 @@ export async function bind(stage, api) {
     ui = api;
     raiz = stage;
     raiz.addEventListener("click", event => {
-        if (event.target.closest("[data-cambiar-clave]")) {
-            document.querySelector("[data-change-password]")?.click();
+        if (event.target.closest("[data-ir-seguridad]")) {
+            ui.abrirSeguridad ? ui.abrirSeguridad() : document.querySelector("[data-change-password]")?.click();
         }
     });
     raiz.addEventListener("submit", async event => {

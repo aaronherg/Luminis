@@ -68,6 +68,11 @@ public class AutenticacionDAO implements AutenticacionDataSet {
     }
 
     @Override
+    public void actualizarDosFactores(Long usuarioId, boolean activo) {
+        jdbc.update("UPDATE Usuarios SET dosFactores=?, fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1 WHERE usuarioId=?", activo, usuarioId);
+    }
+
+    @Override
     public List<Map<String, Object>> modulos(String area) {
         String singular = "Administracion".equals(area) ? "Administracion" : "Cliente";
         return jdbc.queryForList("SELECT clave, nombre, descripcion, icono, orden, categoria, categoriaNombre, categoriaIcono, categoriaOrden FROM Modulos" + area

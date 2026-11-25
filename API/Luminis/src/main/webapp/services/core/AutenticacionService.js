@@ -1,8 +1,21 @@
 window.AutenticacionService = {
     async login(usuario, contrasena) {
-        const session = await LuminisApi.post("/api/seguridad/autenticacion/login", {
+        const resultado = await LuminisApi.post("/api/seguridad/autenticacion/login", {
             usuario,
             contrasena,
+            agente: navigator.userAgent
+        });
+        if (resultado?.requiereDosFactores) return resultado;
+        if (!resultado?.token || !resultado?.tipo) throw new Error("El servidor respondió sin los datos completos de la sesión.");
+        LuminisStorage.guardarSesion(resultado);
+        return resultado;
+    },
+
+    async ingresoDosFactores(usuario, contrasena, codigo) {
+        const session = await LuminisApi.post("/api/seguridad/autenticacion/dosfactores/ingreso", {
+            usuario,
+            contrasena,
+            codigo,
             agente: navigator.userAgent
         });
         if (!session?.token || !session?.tipo) throw new Error("El servidor respondió sin los datos completos de la sesión.");

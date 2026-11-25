@@ -22,5 +22,7 @@ public interface AutenticacionDataSet {
 
     void actualizarContrasena(Long usuarioId, String contrasenaHash, String actor);
 
+    void actualizarDosFactores(Long usuarioId, boolean activo);
+
     List<Map<String, Object>> modulos(String area);
 }

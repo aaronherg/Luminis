@@ -303,6 +303,48 @@
             }
           ],
           "orden": 5
+        },
+        {
+          "clave": "smtp",
+          "nombre": "SMTP",
+          "descripcion": "Servidor de correo saliente para notificaciones y códigos.",
+          "icono": "mail",
+          "acciones": [
+            {
+              "clave": "ver",
+              "nombre": "Ver configuración"
+            },
+            {
+              "clave": "editar",
+              "nombre": "Editar configuración"
+            },
+            {
+              "clave": "probar",
+              "nombre": "Enviar prueba"
+            }
+          ],
+          "orden": 6
+        },
+        {
+          "clave": "whatsapp",
+          "nombre": "WhatsApp",
+          "descripcion": "Servicio de mensajería por WhatsApp.",
+          "icono": "message-circle",
+          "acciones": [
+            {
+              "clave": "ver",
+              "nombre": "Ver configuración"
+            },
+            {
+              "clave": "editar",
+              "nombre": "Editar configuración"
+            },
+            {
+              "clave": "probar",
+              "nombre": "Enviar prueba"
+            }
+          ],
+          "orden": 7
         }
       ],
       "orden": 4
