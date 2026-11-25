@@ -102,3 +102,7 @@ export async function bind(stage, api) {
 export function reset() {
     monedas = [];
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 1, columnas: 4 });
+}

@@ -105,3 +105,7 @@ export function reset() {
     pagina = 1;
     estado = "";
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 2, columnas: 5 });
+}

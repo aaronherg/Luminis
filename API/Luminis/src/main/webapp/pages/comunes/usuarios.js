@@ -211,5 +211,6 @@ export function crearPantallaUsuarios(config) {
         await cargar();
     }
 
-    return { render, bind, reset: () => (filtro = "") };
+    const skeleton = () => window.LuminisSk.lista({ filtros: 1, columnas: 5 });
+    return { render, bind, skeleton, reset: () => (filtro = "") };
 }

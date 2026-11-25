@@ -300,3 +300,7 @@ export function reset() {
     estadoFiltro = "";
     window.clearTimeout(temporizador);
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 2, columnas: 5 });
+}

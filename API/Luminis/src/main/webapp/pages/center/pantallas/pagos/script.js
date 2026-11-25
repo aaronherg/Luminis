@@ -160,3 +160,7 @@ export function reset() {
     buscar = "";
     window.clearTimeout(temporizador);
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 2, columnas: 6 });
+}

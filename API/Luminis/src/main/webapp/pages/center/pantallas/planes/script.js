@@ -66,3 +66,7 @@ function form(plan) {
 }
 export async function bind(stage,api){ui=api;root=stage;root.querySelector("[data-new]").addEventListener("click",()=>form(null));root.querySelector("[data-table]").addEventListener("click",async event=>{const b=event.target.closest("[data-action]");if(!b)return;const p=plans.find(x=>String(x.planId)===b.closest("[data-row]")?.dataset.row);if(!p)return;if(b.dataset.action==="edit")form(p);if(b.dataset.action==="delete"){if(await ui.confirmar({titulo:"Eliminar plan",mensaje:`¿Eliminar ${p.nombre}?`,peligro:true})){try{await PlanService.eliminar(p.planId);await load()}catch(error){ui.notificarError(error)}}}});await load()}
 export function reset(){plans=[]}
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 1, columnas: 5 });
+}

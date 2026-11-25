@@ -239,3 +239,7 @@ export function reset() {
     ui = null;
     total = 0;
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 2, columnas: 6 });
+}

@@ -9,5 +9,6 @@ const pantalla = crearPantallaRoles({
 });
 
 export const render = pantalla.render;
+export const skeleton = pantalla.skeleton;
 export const bind = pantalla.bind;
 export const reset = pantalla.reset;

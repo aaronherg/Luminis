@@ -152,5 +152,6 @@ export function crearPantallaRoles(config) {
         await cargar();
     }
 
-    return { render, bind, reset: () => null };
+    const skeleton = () => window.LuminisSk.lista({ filtros: 0, columnas: 3 });
+    return { render, bind, skeleton, reset: () => null };
 }

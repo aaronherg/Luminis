@@ -147,3 +147,7 @@ export function reset() {
     root = null;
     ui = null;
 }
+
+export function skeleton() {
+    return window.LuminisSk.tablero({ tarjetas: 4, columnas: 4 });
+}

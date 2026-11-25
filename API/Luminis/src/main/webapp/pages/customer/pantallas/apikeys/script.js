@@ -141,3 +141,7 @@ export async function bind(stage, api) {
 export function reset() {
     llaves = [];
 }
+
+export function skeleton() {
+    return window.LuminisSk.lista({ filtros: 0, columnas: 4 });
+}

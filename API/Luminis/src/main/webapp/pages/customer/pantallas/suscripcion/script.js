@@ -193,3 +193,7 @@ export function reset() {
     planes = [];
     solicitudes = [];
 }
+
+export function skeleton() {
+    return window.LuminisSk.dividido(window.LuminisSk.formulario({ campos: 6 }), window.LuminisSk.formulario({ campos: 3 }));
+}
