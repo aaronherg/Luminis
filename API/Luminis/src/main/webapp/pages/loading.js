@@ -120,7 +120,7 @@
             instance.showTimer = window.setTimeout(() => {
                 instance.showTimer = 0;
                 reveal(instance);
-            }, 140);
+            }, 0);
         }
         return instance;
     }
@@ -143,7 +143,7 @@
                 instance.running = false;
                 window.cancelAnimationFrame(instance.animationFrame);
             },
-            Math.max(0, 280 - elapsed)
+            Math.max(0, 500 - elapsed)
         );
     }
 
