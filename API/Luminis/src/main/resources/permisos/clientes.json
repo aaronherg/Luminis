@@ -207,23 +207,6 @@
             }
           ],
           "orden": 3
-        },
-        {
-          "clave": "perfil",
-          "nombre": "Perfil de la cuenta",
-          "descripcion": "Datos de tu cuenta.",
-          "icono": "id-card",
-          "acciones": [
-            {
-              "clave": "consultar",
-              "nombre": "Consultar perfil"
-            },
-            {
-              "clave": "modificar",
-              "nombre": "Modificar perfil"
-            }
-          ],
-          "orden": 4
         }
       ],
       "orden": 5

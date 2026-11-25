@@ -45,7 +45,13 @@ export function loadStyles() {
 .pf-grid { display: grid; gap: 14px; }
 .pf-h { display: flex; align-items: center; gap: 10px; margin: 0; font: 800 .98rem var(--font-display); }
 .pf-h svg { width: 18px; height: 18px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.pf-acciones { position: sticky; bottom: 12px; z-index: 2; display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; padding: 12px; border: 1px solid var(--line); border-radius: 18px; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(12px); }
+.pf-acciones { position: sticky; bottom: 12px; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 4px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 18px; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); }
+.pf-acciones-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.pf-acciones-ico { display: grid; width: 38px; height: 38px; flex: none; place-items: center; border-radius: 12px; color: var(--accent); background: var(--surface-alt); }
+.pf-acciones-ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pf-acciones-info > div { display: grid; min-width: 0; line-height: 1.3; }
+.pf-acciones-info strong { font: 800 .84rem var(--font-display); }
+.pf-acciones-info small { color: var(--muted); font-size: .74rem; }
 .pf-lado { position: sticky; top: 0; display: grid; gap: 16px; }
 .pf-text { margin: 0 0 12px; color: var(--text-secondary); font-size: .9rem; }
 .pf-datos { display: grid; gap: 8px; }
@@ -107,7 +113,7 @@ function pintar() {
                 <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.mapa)}Dirección</h3></header><div class="pf-grid">
                     ${ui.campo({ nombre: "direccion", etiqueta: "Dirección", tipo: "textarea", valor: d.direccion, max: 250, clase: "is-full" })}
                 </div></section>
-                <div class="pf-acciones"><button class="fr-btn fr-btn-primary" type="submit">${ui.icono("save")}<span>Guardar cambios</span></button></div>
+                <div class="pf-acciones"><div class="pf-acciones-info"><span class="pf-acciones-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h12l3 3v15H5zM8 3v6h9V3M8 21v-8h9v8"/></svg></span><div><strong>Acciones</strong><small>Revisa tus datos personales y de contacto antes de guardar.</small></div></div><button class="fr-btn fr-btn-primary" type="submit">${ui.icono("save")}<span>Guardar cambios</span></button></div>
             </form>
             <aside class="pf-lado">
                 <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.escudo)}Seguridad</h3></header><p class="pf-text">Usa una contraseña única con mayúscula, minúscula, número y carácter especial.</p><button class="fr-btn" type="button" data-cambiar-clave style="width:100%">${ui.icono("lock")}<span>Cambiar contraseña</span></button></section>

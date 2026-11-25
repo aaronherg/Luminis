@@ -1,5 +1,5 @@
 (() => {
-    const version = "20261122-6";
+    const version = "20261122-7";
     LuminisPanel.iniciar({
         tipo: "Administracion",
         version,

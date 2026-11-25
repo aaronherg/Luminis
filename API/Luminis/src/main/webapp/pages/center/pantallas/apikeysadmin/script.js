@@ -9,7 +9,6 @@ export function render() {
             <button class="fr-btn fr-btn-primary" type="button" data-nuevo hidden>${LuminisPanel.icono("plus")}<span>Nueva API key</span></button>
         </div>
         <section class="fr-panel">
-            <p style="margin:0 0 14px;opacity:.75;font-size:.86rem">Llaves de administración para integraciones. Se envían en el encabezado <span class="fr-mono">X-Admin-Key</span> y actúan con los permisos de tu rol.</p>
             <div data-lista></div>
         </section>`;
 }
