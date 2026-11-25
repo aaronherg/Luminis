@@ -1,4 +1,19 @@
 (() => {
+
+    function esqueletoRuta() {
+        const b = (css) => `<div class="fr-skeleton" style="${css}"></div>`;
+        const card = `<div style="border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px;background:var(--surface)">${b("height:13px;width:45%")}${b("height:28px;width:70%")}${b("height:11px;width:90%")}</div>`;
+        const fila = `<div style="display:flex;gap:14px;align-items:center;padding:12px 2px;border-bottom:1px solid var(--line)">${b("height:36px;width:36px;border-radius:10px;flex:none")}<div style="flex:1;display:grid;gap:7px">${b("height:12px;width:40%")}${b("height:10px;width:65%")}</div>${b("height:22px;width:72px;border-radius:999px;flex:none")}</div>`;
+        return `<div class="fr-ruta-esqueleto" style="display:grid;gap:18px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">${b("height:30px;width:220px;border-radius:10px")}${b("height:38px;width:150px;border-radius:12px")}</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px">${card}${card}${card}</div>
+            <div style="border:1px solid var(--line);border-radius:18px;padding:6px 18px;background:var(--surface)">${fila}${fila}${fila}${fila}${fila}</div>
+        </div>`;
+    }
+    function esperaMinima(inicio, minimo = 420) {
+        const resto = minimo - (performance.now() - inicio);
+        return resto > 0 ? new Promise((r) => setTimeout(r, resto)) : Promise.resolve();
+    }
     const ICONOS = {
         "layout-dashboard": '<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',
         "building-2": '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v8h4M18 9h2a2 2 0 0 1 2 2v11h-4M10 6h4M10 10h4M10 14h4M10 18h4"/>',
@@ -499,11 +514,16 @@
             descripcionPagina.textContent = modulo.descripcion || "";
             document.title = `${modulo.nombre} | Luminis`;
             const turno = ++carga;
+            pantallaActual?.reset?.();
+            escenario.innerHTML = esqueletoRuta();
+            const __t0 = performance.now();
             try {
-                pantallaActual?.reset?.();
                 const pantalla = await import(new URL(`${pantallas[modulo.clave]}?v=${version}`, document.baseURI).href);
                 if (turno !== carga) return;
                 pantalla.loadStyles?.();
+                if (pantalla.skeleton) escenario.innerHTML = pantalla.skeleton();
+                await esperaMinima(__t0);
+                if (turno !== carga) return;
                 escenario.innerHTML = pantalla.render();
                 pantallaActual = pantalla;
                 await pantalla.bind(escenario, api);
@@ -527,11 +547,16 @@
             descripcionPagina.textContent = "Contraseña y verificación en dos pasos";
             document.title = "Seguridad | Luminis";
             const turno = ++carga;
+            pantallaActual?.reset?.();
+            escenario.innerHTML = esqueletoRuta();
+            const __t0 = performance.now();
             try {
-                pantallaActual?.reset?.();
                 const pantalla = await import(new URL(`${ruta}?v=${version}`, document.baseURI).href);
                 if (turno !== carga) return;
                 pantalla.loadStyles?.();
+                if (pantalla.skeleton) escenario.innerHTML = pantalla.skeleton();
+                await esperaMinima(__t0);
+                if (turno !== carga) return;
                 escenario.innerHTML = pantalla.render();
                 pantallaActual = pantalla;
                 await pantalla.bind(escenario, api);
@@ -555,11 +580,16 @@
             descripcionPagina.textContent = "Administra tu información personal y de contacto";
             document.title = "Mi perfil | Luminis";
             const turno = ++carga;
+            pantallaActual?.reset?.();
+            escenario.innerHTML = esqueletoRuta();
+            const __t0 = performance.now();
             try {
-                pantallaActual?.reset?.();
                 const pantalla = await import(new URL(`${ruta}?v=${version}`, document.baseURI).href);
                 if (turno !== carga) return;
                 pantalla.loadStyles?.();
+                if (pantalla.skeleton) escenario.innerHTML = pantalla.skeleton();
+                await esperaMinima(__t0);
+                if (turno !== carga) return;
                 escenario.innerHTML = pantalla.render();
                 pantallaActual = pantalla;
                 await pantalla.bind(escenario, api);

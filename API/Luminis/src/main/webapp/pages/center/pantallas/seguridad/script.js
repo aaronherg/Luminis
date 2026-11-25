@@ -221,6 +221,23 @@ export async function bind(stage, api) {
     }));
 }
 
+export function skeleton() {
+    const b = (css) => `<div class="fr-skeleton" style="${css}"></div>`;
+    const campo = `<div style="display:grid;gap:7px">${b("height:12px;width:140px")}${b("height:44px;border-radius:12px")}</div>`;
+    const card = (cuerpo) => `<section class="sg-card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">${b("height:18px;width:18px;border-radius:6px")}${b("height:15px;width:170px")}</div>${cuerpo}</section>`;
+    return `<div class="sg"><div class="sg-cuerpo">
+        <div class="sg-col">
+            ${card(`<div style="display:grid;gap:14px">${campo}${campo}${b("height:40px;width:60%;border-radius:8px")}${campo}</div>`)}
+            ${card(`<div style="display:flex;justify-content:space-between;align-items:center;gap:14px">${b("height:40px;width:70%")}${b("height:26px;width:46px;border-radius:999px")}</div>`)}
+        </div>
+        <aside class="sg-lado">
+            ${card(`<div style="display:grid;gap:10px">${b("height:12px;width:90%")}${b("height:12px;width:80%")}${b("height:12px;width:85%")}</div>`)}
+            ${card(`<div style="display:grid;gap:10px">${b("height:12px;width:95%")}${b("height:12px;width:88%")}</div>`)}
+            ${card(`${b("height:40px;border-radius:12px")}`)}
+        </aside>
+    </div></div>`;
+}
+
 export function reset() {
     estado2fa = { activo: false, correo: null, tieneCorreo: true, servicioDisponible: true };
 }

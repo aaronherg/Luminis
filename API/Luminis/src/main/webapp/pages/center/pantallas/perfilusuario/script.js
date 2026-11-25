@@ -108,7 +108,7 @@ function pintar() {
                         <label class="fr-field"><span>Prefijo</span><input class="fr-input" name="prefijoTelefono" data-phone-prefix value="${ui.escapar(d.prefijoTelefono || "+1")}" aria-label="Prefijo del país"></label>
                         <label class="fr-field"><span>Teléfono</span><input class="fr-input" name="telefono" type="tel" inputmode="tel" maxlength="20" placeholder="809 000 0000" value="${ui.escapar(d.telefono || "")}"></label>
                     </div>
-                    <label class="pf-switch"><input type="checkbox" name="mismoWhatsapp" ${whatsappIgual ? "checked" : ""}><span><b>Recibir avisos por WhatsApp en este número</b><small>Te avisaremos de novedades de tu cuenta.</small></span></label>
+                    <label class="fr-switch-row is-full"><span><b>Recibir avisos por WhatsApp en este número</b><small>Te avisaremos de novedades de tu cuenta.</small></span><label class="fr-switch"><input type="checkbox" name="mismoWhatsapp" ${whatsappIgual ? "checked" : ""}><span></span></label></label>
                 </div></section>
                 <section class="pf-card"><header class="pf-card-head"><h3 class="pf-h">${S(ICO.mapa)}Dirección</h3></header><div class="pf-grid">
                     ${ui.campo({ nombre: "direccion", etiqueta: "Dirección", tipo: "textarea", valor: d.direccion, max: 250, clase: "is-full" })}
@@ -175,6 +175,17 @@ export async function bind(stage, api) {
         });
     });
     await cargar();
+}
+
+export function skeleton() {
+    const b = (css) => `<div class="fr-skeleton" style="${css}"></div>`;
+    const campo = `<div style="display:grid;gap:7px">${b("height:12px;width:120px")}${b("height:44px;border-radius:12px")}</div>`;
+    const card = (n) => `<section class="pf-card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">${b("height:18px;width:18px;border-radius:6px")}${b("height:15px;width:150px")}</div><div class="pf-grid">${Array(n).fill(campo).join("")}</div></section>`;
+    const lado = `<section class="pf-card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">${b("height:18px;width:18px;border-radius:6px")}${b("height:15px;width:120px")}</div><div style="display:grid;gap:10px">${b("height:12px;width:92%")}${b("height:38px;border-radius:12px")}</div></section>`;
+    return `<div class="pf">
+        <section class="pf-portada" style="min-height:auto"><div class="pf-portada__fondo"></div><div class="pf-portada__contenido">${b("height:104px;width:104px;border-radius:30px;flex:none")}<div style="display:grid;gap:12px;flex:1;min-width:220px">${b("height:28px;width:45%")}${b("height:14px;width:60%")}</div><div style="display:flex;gap:10px">${b("height:60px;width:110px;border-radius:16px")}${b("height:60px;width:110px;border-radius:16px")}${b("height:60px;width:110px;border-radius:16px")}</div></div></section>
+        <div class="pf-cuerpo"><div style="display:grid;gap:16px">${card(3)}${card(3)}${card(1)}</div><aside class="pf-lado">${lado}${lado}${lado}</aside></div>
+    </div>`;
 }
 
 export function reset() {

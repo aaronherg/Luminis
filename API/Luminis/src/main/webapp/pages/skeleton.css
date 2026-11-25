@@ -359,3 +359,10 @@
         animation: none;
     }
 }
+
+.fr-skeleton {
+    display: block;
+    border-radius: 14px;
+    background: linear-gradient(100deg, color-mix(in srgb, var(--text, #e7e7ea) 6%, transparent) 30%, color-mix(in srgb, var(--text, #e7e7ea) 13%, transparent) 50%, color-mix(in srgb, var(--text, #e7e7ea) 6%, transparent) 70%) 0 0 / 300% 100%;
+    animation: fr-skeleton-shimmer 1.3s ease-in-out infinite;
+}

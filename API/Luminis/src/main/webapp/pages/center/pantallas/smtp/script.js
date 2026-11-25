@@ -20,7 +20,7 @@ function pintar() {
     const editable = ui.puede("smtp", "editar");
     const at = editable ? "" : "disabled";
     raiz.querySelector("[data-smtp]").innerHTML = `
-        ${ui.campo({ nombre: "habilitado", etiqueta: "Activar el servicio SMTP", tipo: "checkbox", valor: c.smtpHabilitado, clase: "is-full", atributos: at })}
+        <label class="fr-switch-row is-full"><span><b>Activar el servicio SMTP</b><small>Úsalo para enviar correos de notificación y códigos de verificación.</small></span><label class="fr-switch"><input type="checkbox" name="habilitado" ${c.smtpHabilitado ? "checked" : ""} ${at}><span></span></label></label>
         ${ui.campo({ nombre: "host", etiqueta: "Servidor (host)", valor: c.smtpHost, max: 160, requerido: true, atributos: at })}
         ${ui.campo({ nombre: "puerto", etiqueta: "Puerto", valor: c.smtpPuerto || "587", max: 6, atributos: `inputmode="numeric" ${at}` })}
         ${ui.campo({ nombre: "seguridad", etiqueta: "Seguridad", tipo: "select", valor: c.smtpSeguridad || "STARTTLS", atributos: at, opciones: [{ valor: "STARTTLS", texto: "STARTTLS" }, { valor: "SSL", texto: "SSL/TLS" }, { valor: "NONE", texto: "Ninguna" }] })}
@@ -69,6 +69,16 @@ export async function bind(stage, api) {
         }
     });
     await cargar();
+}
+
+export function skeleton() {
+    const b = (css) => `<div class="fr-skeleton" style="${css}"></div>`;
+    const campo = `<div style="display:grid;gap:7px">${b("height:12px;width:130px")}${b("height:44px;border-radius:12px")}</div>`;
+    const panel = (cuerpo) => `<section class="fr-panel"><div style="padding:18px 20px;border-bottom:1px solid var(--line);display:grid;gap:8px">${b("height:16px;width:180px")}${b("height:11px;width:260px")}</div><div style="padding:20px;display:grid;gap:14px">${cuerpo}</div></section>`;
+    return `<div class="fr-grid-2">
+        ${panel(`${b("height:56px;border-radius:14px")}${campo}${campo}${campo}${campo}${campo}${b("height:42px;width:160px;border-radius:12px;justify-self:end")}`)}
+        ${panel(`${campo}${b("height:42px;width:200px;border-radius:12px")}`)}
+    </div>`;
 }
 
 export function reset() {

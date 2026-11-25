@@ -20,7 +20,7 @@ function pintar() {
     const editable = ui.puede("whatsapp", "editar");
     const at = editable ? "" : "disabled";
     raiz.querySelector("[data-whatsapp]").innerHTML = `
-        ${ui.campo({ nombre: "habilitado", etiqueta: "Activar el servicio de WhatsApp", tipo: "checkbox", valor: c.whatsappHabilitado, clase: "is-full", atributos: at })}
+        <label class="fr-switch-row is-full"><span><b>Activar el servicio de WhatsApp</b><small>Úsalo para enviar avisos y mensajes por WhatsApp.</small></span><label class="fr-switch"><input type="checkbox" name="habilitado" ${c.whatsappHabilitado ? "checked" : ""} ${at}><span></span></label></label>
         ${ui.campo({ nombre: "dispositivo", etiqueta: "Dispositivo", valor: c.whatsappDispositivo, max: 160, requerido: true, atributos: at })}
         ${ui.campo({ nombre: "apiKey", etiqueta: "API key", tipo: "password", max: 200, ayuda: c.whatsappTieneApiKey ? "Hay una API key guardada. Déjala vacía para conservarla." : "", atributos: `autocomplete="new-password" ${at}` })}
         ${ui.campo({ nombre: "telefonoPrueba", etiqueta: "Teléfono de prueba", valor: c.whatsappTelefonoPrueba, max: 30, atributos: at })}
@@ -65,6 +65,16 @@ export async function bind(stage, api) {
         }
     });
     await cargar();
+}
+
+export function skeleton() {
+    const b = (css) => `<div class="fr-skeleton" style="${css}"></div>`;
+    const campo = `<div style="display:grid;gap:7px">${b("height:12px;width:130px")}${b("height:44px;border-radius:12px")}</div>`;
+    const panel = (cuerpo) => `<section class="fr-panel"><div style="padding:18px 20px;border-bottom:1px solid var(--line);display:grid;gap:8px">${b("height:16px;width:190px")}${b("height:11px;width:250px")}</div><div style="padding:20px;display:grid;gap:14px">${cuerpo}</div></section>`;
+    return `<div class="fr-grid-2">
+        ${panel(`${b("height:56px;border-radius:14px")}${campo}${campo}${campo}${b("height:42px;width:160px;border-radius:12px;justify-self:end")}`)}
+        ${panel(`${campo}${b("height:42px;width:200px;border-radius:12px")}`)}
+    </div>`;
 }
 
 export function reset() {
