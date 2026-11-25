@@ -1,0 +1,21 @@
+CREATE TABLE ApiKeysAdministracion (
+    apiKeyAdministracionId BIGINT NOT NULL AUTO_INCREMENT,
+    apiKeyAdministracionUuid VARCHAR(40) NOT NULL,
+    usuarioAdministracionId BIGINT NOT NULL,
+    nombre TEXT NOT NULL,
+    prefijo VARCHAR(20) NOT NULL,
+    apiKeyHash VARCHAR(80) NOT NULL,
+    fechaUltimoUso DATETIME(3) NULL,
+    usuarioCreacionUuid TEXT NULL,
+    fechaCreacion DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    fechaModificacion DATETIME(3) NULL,
+    usuarioModificacionUuid TEXT NULL,
+    fechaVersion DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    version BIGINT NOT NULL DEFAULT 1,
+    estado VARCHAR(20) NOT NULL DEFAULT 'Activa',
+    PRIMARY KEY (apiKeyAdministracionId),
+    UNIQUE KEY uk_apikeyadmin_uuid (apiKeyAdministracionUuid),
+    UNIQUE KEY uk_apikeyadmin_hash (apiKeyHash),
+    KEY ix_apikeyadmin_usuario (usuarioAdministracionId),
+    CONSTRAINT fk_apikeyadmin_usuario FOREIGN KEY (usuarioAdministracionId) REFERENCES UsuariosAdministracion(usuarioAdministracionId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

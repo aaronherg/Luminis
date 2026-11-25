@@ -18,6 +18,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 public class JwtValidationFilter extends OncePerRequestFilter {
     public static final String CLAIMS_ATTRIBUTE = "jwtClaims";
+    public static final String LLAVE_ADMIN_ATTRIBUTE = "llaveAdministracion";
+    public static final String ENCABEZADO_LLAVE_ADMIN = "X-Admin-Key";
 
     private final JwtService jwtService;
     private final List<String> publicPaths;
@@ -47,7 +49,19 @@ public class JwtValidationFilter extends OncePerRequestFilter {
             FilterChain chain
     ) throws ServletException, IOException {
         String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (authorization == null || !authorization.startsWith("Bearer ")) {
+        boolean sinToken = authorization == null || !authorization.startsWith("Bearer ");
+        String llaveAdmin = request.getHeader(ENCABEZADO_LLAVE_ADMIN);
+        if (sinToken && llaveAdmin != null && !llaveAdmin.isBlank()) {
+            request.setAttribute(LLAVE_ADMIN_ATTRIBUTE, llaveAdmin.trim());
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("llave-administracion", null, AuthorityUtils.NO_AUTHORITIES));
+            try {
+                chain.doFilter(request, response);
+            } finally {
+                SecurityContextHolder.clearContext();
+            }
+            return;
+        }
+        if (sinToken) {
             escribirError(response, HttpStatus.UNAUTHORIZED, "Token JWT requerido");
             return;
         }

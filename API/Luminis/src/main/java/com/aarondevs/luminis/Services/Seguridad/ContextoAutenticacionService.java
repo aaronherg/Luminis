@@ -14,14 +14,23 @@ public class ContextoAutenticacionService {
     private static final String ATRIBUTO_CONTEXTO = "luminis.contexto";
 
     private final ContextoAutenticacionDataSet datos;
+    private final com.aarondevs.luminis.Services.Administracion.ApiKeyAdministracionService llavesAdmin;
 
-    public ContextoAutenticacionService(ContextoAutenticacionDataSet datos) {
+    public ContextoAutenticacionService(ContextoAutenticacionDataSet datos, com.aarondevs.luminis.Services.Administracion.ApiKeyAdministracionService llavesAdmin) {
         this.datos = datos;
+        this.llavesAdmin = llavesAdmin;
     }
 
     public ContextoAutenticacion resolver(HttpServletRequest request) {
         Object guardado = request == null ? null : request.getAttribute(ATRIBUTO_CONTEXTO);
         if (guardado instanceof ContextoAutenticacion contexto) return contexto;
+        Object llaveAdmin = request == null ? null : request.getAttribute(JwtValidationFilter.LLAVE_ADMIN_ATTRIBUTE);
+        if (llaveAdmin instanceof String claveAdmin) {
+            ContextoAutenticacion porLlave = llavesAdmin.autenticar(claveAdmin);
+            if (porLlave == null) throw new SecurityException("La API key de administración no es válida o está revocada");
+            request.setAttribute(ATRIBUTO_CONTEXTO, porLlave);
+            return porLlave;
+        }
         Object valor = request == null ? null : request.getAttribute(JwtValidationFilter.CLAIMS_ATTRIBUTE);
         if (!(valor instanceof Claims claims)) {
             throw new SecurityException("No se pudo determinar el contexto autenticado");

@@ -278,6 +278,31 @@
             }
           ],
           "orden": 4
+        },
+        {
+          "clave": "apikeysadmin",
+          "nombre": "API keys",
+          "descripcion": "Llaves de administración para integraciones.",
+          "icono": "key-round",
+          "acciones": [
+            {
+              "clave": "consultar",
+              "nombre": "Consultar"
+            },
+            {
+              "clave": "crear",
+              "nombre": "Crear"
+            },
+            {
+              "clave": "editar",
+              "nombre": "Editar"
+            },
+            {
+              "clave": "revocar",
+              "nombre": "Revocar"
+            }
+          ],
+          "orden": 5
         }
       ],
       "orden": 4
