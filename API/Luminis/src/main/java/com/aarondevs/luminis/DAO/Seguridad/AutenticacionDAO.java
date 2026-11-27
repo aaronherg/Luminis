@@ -2,6 +2,7 @@ package com.aarondevs.luminis.DAO.Seguridad;
 
 import com.aarondevs.luminis.Models.Seguridad.Usuario;
 import java.sql.Timestamp;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -70,4 +71,25 @@ public class AutenticacionDAO implements AutenticacionDataSet {
     @Override
     public void actualizarDosFactores(Long usuarioId, boolean activo) {
         jdbc.update("UPDATE Usuarios SET dosFactores=?, fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1 WHERE usuarioId=?", activo, usuarioId);
-    }}
+    }
+
+    @Override
+    public Map<String, Object> cuentaAdministracion(Long usuarioAdministracionId) {
+        Map<String, Object> r = new LinkedHashMap<>(jdbc.queryForList("SELECT ua.nombres, ua.apellidos, ua.correo, ua.estado, ua.fechaCreacion, u.usuario, u.fechaUltimoAcceso "
+                + "FROM UsuariosAdministracion ua JOIN Usuarios u ON u.usuarioId=ua.usuarioId WHERE ua.usuarioAdministracionId=?", usuarioAdministracionId).stream().findFirst().orElse(Map.of()));
+        r.put("roles", jdbc.queryForList("SELECT r.nombre FROM UsuariosAdministracionRoles ur JOIN RolesAdministracion r ON r.rolAdministracionId=ur.rolAdministracionId AND r.estado<>'Eliminado' "
+                + "WHERE ur.usuarioAdministracionId=? AND ur.estado='Activo' ORDER BY r.nombre", String.class, usuarioAdministracionId));
+        return r;
+    }
+
+    @Override
+    public Map<String, Object> cuentaCuenta(Long clienteId, Long usuarioClienteId) {
+        Map<String, Object> r = new LinkedHashMap<>(jdbc.queryForList("SELECT c.nombreComercial, c.razonSocial, c.tipoCliente, c.documento, c.correo, c.prefijoTelefono, c.telefono, c.direccion, c.fechaCreacion, c.estado, "
+                + "(SELECT COUNT(*) FROM UsuariosClientes x WHERE x.clienteId=c.clienteId AND x.estado<>'Eliminado') AS usuarios FROM Clientes c WHERE c.clienteId=?", clienteId).stream().findFirst().orElse(Map.of()));
+        r.put("usuario", jdbc.queryForList("SELECT uc.nombres, uc.apellidos, uc.correo, uc.propietario, u.usuario, u.fechaUltimoAcceso FROM UsuariosClientes uc JOIN Usuarios u ON u.usuarioId=uc.usuarioId "
+                + "WHERE uc.usuarioClienteId=?", usuarioClienteId).stream().findFirst().orElse(Map.of()));
+        r.put("roles", jdbc.queryForList("SELECT r.nombre FROM UsuariosClientesRoles ur JOIN RolesClientes r ON r.rolClienteId=ur.rolClienteId AND r.estado<>'Eliminado' "
+                + "WHERE ur.usuarioClienteId=? AND ur.estado='Activo' ORDER BY r.nombre", String.class, usuarioClienteId));
+        return r;
+    }
+}

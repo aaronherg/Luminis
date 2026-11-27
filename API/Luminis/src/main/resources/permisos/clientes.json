@@ -20,6 +20,10 @@
               "icono": "layout-dashboard",
               "acciones": [
                 {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
+                {
                   "clave": "consultar",
                   "nombre": "Consultar resumen"
                 }
@@ -41,6 +45,10 @@
               "icono": "radio",
               "acciones": [
                 {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
+                {
                   "clave": "consultar",
                   "nombre": "Consultar conexiones en vivo"
                 },
@@ -57,6 +65,10 @@
               "descripcion": "Conéctate y envía mensajes de prueba con tu API key.",
               "icono": "terminal",
               "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
                 {
                   "clave": "usar",
                   "nombre": "Usar la consola de pruebas"
@@ -79,6 +91,10 @@
               "icono": "gauge",
               "acciones": [
                 {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
+                {
                   "clave": "consultar",
                   "nombre": "Consultar suscripción"
                 },
@@ -95,6 +111,10 @@
               "descripcion": "Cargos y abonos de tu cuenta.",
               "icono": "receipt",
               "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
                 {
                   "clave": "listar",
                   "nombre": "Consultar pagos"
@@ -117,6 +137,10 @@
               "icono": "gauge",
               "acciones": [
                 {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
+                {
                   "clave": "consultar",
                   "nombre": "Consultar consumo de peticiones"
                 }
@@ -129,6 +153,10 @@
               "descripcion": "Entregados, vistos y desaparecidos por día.",
               "icono": "activity",
               "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
                 {
                   "clave": "consultar",
                   "nombre": "Consultar entregas de mensajes"
@@ -151,6 +179,10 @@
               "icono": "key-round",
               "acciones": [
                 {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
+                {
                   "clave": "listar",
                   "nombre": "Consultar API keys"
                 },
@@ -171,6 +203,10 @@
               "descripcion": "Usuarios de tu cuenta.",
               "icono": "users",
               "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
                 {
                   "clave": "listar",
                   "nombre": "Consultar usuarios"
@@ -196,6 +232,10 @@
               "descripcion": "Roles y permisos de tu cuenta.",
               "icono": "shield-check",
               "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Abrir la pantalla"
+                },
                 {
                   "clave": "listar",
                   "nombre": "Consultar roles"

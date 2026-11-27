@@ -21,6 +21,8 @@ public interface AutenticacionService {
 
     Map<String, Object> sesionActual(ContextoAutenticacion contexto);
 
+    Map<String, Object> cuenta(ContextoAutenticacion contexto);
+
     boolean cerrar(ContextoAutenticacion contexto);
 
     void cambiarContrasena(ContextoAutenticacion contexto, AutenticacionCambiarContrasenaParameters parametro);

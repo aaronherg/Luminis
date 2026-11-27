@@ -54,6 +54,16 @@ public class AutenticacionController {
         }
     }
 
+    @PostMapping("/getCuenta")
+    public ResponseEntity<ApiResponse<?>> getCuenta(HttpServletRequest request) {
+        try {
+            return ResponseEntity.ok(ApiResponse.success(200, service.cuenta(contextoService.resolver(request)),
+                    "Cuenta obtenida correctamente"));
+        } catch (Exception error) {
+            return error(error);
+        }
+    }
+
     @PutMapping("/logout")
     public ResponseEntity<ApiResponse<?>> logout(HttpServletRequest request) {
         try {

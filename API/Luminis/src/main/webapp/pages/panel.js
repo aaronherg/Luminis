@@ -687,6 +687,28 @@
         let rutaInicial = "";
         try { rutaInicial = localStorage.getItem(RUTA_KEY) || ""; } catch (e) { }
         if (location.hash) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { } }
+        if (!modulos.length) {
+            const sinAcceso = await import(new URL(`../comunes/sin-acceso.js?v=${version}`, document.baseURI).href);
+            await sinAcceso.montarSinAcceso({
+                sesion,
+                marca: { nombre: "Luminis", logo: `${contexto}/pages/files/img/favicon.png` },
+                etiquetaCuenta: "Cliente",
+                colores: { acento: "#3b6fff", "acento-claro": "#8fb2ff", h1: "#060b22", h2: "#13245a", ink: "var(--text)", soft: "var(--text-secondary)", muted: "var(--muted)", line: "var(--line)", card: "var(--surface-solid)", bg: "var(--bg)", titulo: "var(--font-display)", fuente: "var(--font-family)" },
+                cargarCuenta: () => LuminisApi.post("/api/seguridad/autenticacion/getCuenta", {}, { silent: true }),
+                montarPantalla: async (clave, contenedor) => {
+                    const pantalla = await import(new URL(`${pantallas[clave]}?v=${version}`, document.baseURI).href);
+                    pantalla.loadStyles?.();
+                    contenedor.innerHTML = pantalla.render();
+                    await pantalla.bind(contenedor, api);
+                },
+                salir: async () => {
+                    try { await AutenticacionService.logout(); } catch (_) { }
+                    window.location.replace(`${contexto}/pages/login/`);
+                }
+            });
+            if (sesion.debeCambiarContrasena) cambiarContrasena(true);
+            return;
+        }
         await abrir(rutaInicial);
         if (sesion.debeCambiarContrasena) cambiarContrasena(true);
     }

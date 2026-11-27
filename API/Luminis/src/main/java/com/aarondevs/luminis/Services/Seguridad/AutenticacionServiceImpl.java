@@ -182,6 +182,15 @@ public class AutenticacionServiceImpl implements AutenticacionService {
     }
 
     @Override
+    public Map<String, Object> cuenta(ContextoAutenticacion contexto) {
+        Map<String, Object> r = new LinkedHashMap<>();
+        r.put("tipo", contexto.tipo());
+        if (contexto.esAdministracion()) r.putAll(datos.cuentaAdministracion(contexto.usuarioAdministracionId()));
+        else if (contexto.esCliente()) r.putAll(datos.cuentaCuenta(contexto.clienteId(), contexto.usuarioClienteId()));
+        return r;
+    }
+
+    @Override
     public Map<String, Object> sesionActual(ContextoAutenticacion contexto) {
         Usuario usuario = datos.findUsuarioById(contexto.usuarioId());
         return sesion(usuario, perfil(usuario), contexto);

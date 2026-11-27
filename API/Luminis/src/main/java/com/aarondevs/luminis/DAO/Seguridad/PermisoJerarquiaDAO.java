@@ -131,6 +131,14 @@ public abstract class PermisoJerarquiaDAO implements PermisoJerarquiaDataSet {
     }
 
     @Override
+    public void otorgarVer() {
+        String tabla = rolesTabla("Acciones");
+        jdbc.update("INSERT INTO " + tabla + " (rol" + s + "AccionUuid, " + rol() + ", " + accionId() + ", usuarioCreacionUuid) SELECT UUID(), ro." + rol() + ", a." + accionId() + ", 'SISTEMA' FROM "
+                + rolesTabla("Opciones") + " ro JOIN " + acciones() + " a ON a." + id("opcion") + "=ro." + id("opcion") + " AND a.clave='ver' AND a.estado='Activo' WHERE ro.estado='Activo' "
+                + "ON DUPLICATE KEY UPDATE " + tabla + ".estado='Activo'");
+    }
+
+    @Override
     public List<Map<String, Object>> arbol() {
         List<Map<String, Object>> mods = jdbc.queryForList("SELECT " + id("modulo") + " AS id, clave, nombre, descripcion, icono FROM " + modulos()
                 + " WHERE estado='Activo' ORDER BY orden, " + id("modulo"));
@@ -187,7 +195,7 @@ public abstract class PermisoJerarquiaDAO implements PermisoJerarquiaDataSet {
                     ops.add(numero(opcion.get("id")));
                     for (Map<String, Object> accion : hijos(opcion, "acciones")) {
                         Long accionId = numero(accion.get("id"));
-                        if (a.contains(accionId)) accs.add(accionId);
+                        if ("ver".equals(accion.get("clave")) || a.contains(accionId)) accs.add(accionId);
                     }
                 }
                 if (conOpcion) {

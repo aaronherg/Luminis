@@ -7,7 +7,7 @@ const ICONOS = {
 const svg = (p) => `<svg viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
 const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
-const extras = (o) => o.acciones || [];
+const extras = (o) => (o.acciones || []).filter((a) => a.clave !== "ver");
 
 export function editorPermisos(contenedor, { arbol = [], rol = {}, protegido = false, icono = null } = {}) {
     const modulos = Array.isArray(arbol) ? arbol : [];
@@ -103,7 +103,7 @@ export function editorPermisos(contenedor, { arbol = [], rol = {}, protegido = f
     function resumen() {
         const v = valor();
         if (!v.opcionesIds.length) return "Sin permisos seleccionados";
-        return `${plural(v.modulosIds.length, "módulo", "módulos")} · ${plural(v.categoriasIds.length, "categoría", "categorías")} · ${plural(v.opcionesIds.length, "opción", "opciones")} · ${plural(v.accionesIds.length, "acción", "acciones")}`;
+        return `${plural(v.modulosIds.length, "módulo", "módulos")} · ${plural(v.categoriasIds.length, "categoría", "categorías")} · ${plural(v.opcionesIds.length, "opción", "opciones")} · ${plural(v.accionesIds.length - v.opcionesIds.length, "acción", "acciones")}`;
     }
 
     function pintar() {
@@ -176,7 +176,7 @@ export function editorPermisos(contenedor, { arbol = [], rol = {}, protegido = f
                 r.categoriasIds.push(c.id);
                 for (const o of ops) {
                     r.opcionesIds.push(o.id);
-                    for (const a of o.acciones || []) if (sel.a.has(a.id)) r.accionesIds.push(a.id);
+                    for (const a of o.acciones || []) if (a.clave === "ver" || sel.a.has(a.id)) r.accionesIds.push(a.id);
                 }
             }
             if (conCategoria || protegido) r.modulosIds.push(m.id);
@@ -190,5 +190,5 @@ export function editorPermisos(contenedor, { arbol = [], rol = {}, protegido = f
 
 export function resumenRol(rol) {
     const opciones = (rol.opcionesIds || []).length;
-    return [["Módulos", (rol.modulosIds || []).length], ["Opciones", opciones], ["Acciones", (rol.accionesIds || []).length]];
+    return [["Módulos", (rol.modulosIds || []).length], ["Opciones", opciones], ["Acciones", Math.max(0, (rol.accionesIds || []).length - opciones)]];
 }

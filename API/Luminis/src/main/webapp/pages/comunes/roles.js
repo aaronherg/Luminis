@@ -1,4 +1,4 @@
-import { editorPermisos, resumenRol } from "./permisos.js?v=20261127-6";
+import { editorPermisos, resumenRol } from "./permisos.js?v=20261127-13";
 
 export function crearPantallaRoles(config) {
     let ui;

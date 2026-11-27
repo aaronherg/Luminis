@@ -12,6 +12,7 @@ public interface PermisoJerarquiaDataSet {
     void sincronizarAccion(Long opcionId, String clave, String nombre, int orden);
     void depurar(Collection<String> modulos, Collection<String> categorias, Map<String, ? extends Collection<String>> opciones);
     void otorgarProtegidos();
+    void otorgarVer();
     List<Map<String, Object>> arbol();
     Map<String, List<Long>> permisosRol(Long rolId);
     void guardarPermisos(Long rolId, List<Long> modulos, List<Long> categorias, List<Long> opciones, List<Long> acciones, String actor);

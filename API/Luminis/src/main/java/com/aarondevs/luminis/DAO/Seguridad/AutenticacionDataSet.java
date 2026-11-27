@@ -24,4 +24,7 @@ public interface AutenticacionDataSet {
 
     void actualizarDosFactores(Long usuarioId, boolean activo);
 
+    Map<String, Object> cuentaAdministracion(Long usuarioAdministracionId);
+
+    Map<String, Object> cuentaCuenta(Long cuentaId, Long usuarioCuentaId);
 }

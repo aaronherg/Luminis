@@ -48,11 +48,13 @@ public final class SincronizadorPermisos {
                         acciones.add(claveAccion);
                         datos.sincronizarAccion(opcionId, claveAccion, requerido(accion, "nombre"), ++orden);
                     }
+                    if (!acciones.contains("ver")) throw new IllegalStateException("La opción '" + claveOpcion + "' del catálogo " + ubicacion + " debe incluir la acción 'ver'");
                     opciones.put(claveOpcion, acciones);
                 }
             }
         }
         datos.depurar(clavesModulos, clavesCategorias, opciones);
+        datos.otorgarVer();
     }
 
     private static String requerido(JsonNode nodo, String campo) {
