@@ -1,5 +1,6 @@
 package com.aarondevs.luminis.DAO.Clientes;
 
+import com.aarondevs.luminis.DAO.Seguridad.PermisoJerarquiaClienteDAO;
 import com.aarondevs.luminis.Models.Clientes.Cliente;
 import com.aarondevs.luminis.Parameters.Clientes.ClienteActualizarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.ClienteDatosParameters;
@@ -31,9 +32,11 @@ public class ClienteDAO implements ClienteDataSet {
             + "FROM Clientes c ";
 
     private final JdbcTemplate jdbc;
+    private final PermisoJerarquiaClienteDAO permisos;
 
-    public ClienteDAO(JdbcTemplate jdbc) {
+    public ClienteDAO(JdbcTemplate jdbc, PermisoJerarquiaClienteDAO permisos) {
         this.jdbc = jdbc;
+        this.permisos = permisos;
     }
 
     @Override
@@ -122,9 +125,7 @@ public class ClienteDAO implements ClienteDataSet {
                 + "SELECT ?, clienteId, clienteUuid, ?, 'Acceso completo a la cuenta del cliente.', '#e3121b', TRUE, ? FROM Clientes WHERE clienteId=?",
                 uuid, nombre, actor, clienteId);
         Long rolId = jdbc.queryForObject("SELECT rolClienteId FROM RolesClientes WHERE rolClienteUuid=?", Long.class, uuid);
-        jdbc.update("INSERT IGNORE INTO RolesClientesAcciones (rolClienteAccionUuid, rolClienteId, rolClienteUuid, moduloClienteAccionId, "
-                + "moduloClienteAccionUuid, usuarioCreacionUuid) SELECT UUID(), ?, ?, moduloClienteAccionId, moduloClienteAccionUuid, ? "
-                + "FROM ModulosClientesAcciones WHERE estado='Activo'", rolId, uuid, actor);
+        permisos.otorgarProtegidos();
         return rolId;
     }
 

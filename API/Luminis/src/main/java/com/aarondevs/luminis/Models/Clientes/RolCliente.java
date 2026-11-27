@@ -19,5 +19,8 @@ public class RolCliente extends BaseVersionado {
     private String descripcion;
     private String color;
     private Boolean protegido;
+    private java.util.List<Long> modulosIds;
+    private java.util.List<Long> categoriasIds;
+    private java.util.List<Long> opcionesIds;
     private java.util.List<Long> accionesIds;
 }

@@ -1,7 +1,6 @@
 package com.aarondevs.luminis.DAO.Clientes;
 
-import com.aarondevs.luminis.Models.Clientes.ModuloCliente;
-import com.aarondevs.luminis.Models.Clientes.ModuloClienteAccion;
+import com.aarondevs.luminis.DAO.Seguridad.PermisoJerarquiaClienteDAO;
 import com.aarondevs.luminis.Models.Clientes.RolCliente;
 import com.aarondevs.luminis.Parameters.Clientes.RolClienteActualizarParameters;
 import com.aarondevs.luminis.Parameters.Clientes.RolClienteAgregarParameters;
@@ -14,9 +13,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RolClienteDAO implements RolClienteDataSet {
     private final JdbcTemplate jdbc;
+    private final PermisoJerarquiaClienteDAO permisos;
 
-    public RolClienteDAO(JdbcTemplate jdbc) {
+    public RolClienteDAO(JdbcTemplate jdbc, PermisoJerarquiaClienteDAO permisos) {
         this.jdbc = jdbc;
+        this.permisos = permisos;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class RolClienteDAO implements RolClienteDataSet {
                 + "VALUES (?, ?, ?, ?, ?, ?, FALSE, ?)", uuid, parametro.getClienteId(), clienteUuid, parametro.getNombre().trim(), parametro.getDescripcion(),
                 parametro.getColor(), actor);
         RolCliente creado = findByUuid(uuid);
-        reemplazarAcciones(creado.getRolClienteId(), parametro.getAccionesIds(), actor);
+        guardarPermisos(creado.getRolClienteId(), parametro, actor);
         return findByUuid(uuid);
     }
 
@@ -39,7 +40,7 @@ public class RolClienteDAO implements RolClienteDataSet {
                 parametro.getNombre().trim(), parametro.getDescripcion(), parametro.getColor(), parametro.getEstado(), actor, parametro.getRolClienteUuid());
         if (actualizados == 0) return null;
         RolCliente actualizado = findByUuid(parametro.getRolClienteUuid());
-        if (!Boolean.TRUE.equals(actualizado.getProtegido())) reemplazarAcciones(actualizado.getRolClienteId(), parametro.getAccionesIds(), actor);
+        if (!Boolean.TRUE.equals(actualizado.getProtegido())) guardarPermisos(actualizado.getRolClienteId(), parametro, actor);
         return findByUuid(parametro.getRolClienteUuid());
     }
 
@@ -76,38 +77,30 @@ public class RolClienteDAO implements RolClienteDataSet {
         return total != null && total > 0;
     }
 
-    @Override
-    public void reemplazarAcciones(Long rolClienteId, List<Long> accionesIds, String actor) {
-        jdbc.update("DELETE FROM RolesClientesAcciones WHERE rolClienteId=?", rolClienteId);
-        if (accionesIds == null) return;
-        for (Long accionId : accionesIds.stream().distinct().toList()) {
-            jdbc.update("INSERT IGNORE INTO RolesClientesAcciones (rolClienteAccionUuid, rolClienteId, rolClienteUuid, moduloClienteAccionId, moduloClienteAccionUuid, usuarioCreacionUuid) "
-                    + "SELECT UUID(), r.rolClienteId, r.rolClienteUuid, a.moduloClienteAccionId, a.moduloClienteAccionUuid, ? FROM RolesClientes r CROSS JOIN ModulosClientesAcciones a "
-                    + "WHERE r.rolClienteId=? AND a.moduloClienteAccionId=? AND a.estado='Activo'", actor, rolClienteId, accionId);
-        }
+    private void guardarPermisos(Long rolId, RolClienteAgregarParameters parametro, String actor) {
+        permisos.guardarPermisos(rolId, parametro.getModulosIds(), parametro.getCategoriasIds(), parametro.getOpcionesIds(), parametro.getAccionesIds(), actor);
     }
 
     @Override
     public boolean delete(Long id, String actor) {
-        return jdbc.update("UPDATE RolesClientes SET estado='Eliminado', fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1, "
+        boolean eliminado = jdbc.update("UPDATE RolesClientes SET estado='Eliminado', fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1, "
                 + "usuarioModificacionUuid=? WHERE rolClienteId=? AND estado<>'Eliminado' AND protegido=FALSE", actor, id) > 0;
+        if (eliminado) permisos.revocarPermisos(id, actor);
+        return eliminado;
     }
 
     @Override
-    public List<ModuloCliente> modulos() {
-        List<ModuloCliente> modulos = jdbc.query("SELECT * FROM ModulosClientes WHERE estado='Activo' ORDER BY categoriaOrden, orden, moduloClienteId",
-                new BeanPropertyRowMapper<>(ModuloCliente.class));
-        for (ModuloCliente modulo : modulos) {
-            modulo.setAcciones(jdbc.query("SELECT * FROM ModulosClientesAcciones WHERE moduloClienteId=? AND estado='Activo' ORDER BY orden, moduloClienteAccionId",
-                    new BeanPropertyRowMapper<>(ModuloClienteAccion.class), modulo.getModuloClienteId()));
-        }
-        return modulos;
+    public List<java.util.Map<String, Object>> modulos() {
+        return permisos.arbol();
     }
 
     private RolCliente completar(RolCliente rol) {
         if (rol != null) {
-            rol.setAccionesIds(jdbc.queryForList("SELECT moduloClienteAccionId FROM RolesClientesAcciones WHERE rolClienteId=? AND estado='Activo'",
-                    Long.class, rol.getRolClienteId()));
+            java.util.Map<String, List<Long>> p = permisos.permisosRol(rol.getRolClienteId());
+            rol.setModulosIds(p.get("modulosIds"));
+            rol.setCategoriasIds(p.get("categoriasIds"));
+            rol.setOpcionesIds(p.get("opcionesIds"));
+            rol.setAccionesIds(p.get("accionesIds"));
         }
         return rol;
     }

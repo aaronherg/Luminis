@@ -1,7 +1,8 @@
 package com.aarondevs.luminis.DAO.Seguridad;
 
 import com.aarondevs.luminis.Security.ContextoAutenticacion;
-import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,9 +10,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ContextoAutenticacionDAO implements ContextoAutenticacionDataSet {
     private final JdbcTemplate jdbc;
+    private final PermisoJerarquiaAdministracionDAO permisosAdministracion;
+    private final PermisoJerarquiaClienteDAO permisosClientes;
 
-    public ContextoAutenticacionDAO(JdbcTemplate jdbc) {
+    public ContextoAutenticacionDAO(JdbcTemplate jdbc, PermisoJerarquiaAdministracionDAO permisosAdministracion, PermisoJerarquiaClienteDAO permisosClientes) {
         this.jdbc = jdbc;
+        this.permisosAdministracion = permisosAdministracion;
+        this.permisosClientes = permisosClientes;
     }
 
     @Override
@@ -49,26 +54,22 @@ public class ContextoAutenticacionDAO implements ContextoAutenticacionDataSet {
 
     @Override
     public Set<String> accionesAdministracion(Long usuarioAdministracionId) {
-        return new LinkedHashSet<>(jdbc.queryForList(
-                "SELECT DISTINCT CONCAT(m.clave,'.',a.clave) FROM UsuariosAdministracionRoles ur "
-                        + "JOIN RolesAdministracion r ON r.rolAdministracionId=ur.rolAdministracionId AND r.estado='Activo' "
-                        + "JOIN RolesAdministracionAcciones ra ON ra.rolAdministracionId=r.rolAdministracionId AND ra.estado='Activo' "
-                        + "JOIN ModulosAdministracionAcciones a ON a.moduloAdministracionAccionId=ra.moduloAdministracionAccionId AND a.estado='Activo' "
-                        + "JOIN ModulosAdministracion m ON m.moduloAdministracionId=a.moduloAdministracionId AND m.estado='Activo' "
-                        + "WHERE ur.usuarioAdministracionId=? AND ur.estado='Activo'",
-                String.class, usuarioAdministracionId));
+        return permisosAdministracion.acciones(usuarioAdministracionId);
     }
 
     @Override
     public Set<String> accionesCliente(Long usuarioClienteId) {
-        return new LinkedHashSet<>(jdbc.queryForList(
-                "SELECT DISTINCT CONCAT(m.clave,'.',a.clave) FROM UsuariosClientesRoles ur "
-                        + "JOIN RolesClientes r ON r.rolClienteId=ur.rolClienteId AND r.estado='Activo' "
-                        + "JOIN RolesClientesAcciones ra ON ra.rolClienteId=r.rolClienteId AND ra.estado='Activo' "
-                        + "JOIN ModulosClientesAcciones a ON a.moduloClienteAccionId=ra.moduloClienteAccionId AND a.estado='Activo' "
-                        + "JOIN ModulosClientes m ON m.moduloClienteId=a.moduloClienteId AND m.estado='Activo' "
-                        + "WHERE ur.usuarioClienteId=? AND ur.estado='Activo'",
-                String.class, usuarioClienteId));
+        return permisosClientes.acciones(usuarioClienteId);
+    }
+
+    @Override
+    public List<Map<String, Object>> menuAdministracion(Long usuarioAdministracionId) {
+        return permisosAdministracion.menu(usuarioAdministracionId);
+    }
+
+    @Override
+    public List<Map<String, Object>> menuCliente(Long usuarioClienteId) {
+        return permisosClientes.menu(usuarioClienteId);
     }
 
     @Override

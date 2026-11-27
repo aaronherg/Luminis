@@ -161,7 +161,7 @@ public class AutenticacionServiceImpl implements AutenticacionService {
         datos.registrarAcceso(usuario.getUsuarioId());
 
         ContextoAutenticacion contexto = contextoParaSesion(usuario, perfil, jti);
-        Map<String, Object> resultado = sesion(usuario, perfil, contextoService.acciones(contexto));
+        Map<String, Object> resultado = sesion(usuario, perfil, contexto);
         resultado.put("token", token);
         resultado.put("fechaExpiracion", expiracion);
         return resultado;
@@ -184,7 +184,7 @@ public class AutenticacionServiceImpl implements AutenticacionService {
     @Override
     public Map<String, Object> sesionActual(ContextoAutenticacion contexto) {
         Usuario usuario = datos.findUsuarioById(contexto.usuarioId());
-        return sesion(usuario, perfil(usuario), contextoService.acciones(contexto));
+        return sesion(usuario, perfil(usuario), contexto);
     }
 
     @Override
@@ -222,11 +222,10 @@ public class AutenticacionServiceImpl implements AutenticacionService {
                 numero(perfil.get("usuarioClienteId")), texto(perfil.get("usuarioClienteUuid")), null, null);
     }
 
-    private Map<String, Object> sesion(Usuario usuario, Map<String, Object> perfil, Set<String> acciones) {
+    private Map<String, Object> sesion(Usuario usuario, Map<String, Object> perfil, ContextoAutenticacion contexto) {
         boolean administracion = ContextoAutenticacion.ADMINISTRACION.equalsIgnoreCase(usuario.getTipo());
-        List<Map<String, Object>> modulos = datos.modulos(administracion ? "Administracion" : "Clientes").stream()
-                .filter(m -> acciones.stream().anyMatch(a -> a.startsWith(m.get("clave") + ".")))
-                .toList();
+        Set<String> acciones = contextoService.acciones(contexto);
+        List<Map<String, Object>> modulos = contextoService.menu(contexto);
         Map<String, Object> resultado = new LinkedHashMap<>();
         resultado.put("usuarioUuid", usuario.getUsuarioUuid());
         resultado.put("usuario", usuario.getUsuario());

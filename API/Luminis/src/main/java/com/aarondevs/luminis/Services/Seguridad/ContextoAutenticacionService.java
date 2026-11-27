@@ -5,6 +5,8 @@ import com.aarondevs.luminis.Security.ContextoAutenticacion;
 import com.aarondevs.luminis.Security.JwtValidationFilter;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +51,12 @@ public class ContextoAutenticacionService {
         if (contexto.esAdministracion()) return datos.accionesAdministracion(contexto.usuarioAdministracionId());
         if (contexto.esCliente()) return datos.accionesCliente(contexto.usuarioClienteId());
         return Set.of();
+    }
+
+    public List<Map<String, Object>> menu(ContextoAutenticacion contexto) {
+        if (contexto.esAdministracion()) return datos.menuAdministracion(contexto.usuarioAdministracionId());
+        if (contexto.esCliente()) return datos.menuCliente(contexto.usuarioClienteId());
+        return List.of();
     }
 
     public void exigirAdministracion(ContextoAutenticacion contexto) {

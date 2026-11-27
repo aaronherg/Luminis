@@ -24,5 +24,4 @@ public interface AutenticacionDataSet {
 
     void actualizarDosFactores(Long usuarioId, boolean activo);
 
-    List<Map<String, Object>> modulos(String area);
 }

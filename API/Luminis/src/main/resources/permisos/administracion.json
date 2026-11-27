@@ -1,353 +1,362 @@
 {
-  "categorias": [
+  "modulos": [
     {
-      "clave": "dashboard",
-      "nombre": "Dashboard",
-      "icono": "layout-dashboard",
-      "sola": true,
-      "opciones": [
+      "clave": "administracion",
+      "nombre": "Administración",
+      "descripcion": "Administración de Luminis: clientes, suscripciones, reportes y configuración.",
+      "icono": "shield",
+      "orden": 1,
+      "categorias": [
         {
-          "clave": "inicio",
+          "clave": "dashboard",
           "nombre": "Dashboard",
-          "descripcion": "Pulso general de la plataforma.",
           "icono": "layout-dashboard",
-          "acciones": [
+          "sola": true,
+          "opciones": [
             {
-              "clave": "consultar",
-              "nombre": "Consultar resumen"
+              "clave": "inicio",
+              "nombre": "Dashboard",
+              "descripcion": "Pulso general de la plataforma.",
+              "icono": "layout-dashboard",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar resumen"
+                }
+              ],
+              "orden": 1
             }
           ],
           "orden": 1
-        }
-      ],
-      "orden": 1
-    },
-    {
-      "clave": "gestion",
-      "nombre": "Gestión",
-      "icono": "building-2",
-      "opciones": [
+        },
         {
-          "clave": "clientes",
-          "nombre": "Clientes",
-          "descripcion": "Clientes que rentan alojamiento.",
+          "clave": "gestion",
+          "nombre": "Gestión",
           "icono": "building-2",
-          "acciones": [
+          "opciones": [
             {
-              "clave": "listar",
-              "nombre": "Consultar clientes"
+              "clave": "clientes",
+              "nombre": "Clientes",
+              "descripcion": "Clientes que rentan alojamiento.",
+              "icono": "building-2",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar clientes"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear cliente"
+                },
+                {
+                  "clave": "modificar",
+                  "nombre": "Modificar cliente"
+                },
+                {
+                  "clave": "cambiar_estado",
+                  "nombre": "Suspender o reactivar cliente"
+                }
+              ],
+              "orden": 1
             },
             {
-              "clave": "crear",
-              "nombre": "Crear cliente"
+              "clave": "suscripciones",
+              "nombre": "Suscripciones",
+              "descripcion": "Planes asignados y solicitudes de los clientes.",
+              "icono": "calendar-check",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar suscripciones"
+                },
+                {
+                  "clave": "asignar",
+                  "nombre": "Asignar o cambiar plan"
+                },
+                {
+                  "clave": "cancelar",
+                  "nombre": "Cancelar suscripción"
+                },
+                {
+                  "clave": "gestionar_solicitudes",
+                  "nombre": "Aprobar o rechazar solicitudes"
+                }
+              ],
+              "orden": 2
             },
             {
-              "clave": "modificar",
-              "nombre": "Modificar cliente"
+              "clave": "pagos",
+              "nombre": "Pagos",
+              "descripcion": "Cuentas pendientes, abonos e historial.",
+              "icono": "wallet",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar pagos"
+                },
+                {
+                  "clave": "registrar",
+                  "nombre": "Registrar pagos y abonos"
+                }
+              ],
+              "orden": 3
             },
             {
-              "clave": "cambiar_estado",
-              "nombre": "Suspender o reactivar cliente"
-            }
-          ],
-          "orden": 1
-        },
-        {
-          "clave": "suscripciones",
-          "nombre": "Suscripciones",
-          "descripcion": "Planes asignados y solicitudes de los clientes.",
-          "icono": "calendar-check",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar suscripciones"
-            },
-            {
-              "clave": "asignar",
-              "nombre": "Asignar o cambiar plan"
-            },
-            {
-              "clave": "cancelar",
-              "nombre": "Cancelar suscripción"
-            },
-            {
-              "clave": "gestionar_solicitudes",
-              "nombre": "Aprobar o rechazar solicitudes"
-            }
-          ],
-          "orden": 2
-        },
-        {
-          "clave": "pagos",
-          "nombre": "Pagos",
-          "descripcion": "Cuentas pendientes, abonos e historial.",
-          "icono": "wallet",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar pagos"
-            },
-            {
-              "clave": "registrar",
-              "nombre": "Registrar pagos y abonos"
-            }
-          ],
-          "orden": 3
-        },
-        {
-          "clave": "monitor",
-          "nombre": "Monitor en vivo",
-          "descripcion": "Conexiones WebSocket activas de todos los clientes.",
-          "icono": "radio",
-          "acciones": [
-            {
-              "clave": "consultar",
-              "nombre": "Consultar conexiones en vivo"
-            },
-            {
-              "clave": "desconectar",
-              "nombre": "Desconectar usuarios y sesiones"
-            }
-          ],
-          "orden": 4
-        }
-      ],
-      "orden": 2
-    },
-    {
-      "clave": "reportes",
-      "nombre": "Reportes",
-      "icono": "bar-chart",
-      "opciones": [
-        {
-          "clave": "reporte_ingresos",
-          "nombre": "Ingresos",
-          "descripcion": "Pagos y abonos recibidos por periodo.",
-          "icono": "dollar",
-          "acciones": [
-            {
-              "clave": "consultar",
-              "nombre": "Consultar reporte de ingresos"
-            }
-          ],
-          "orden": 1
-        },
-        {
-          "clave": "reporte_cobros",
-          "nombre": "Cuentas por cobrar",
-          "descripcion": "Cargos pendientes y antigüedad de la deuda.",
-          "icono": "wallet",
-          "acciones": [
-            {
-              "clave": "consultar",
-              "nombre": "Consultar cuentas por cobrar"
+              "clave": "monitor",
+              "nombre": "Monitor en vivo",
+              "descripcion": "Conexiones WebSocket activas de todos los clientes.",
+              "icono": "radio",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar conexiones en vivo"
+                },
+                {
+                  "clave": "desconectar",
+                  "nombre": "Desconectar usuarios y sesiones"
+                }
+              ],
+              "orden": 4
             }
           ],
           "orden": 2
         },
         {
-          "clave": "reporte_consumo",
-          "nombre": "Consumo por cliente",
-          "descripcion": "Peticiones del periodo, plan y conexiones de cada cliente.",
-          "icono": "gauge",
-          "acciones": [
+          "clave": "reportes",
+          "nombre": "Reportes",
+          "icono": "bar-chart",
+          "opciones": [
             {
-              "clave": "consultar",
-              "nombre": "Consultar consumo por cliente"
+              "clave": "reporte_ingresos",
+              "nombre": "Ingresos",
+              "descripcion": "Pagos y abonos recibidos por periodo.",
+              "icono": "dollar",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar reporte de ingresos"
+                }
+              ],
+              "orden": 1
+            },
+            {
+              "clave": "reporte_cobros",
+              "nombre": "Cuentas por cobrar",
+              "descripcion": "Cargos pendientes y antigüedad de la deuda.",
+              "icono": "wallet",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar cuentas por cobrar"
+                }
+              ],
+              "orden": 2
+            },
+            {
+              "clave": "reporte_consumo",
+              "nombre": "Consumo por cliente",
+              "descripcion": "Peticiones del periodo, plan y conexiones de cada cliente.",
+              "icono": "gauge",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar consumo por cliente"
+                }
+              ],
+              "orden": 3
+            },
+            {
+              "clave": "reporte_trafico",
+              "nombre": "Tráfico de mensajes",
+              "descripcion": "Peticiones, mensajes y entregas por cliente y por día.",
+              "icono": "activity",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar tráfico de mensajes"
+                }
+              ],
+              "orden": 4
             }
           ],
           "orden": 3
         },
         {
-          "clave": "reporte_trafico",
-          "nombre": "Tráfico de mensajes",
-          "descripcion": "Peticiones, mensajes y entregas por cliente y por día.",
-          "icono": "activity",
-          "acciones": [
+          "clave": "configuracion",
+          "nombre": "Configuración",
+          "icono": "settings",
+          "opciones": [
             {
-              "clave": "consultar",
-              "nombre": "Consultar tráfico de mensajes"
+              "clave": "planes",
+              "nombre": "Planes",
+              "descripcion": "Catálogo de planes de alojamiento.",
+              "icono": "layers",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar planes"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear plan"
+                },
+                {
+                  "clave": "modificar",
+                  "nombre": "Modificar plan"
+                },
+                {
+                  "clave": "cambiar_estado",
+                  "nombre": "Activar o desactivar plan"
+                }
+              ],
+              "orden": 1
+            },
+            {
+              "clave": "monedas",
+              "nombre": "Monedas",
+              "descripcion": "Monedas y tasas.",
+              "icono": "coins",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar monedas"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear moneda"
+                },
+                {
+                  "clave": "modificar",
+                  "nombre": "Modificar moneda"
+                }
+              ],
+              "orden": 2
+            },
+            {
+              "clave": "usuarios",
+              "nombre": "Usuarios",
+              "descripcion": "Usuarios del área administrativa.",
+              "icono": "users",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar usuarios"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear usuario"
+                },
+                {
+                  "clave": "modificar",
+                  "nombre": "Modificar usuario"
+                },
+                {
+                  "clave": "cambiar_estado",
+                  "nombre": "Suspender o reactivar usuario"
+                },
+                {
+                  "clave": "restablecer_contrasena",
+                  "nombre": "Restablecer contraseña"
+                }
+              ],
+              "orden": 3
+            },
+            {
+              "clave": "roles",
+              "nombre": "Roles",
+              "descripcion": "Roles y permisos administrativos.",
+              "icono": "shield-check",
+              "acciones": [
+                {
+                  "clave": "listar",
+                  "nombre": "Consultar roles"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear rol"
+                },
+                {
+                  "clave": "modificar",
+                  "nombre": "Modificar rol y permisos"
+                },
+                {
+                  "clave": "eliminar",
+                  "nombre": "Eliminar rol"
+                }
+              ],
+              "orden": 4
+            },
+            {
+              "clave": "apikeysadmin",
+              "nombre": "API keys",
+              "descripcion": "Llaves de administración para integraciones.",
+              "icono": "key-round",
+              "acciones": [
+                {
+                  "clave": "consultar",
+                  "nombre": "Consultar"
+                },
+                {
+                  "clave": "crear",
+                  "nombre": "Crear"
+                },
+                {
+                  "clave": "editar",
+                  "nombre": "Editar"
+                },
+                {
+                  "clave": "revocar",
+                  "nombre": "Revocar"
+                }
+              ],
+              "orden": 5
+            },
+            {
+              "clave": "smtp",
+              "nombre": "SMTP",
+              "descripcion": "Servidor de correo saliente para notificaciones y códigos.",
+              "icono": "mail",
+              "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Ver configuración"
+                },
+                {
+                  "clave": "editar",
+                  "nombre": "Editar configuración"
+                },
+                {
+                  "clave": "probar",
+                  "nombre": "Enviar prueba"
+                }
+              ],
+              "orden": 6
+            },
+            {
+              "clave": "whatsapp",
+              "nombre": "WhatsApp",
+              "descripcion": "Servicio de mensajería por WhatsApp.",
+              "icono": "message-circle",
+              "acciones": [
+                {
+                  "clave": "ver",
+                  "nombre": "Ver configuración"
+                },
+                {
+                  "clave": "editar",
+                  "nombre": "Editar configuración"
+                },
+                {
+                  "clave": "probar",
+                  "nombre": "Enviar prueba"
+                }
+              ],
+              "orden": 7
             }
           ],
           "orden": 4
         }
-      ],
-      "orden": 3
-    },
-    {
-      "clave": "configuracion",
-      "nombre": "Configuración",
-      "icono": "settings",
-      "opciones": [
-        {
-          "clave": "planes",
-          "nombre": "Planes",
-          "descripcion": "Catálogo de planes de alojamiento.",
-          "icono": "layers",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar planes"
-            },
-            {
-              "clave": "crear",
-              "nombre": "Crear plan"
-            },
-            {
-              "clave": "modificar",
-              "nombre": "Modificar plan"
-            },
-            {
-              "clave": "cambiar_estado",
-              "nombre": "Activar o desactivar plan"
-            }
-          ],
-          "orden": 1
-        },
-        {
-          "clave": "monedas",
-          "nombre": "Monedas",
-          "descripcion": "Monedas y tasas.",
-          "icono": "coins",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar monedas"
-            },
-            {
-              "clave": "crear",
-              "nombre": "Crear moneda"
-            },
-            {
-              "clave": "modificar",
-              "nombre": "Modificar moneda"
-            }
-          ],
-          "orden": 2
-        },
-        {
-          "clave": "usuarios",
-          "nombre": "Usuarios",
-          "descripcion": "Usuarios del área administrativa.",
-          "icono": "users",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar usuarios"
-            },
-            {
-              "clave": "crear",
-              "nombre": "Crear usuario"
-            },
-            {
-              "clave": "modificar",
-              "nombre": "Modificar usuario"
-            },
-            {
-              "clave": "cambiar_estado",
-              "nombre": "Suspender o reactivar usuario"
-            },
-            {
-              "clave": "restablecer_contrasena",
-              "nombre": "Restablecer contraseña"
-            }
-          ],
-          "orden": 3
-        },
-        {
-          "clave": "roles",
-          "nombre": "Roles",
-          "descripcion": "Roles y permisos administrativos.",
-          "icono": "shield-check",
-          "acciones": [
-            {
-              "clave": "listar",
-              "nombre": "Consultar roles"
-            },
-            {
-              "clave": "crear",
-              "nombre": "Crear rol"
-            },
-            {
-              "clave": "modificar",
-              "nombre": "Modificar rol y permisos"
-            },
-            {
-              "clave": "eliminar",
-              "nombre": "Eliminar rol"
-            }
-          ],
-          "orden": 4
-        },
-        {
-          "clave": "apikeysadmin",
-          "nombre": "API keys",
-          "descripcion": "Llaves de administración para integraciones.",
-          "icono": "key-round",
-          "acciones": [
-            {
-              "clave": "consultar",
-              "nombre": "Consultar"
-            },
-            {
-              "clave": "crear",
-              "nombre": "Crear"
-            },
-            {
-              "clave": "editar",
-              "nombre": "Editar"
-            },
-            {
-              "clave": "revocar",
-              "nombre": "Revocar"
-            }
-          ],
-          "orden": 5
-        },
-        {
-          "clave": "smtp",
-          "nombre": "SMTP",
-          "descripcion": "Servidor de correo saliente para notificaciones y códigos.",
-          "icono": "mail",
-          "acciones": [
-            {
-              "clave": "ver",
-              "nombre": "Ver configuración"
-            },
-            {
-              "clave": "editar",
-              "nombre": "Editar configuración"
-            },
-            {
-              "clave": "probar",
-              "nombre": "Enviar prueba"
-            }
-          ],
-          "orden": 6
-        },
-        {
-          "clave": "whatsapp",
-          "nombre": "WhatsApp",
-          "descripcion": "Servicio de mensajería por WhatsApp.",
-          "icono": "message-circle",
-          "acciones": [
-            {
-              "clave": "ver",
-              "nombre": "Ver configuración"
-            },
-            {
-              "clave": "editar",
-              "nombre": "Editar configuración"
-            },
-            {
-              "clave": "probar",
-              "nombre": "Enviar prueba"
-            }
-          ],
-          "orden": 7
-        }
-      ],
-      "orden": 4
+      ]
     }
   ]
 }

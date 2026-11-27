@@ -1,7 +1,6 @@
 package com.aarondevs.luminis.DAO.Administracion;
 
-import com.aarondevs.luminis.Models.Administracion.ModuloAdministracion;
-import com.aarondevs.luminis.Models.Administracion.ModuloAdministracionAccion;
+import com.aarondevs.luminis.DAO.Seguridad.PermisoJerarquiaAdministracionDAO;
 import com.aarondevs.luminis.Models.Administracion.RolAdministracion;
 import com.aarondevs.luminis.Parameters.Administracion.RolAdministracionActualizarParameters;
 import com.aarondevs.luminis.Parameters.Administracion.RolAdministracionAgregarParameters;
@@ -14,9 +13,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RolAdministracionDAO implements RolAdministracionDataSet {
     private final JdbcTemplate jdbc;
+    private final PermisoJerarquiaAdministracionDAO permisos;
 
-    public RolAdministracionDAO(JdbcTemplate jdbc) {
+    public RolAdministracionDAO(JdbcTemplate jdbc, PermisoJerarquiaAdministracionDAO permisos) {
         this.jdbc = jdbc;
+        this.permisos = permisos;
     }
 
     @Override
@@ -26,7 +27,7 @@ public class RolAdministracionDAO implements RolAdministracionDataSet {
                 + "VALUES (?, ?, ?, ?, FALSE, ?)", uuid, parametro.getNombre().trim(), parametro.getDescripcion(),
                 parametro.getColor(), actor);
         RolAdministracion creado = findByUuid(uuid);
-        reemplazarAcciones(creado.getRolAdministracionId(), parametro.getAccionesIds(), actor);
+        guardarPermisos(creado.getRolAdministracionId(), parametro, actor);
         return findByUuid(uuid);
     }
 
@@ -38,7 +39,7 @@ public class RolAdministracionDAO implements RolAdministracionDataSet {
                 parametro.getNombre().trim(), parametro.getDescripcion(), parametro.getColor(), parametro.getEstado(), actor, parametro.getRolAdministracionUuid());
         if (actualizados == 0) return null;
         RolAdministracion actualizado = findByUuid(parametro.getRolAdministracionUuid());
-        if (!Boolean.TRUE.equals(actualizado.getProtegido())) reemplazarAcciones(actualizado.getRolAdministracionId(), parametro.getAccionesIds(), actor);
+        if (!Boolean.TRUE.equals(actualizado.getProtegido())) guardarPermisos(actualizado.getRolAdministracionId(), parametro, actor);
         return findByUuid(parametro.getRolAdministracionUuid());
     }
 
@@ -75,38 +76,30 @@ public class RolAdministracionDAO implements RolAdministracionDataSet {
         return total != null && total > 0;
     }
 
-    @Override
-    public void reemplazarAcciones(Long rolAdministracionId, List<Long> accionesIds, String actor) {
-        jdbc.update("DELETE FROM RolesAdministracionAcciones WHERE rolAdministracionId=?", rolAdministracionId);
-        if (accionesIds == null) return;
-        for (Long accionId : accionesIds.stream().distinct().toList()) {
-            jdbc.update("INSERT IGNORE INTO RolesAdministracionAcciones (rolAdministracionAccionUuid, rolAdministracionId, rolAdministracionUuid, moduloAdministracionAccionId, moduloAdministracionAccionUuid, usuarioCreacionUuid) "
-                    + "SELECT UUID(), r.rolAdministracionId, r.rolAdministracionUuid, a.moduloAdministracionAccionId, a.moduloAdministracionAccionUuid, ? FROM RolesAdministracion r CROSS JOIN ModulosAdministracionAcciones a "
-                    + "WHERE r.rolAdministracionId=? AND a.moduloAdministracionAccionId=? AND a.estado='Activo'", actor, rolAdministracionId, accionId);
-        }
+    private void guardarPermisos(Long rolId, RolAdministracionAgregarParameters parametro, String actor) {
+        permisos.guardarPermisos(rolId, parametro.getModulosIds(), parametro.getCategoriasIds(), parametro.getOpcionesIds(), parametro.getAccionesIds(), actor);
     }
 
     @Override
     public boolean delete(Long id, String actor) {
-        return jdbc.update("UPDATE RolesAdministracion SET estado='Eliminado', fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1, "
+        boolean eliminado = jdbc.update("UPDATE RolesAdministracion SET estado='Eliminado', fechaModificacion=NOW(3), fechaVersion=NOW(3), version=version+1, "
                 + "usuarioModificacionUuid=? WHERE rolAdministracionId=? AND estado<>'Eliminado' AND protegido=FALSE", actor, id) > 0;
+        if (eliminado) permisos.revocarPermisos(id, actor);
+        return eliminado;
     }
 
     @Override
-    public List<ModuloAdministracion> modulos() {
-        List<ModuloAdministracion> modulos = jdbc.query("SELECT * FROM ModulosAdministracion WHERE estado='Activo' ORDER BY categoriaOrden, orden, moduloAdministracionId",
-                new BeanPropertyRowMapper<>(ModuloAdministracion.class));
-        for (ModuloAdministracion modulo : modulos) {
-            modulo.setAcciones(jdbc.query("SELECT * FROM ModulosAdministracionAcciones WHERE moduloAdministracionId=? AND estado='Activo' ORDER BY orden, moduloAdministracionAccionId",
-                    new BeanPropertyRowMapper<>(ModuloAdministracionAccion.class), modulo.getModuloAdministracionId()));
-        }
-        return modulos;
+    public List<java.util.Map<String, Object>> modulos() {
+        return permisos.arbol();
     }
 
     private RolAdministracion completar(RolAdministracion rol) {
         if (rol != null) {
-            rol.setAccionesIds(jdbc.queryForList("SELECT moduloAdministracionAccionId FROM RolesAdministracionAcciones WHERE rolAdministracionId=? AND estado='Activo'",
-                    Long.class, rol.getRolAdministracionId()));
+            java.util.Map<String, List<Long>> p = permisos.permisosRol(rol.getRolAdministracionId());
+            rol.setModulosIds(p.get("modulosIds"));
+            rol.setCategoriasIds(p.get("categoriasIds"));
+            rol.setOpcionesIds(p.get("opcionesIds"));
+            rol.setAccionesIds(p.get("accionesIds"));
         }
         return rol;
     }
