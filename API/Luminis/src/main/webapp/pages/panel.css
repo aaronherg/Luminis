@@ -2541,3 +2541,17 @@ body.is-booting .panel-stage > * {
     .rp .rp-cab { flex-direction: column; }
     .rp .rp-cab .rp-resumen { max-width: none; text-align: left; }
 }
+
+.fr-rol-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 10px; }
+.fr-rol-card { position: relative; display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-alt); cursor: pointer; transition: border-color .15s, background .15s; }
+.fr-rol-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.fr-rol-card input { position: absolute; opacity: 0; pointer-events: none; }
+.fr-rol-dot { width: 12px; height: 12px; flex: none; border-radius: 50%; box-shadow: 0 0 10px currentColor; }
+.fr-rol-texto { display: grid; flex: 1; min-width: 0; gap: 2px; }
+.fr-rol-texto strong { font-size: .88rem; overflow-wrap: anywhere; }
+.fr-rol-texto small { color: var(--muted); font-size: .74rem; overflow-wrap: anywhere; }
+.fr-rol-check { width: 20px; height: 20px; flex: none; border: 2px solid var(--line-strong, var(--line)); border-radius: 50%; }
+.fr-rol-card:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface-alt)); }
+.fr-rol-card:has(input:checked) .fr-rol-check { border: 6px solid var(--accent); }
+.fr-rol-card:has(input:disabled) { cursor: default; opacity: .75; }
+.fr-rol-card:focus-within { outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent); outline-offset: 2px; }

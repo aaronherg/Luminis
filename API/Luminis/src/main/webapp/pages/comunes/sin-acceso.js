@@ -99,8 +99,32 @@ const CSS = `
 .sa-vista > div:last-child { min-height: 0; padding: 18px clamp(16px, 3cqi, 36px); overflow-y: auto; }
 .sa-esq { height: 44px; border-radius: 12px; background: linear-gradient(90deg, var(--sa-card), color-mix(in srgb, var(--sa-acento) 8%, var(--sa-card)), var(--sa-card)); background-size: 200% 100%; animation: sa-brillo 1.2s linear infinite; }
 @keyframes sa-brillo { to { background-position: -200% 0; } }
-@container sa (max-width: 900px) { .sa-marco { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); overflow-y: auto; } .sa-centro h1 { font-size: 2.2rem; } .sa-orbita { display: none; } }
-@container sa (max-width: 560px) { .sa-campos, .sa-datos { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .sa { overflow-y: auto; overscroll-behavior: contain; } }
+@container sa (max-width: 900px) {
+    .sa-marco { display: block; height: auto; }
+    .sa-historia { gap: 18px; padding: 22px 18px; overflow: visible; }
+    .sa-marca img { width: 48px; height: 48px; }
+    .sa-centro { margin: 6px 0; }
+    .sa-centro h1, .sa-centro h1.is-largo { font-size: clamp(1.7rem, 8cqi, 2.4rem); }
+    .sa-centro p { margin-top: 8px; font-size: .9rem; }
+    .sa-orbita { display: none; }
+    .sa-panel, .sa-vista { min-height: 100dvh; }
+    .sa-pasos { padding: 16px 16px 0; }
+    .sa-form { overflow: visible; align-content: start; padding: 16px 16px 24px; }
+    .sa-cab { margin-bottom: 18px; }
+    .sa-cab h2 { font-size: 1.5rem; }
+    .sa-pie { position: sticky; bottom: 0; padding: 12px 16px; background: var(--sa-bg); }
+    .sa-volver { position: sticky; top: 0; z-index: 2; padding: 12px 16px; background: var(--sa-bg); }
+    .sa-vista > div:last-child { overflow: visible; padding: 14px 12px; }
+}
+@container sa (max-width: 560px) {
+    .sa-campos, .sa-datos { grid-template-columns: 1fr; }
+    .sa-pasos button { min-width: 0; flex: 1 1 0; }
+    .sa-pasos b { font-size: .74rem; }
+    .sa-fila { flex-wrap: wrap; padding: 14px; }
+    .sa-fila .sa-mini { width: 100%; }
+    .sa-usuario { flex-wrap: wrap; }
+}
 `;
 
 const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

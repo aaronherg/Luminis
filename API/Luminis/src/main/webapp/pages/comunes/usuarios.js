@@ -71,10 +71,10 @@ export function crearPantallaUsuarios(config) {
     function rolesCampo(seleccionados = [], bloqueado = false) {
         const ids = new Set(seleccionados);
         if (!roles.length) return '<p class="fr-note">Aún no hay roles. Crea uno en el módulo Roles.</p>';
-        return `<fieldset><legend>Roles</legend><div class="fr-chip-list">${roles
+        return `<fieldset class="is-full"><legend>Rol del usuario</legend><div class="fr-rol-cards">${roles
             .map(
                 r =>
-                    `<label class="fr-check"><input type="checkbox" name="rolesIds" data-multiple value="${r[config.rolId]}" ${ids.has(r[config.rolId]) ? "checked" : ""} ${bloqueado ? "disabled" : ""}><span>${ui.escapar(r.nombre)}</span></label>`
+                    `<label class="fr-rol-card"><input type="radio" name="rolId" value="${r[config.rolId]}" ${ids.has(r[config.rolId]) ? "checked" : ""} ${bloqueado ? "disabled" : ""}><span class="fr-rol-dot" style="background:${ui.escapar(r.color || "var(--accent)")}"></span><span class="fr-rol-texto"><strong>${ui.escapar(r.nombre)}</strong><small>${ui.escapar(r.descripcion || (r.protegido ? "Acceso completo" : "Rol personalizado"))}</small></span><span class="fr-rol-check" aria-hidden="true"></span></label>`
             )
             .join("")}</div></fieldset>`;
     }
@@ -105,7 +105,9 @@ export function crearPantallaUsuarios(config) {
                 }
                 ui.exigir(form, reglas);
                 const datos = ui.valores(form);
-                datos.rolesIds = usuario?.propietario ? usuario.rolesIds : datos.rolesIds || [];
+                if (!usuario?.propietario && !datos.rolId) throw new Error("Selecciona el rol del usuario.");
+                datos.rolesIds = usuario?.propietario ? usuario.rolesIds : [Number(datos.rolId)];
+                delete datos.rolId;
                 if (config.clienteId?.()) datos.clienteId = config.clienteId();
                 if (nuevo) {
                     await config.servicio.agregar(datos);
